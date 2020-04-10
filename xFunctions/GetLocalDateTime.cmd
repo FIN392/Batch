@@ -10,7 +10,7 @@ EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'
+:: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'.
 ::
 :: Rear '+mmm' is the UTC time offsets in minutes.
 ::

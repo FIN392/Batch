@@ -10,11 +10,11 @@ EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Create a empty temp file on folder %TEMP% with format '{ScriptName}_yyyymmddhhmmss.tmp'.
+:: Create a empty file with name '~{yyyymmddhhmmss}.tmp' on folder %TEMP%.
 ::
 :: Remember to delete the temporary files at the end of your script.
 ::
-:: Return file name.
+:: Return name of created file.
 ::
 :CreateTempFile {Return_variable}
 SETLOCAL

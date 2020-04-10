@@ -1,7 +1,7 @@
 :: Example of using the function
 @ECHO OFF
 
-CALL :GetArgs _Args
+CALL :GetArgs
 
 ECHO Args are:
 SET _Args.

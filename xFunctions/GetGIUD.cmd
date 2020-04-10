@@ -10,9 +10,9 @@ EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return a GUID with format 'HHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH'
+:: Return a GUID with format 'HHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH'.
 ::
-:: Esach 'H' is a hexadecimal digit.
+:: Each 'H' is a hexadecimal digit.
 ::
 :GetGIUD {Return_variable}
 SETLOCAL
