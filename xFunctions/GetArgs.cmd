@@ -1,14 +1,17 @@
 :: Example of using the function
+@ECHO OFF
 
-CALL :GetArgs
+CALL :GetArgs _Args
 
 ECHO Args are:
 SET _Args.
 
+EXIT /B 0
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Load parameters into _Arg. variables
+:: Load parameters into variables '_Arg.{parameter}'.
 ::
 :GetArgs
 
@@ -45,6 +48,6 @@ SET _Args.
 	SET _i=
 	SET _TmpArg=
 	SET _TmpSwitch=
-	
+
 GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

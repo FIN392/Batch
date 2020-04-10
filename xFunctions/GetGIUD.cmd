@@ -1,8 +1,11 @@
 :: Example of using the function
+@ECHO OFF
 
 CALL :GetGIUD _MyGUID
 
-ECHO My GUID is '%__MyGUID%'
+ECHO My GUID is '%_MyGUID%'
+
+EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -18,7 +21,7 @@ SETLOCAL
 	SET _i=0
 	:GetGIUD_Loop
 		SET /A _DEC=(%RANDOM%*256/32768)+0
-		CALL CMD /C EXIT /B %_DEC%
+		CALL cmd /C EXIT /B %_DEC%
 		SET _HEX=%_HEX%%=exitcode:~-2%
 		SET /A _i=%_i%+1
 	IF %_i% NEQ 16 GOTO :GetGIUD_Loop

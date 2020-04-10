@@ -114,23 +114,6 @@ EXIT /B %_Err.Num%
 EXIT /B %_Err.Num%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-:: Create a empty temp file on %TEMP% with format '{ScriptName}_yyyymmddhhmmss.tmp'
-:: and return the file name
-::
-:CreateTempFile
-SETLOCAL
-
-	:CreateTempFile_Loop
-		FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET _%%t
-		SET _Tempfile=%TEMP%\%~n0_%_LocalDateTime:~0,14%.tmp
-	IF EXIST "%_TempFile%" GOTO CreateTempFile_Loop
-	TYPE NUL > "%_TempFile%" || ( SET _Err.Num=2&_Err.Description=temp file '%_Tempfile%' can't be created & GOTO ErrorControl )
-	
-ENDLOCAL & SET %1=%_Tempfile%
-GOTO :EOF
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::
 :: EOF
