@@ -18,7 +18,7 @@ SET _Err.Description=.
 ECHO " %* " | FIND " /? " > NUL && GOTO Syntax
 
 :: Load parameters in _Arg. variables
-CALL :LoadArgs %*
+CALL :GetArgs %*
 
 ECHO.
 SET _Arg.
@@ -112,83 +112,6 @@ EXIT /B %_Err.Num%
 :ErrorControl
 	ECHO [91mERROR %_Err.Num%: %_Err.Description%[0m
 EXIT /B %_Err.Num%
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-:: Load parameters into _Arg. variables
-::
-:LoadArgs
-
-	:: Clean _Arg variables
-	SET _Arg.=.
-	FOR /F "DELIMS==" %%v IN ('SET _Arg.') DO  SET %%v=
-
-	:: Loop for each argument
-	SET _i=1
-	FOR %%v IN (%*) DO CALL :LoadArgs_ForEachArg %%v
-	GOTO LoadArgs_EndForEachArg
-	:LoadArgs_ForEachArg
-
-
-		SET _TmpArg=%1
-		SET _TmpSwitch=%_TmpArg:~1%
-		
-		:: If parameter is like '/xxx:yyy', create '_Arg.xxx=yyy'
-		ECHO %_TmpArg%|findstr /R "\/..*:..*" > NUL
-		IF NOT ERRORLEVEL 1 SET _Arg.%_TmpSwitch::==%& GOTO LoadArgs_NextArg
-
-		:: If parameter is like '/xxx', create '_Arg.xxx=ON'
-		ECHO %_TmpArg%|findstr /R "\/..*" > NUL
-		IF NOT ERRORLEVEL 1 SET _Arg.%_TmpSwitch%=ON& GOTO LoadArgs_NextArg
-		
-		:: Otherwise, create _Arg.{n}={parameter}
-		SET _Arg.%_i%=%_TmpArg%
-		SET /A _i=%_i%+1
-
-		:LoadArgs_NextArg
-	GOTO :EOF
-	:LoadArgs_EndForEachArg
-
-	SET _i=
-	SET _TmpArg=
-	SET _TmpSwitch=
-	
-GOTO :EOF
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-:: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'
-::
-:GetLocalDateTime
-SETLOCAL
-
-	FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| FIND "="') DO SET _%%t
-
-ENDLOCAL & SET %1=%_LocalDateTime%
-GOTO :EOF
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-:: Return a GUID with format 'HHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH'
-::
-:GetGIUD
-SETLOCAL
-
-	SET _HEX=
-	SET _i=0
-	:GetGIUD_Loop
-		SET /A _DEC=(%RANDOM%*256/32768)+0
-		CALL CMD /C EXIT /B %_DEC%
-		SET _HEX=%_HEX%%=exitcode:~-2%
-		SET /A _i=%_i%+1
-	IF %_i% NEQ 16 GOTO :GetGIUD_Loop
-	SET _HEX=%_HEX:~0,8%-%_HEX:~8,4%-%_HEX:~12,4%-%_HEX:~16,4%-%_HEX:~20,12%
-	
-ENDLOCAL & SET %1=%_HEX%
-GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
