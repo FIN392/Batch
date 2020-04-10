@@ -13,6 +13,28 @@ EXIT /B 0
 ::
 :: Load parameters into variables '_Arg.{parameter}'.
 ::
+:: These are the variables created and their values ​​depending on the type of
+:: parameter:
+::
+::     Parameters type    Variable
+::     -----------------  ------------------
+::     /{switch}          _Arg.{switch}=ON
+::     /{switch}:{value}  _Arg.{switch}={value}
+::     {value}            _Arg.{n}={value}
+::
+:: EXAMPLE
+::
+::     Script call:
+::
+::     C:\> scriptname.cmd "Text message" /X /F:file.txt "fin392@gmail.com"
+::
+::     Variables:
+::
+::     _Arg.1="Text message"
+::     _Arg.2="fin392@gmail.com"
+::     _Arg.X=ON
+::     _Arg.F=file.txt
+::
 :GetArgs
 
 	:: Clean _Arg variables

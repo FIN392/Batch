@@ -1,9 +1,9 @@
 :: Example of using the function
 @ECHO OFF
 
-CALL :GetIniValue _IniValue C:\xxxx.ini Section Value
+CALL :GetIniValue _IniValue C:\xxxx.ini Value
 
-ECHO '' value is '%_IniValue%'
+ECHO 'Value' value is '%_IniValue%'
 
 EXIT /B 0
 
@@ -14,7 +14,7 @@ EXIT /B 0
 ::
 :: .
 ::
-:GetIniValue {Return_variable} {INI_file} {Section} {Value}
+:GetIniValue {Return_variable} {INI_file} {Value}
 SETLOCAL
 
 	SET _TmpValue=XXXX
