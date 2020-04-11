@@ -1,7 +1,7 @@
 :: Example of using the function
 @ECHO OFF
 
-CALL :GetIniValue _IniValue C:\xxxx.ini Value
+CALL :GetIniValue _IniValue .\GetIniValue_example.ini Section Value
 
 ECHO 'Value' value is '%_IniValue%'
 
@@ -10,12 +10,22 @@ EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'
+:: Return a value from one section in a INI file.
 ::
-:: .
 ::
-:GetIniValue {Return_variable} {INI_file} {Value}
+:GetIniValue {Return_variable} {INI_file} {Section} {Value}
 SETLOCAL
+
+	:: Comments	= findstr /I /N /R /C:"^[ ,	]*\;"
+	:: Section	= findstr /I /N /R /C:"^[ ,	]*\[SECTION*\][ ,	]*$"
+	:: Value    = findstr /I /N /R /C:"^[ ,	]*VALUE[ ,	]*\="
+
+
+
+
+
+
+
 
 	SET _TmpValue=XXXX
 
