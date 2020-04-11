@@ -1,16 +1,16 @@
-	# Comments
+# Comments
   
   ```batch
   findstr /I /N /R /C:"^[ ,	]*\;"
   ```
   
-	# Sectio
+# Section
   
   ```batch
   findstr /I /N /R /C:"^[ ,	]*\[SECTION*\][ ,	]*$"
   ```
   
-	# Value
+# Value
   
   ```batch
   findstr /I /N /R /C:"^[ ,	]*VALUE[ ,	]*\="
