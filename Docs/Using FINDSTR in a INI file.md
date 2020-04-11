@@ -13,4 +13,4 @@ findstr /I /N /R /C:"^[ ,	]*\[SECTION*\][ ,	]*$"
 findstr /I /N /R /C:"^[ ,	]*VALUE[ ,	]*\="
 ```
 
-(*NOTE:* _The challenge is to identify when a 'value' is inside of a particular 'section_')
+_(NOTE: The challenge is to identify when a 'value' is inside of a particular 'section')_
