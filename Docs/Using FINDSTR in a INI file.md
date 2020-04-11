@@ -5,7 +5,7 @@ findstr /I /N /R /C:"^[ ,	]*\;"
 
 # Sections
 ```batch
-findstr /I /N /R /C:"^[ ,	]*\[SECTION*\][ ,	]*$"
+findstr /I /N /R /C:"^[ ,	]*\[SECTION\][ ,	]*$"
 ```
 
 # Values
