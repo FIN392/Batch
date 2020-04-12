@@ -9,7 +9,7 @@ __{Descriptor}:__ Word (or words without spaces) describing the structure use. U
 - [WHILE ... END WHILE](#WHILE)
 - [DO ... UNTIL](#DO)
 - [FUNCTION](#FUNCTION)
-
+---
 ### <a name="IF"></a>IF ... THEN ... ELSE ...
 ```batch
 IF "{value-1}"=="{value-2}" GOTO {Function}_IF_{Descriptor}
@@ -68,7 +68,7 @@ GOTO :Main_ENDIF_RootDirectory
 
 :Main_ENDIF_RootDirectory
 ```
-
+---
 ## <a name="FOR"></a>FOR ... NEXT
 ```batch
 FOR ... IN (...) DO CALL :{Function}_FOR_{Descriptor} [{Parameter} ...]
@@ -102,7 +102,7 @@ GOTO Main_ENDFOR_i
 GOTO :EOF
 :Main_ENDFOR_i
 ```
-
+---
 ## <a name="WHILE"></a>WHILE ... END WHILE
 ```batch
 :{Function}_WHILE_{Descriptor}
@@ -127,7 +127,7 @@ GOTO :{Function}_END_WHILE_{DEscriptor}
 GOTO :{Function}_WHILE_{DEscriptor}
 :{Function}_END_WHILE_{DEscriptor}
 ```
-
+---
 ## <a name="DO"></a>DO ... UNTIL
 ```batch
 :DO
@@ -136,7 +136,7 @@ GOTO :{Function}_WHILE_{DEscriptor}
 
 IF ... GOTO DO
 ```
-
+---
 ## <a name="FUNCTION"></a>FUNCTION
 ```batch
 xxx
