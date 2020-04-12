@@ -4,7 +4,7 @@ __{Function}:__ Name of the function where the code embedded (or the word 'Main'
 
 __{Descriptor}:__ Word (or words without spaces) describing the structure use. Used to avoid redundancies between the similar structures within a function.
 
-## IF ... THEN ... ELSE ...
+## <a name="IF"></a>IF ... THEN ... ELSE ...
 ```batch
 IF "{value-1}"=="{value-2}" GOTO {Function}_IF_{Descriptor}
 GOTO :{Function}_ELSE_{Descriptor}
@@ -135,4 +135,4 @@ IF ... GOTO DO
 ```batch
 xxx
 ```
-[IF](.#IF)
+[IF](#IF)
