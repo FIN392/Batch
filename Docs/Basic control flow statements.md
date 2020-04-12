@@ -4,7 +4,13 @@ __{Function}:__ Name of the function where the code embedded (or the word 'Main'
 
 __{Descriptor}:__ Word (or words without spaces) describing the structure use. Used to avoid redundancies between the similar structures within a function.
 
-## <a name="IF"></a>IF ... THEN ... ELSE ...
+- [IF ... THEN ... ELSE ...](#IF)
+- [FOR ... NEXT](#FOR)
+- [WHILE ... END WHILE](#WHILE)
+- [DO ... UNTIL](#DO)
+- [FUNCTION](#FUNCTION)
+
+### <a name="IF"></a>IF ... THEN ... ELSE ...
 ```batch
 IF "{value-1}"=="{value-2}" GOTO {Function}_IF_{Descriptor}
 GOTO :{Function}_ELSE_{Descriptor}
@@ -63,7 +69,7 @@ GOTO :Main_ENDIF_RootDirectory
 :Main_ENDIF_RootDirectory
 ```
 
-## FOR ... NEXT
+## <a name="FOR"></a>FOR ... NEXT
 ```batch
 FOR ... IN (...) DO CALL :{Function}_FOR_{Descriptor} [{Parameter} ...]
 GOTO {Function}_ENDFOR_{Descriptor}
@@ -97,7 +103,7 @@ GOTO :EOF
 :Main_ENDFOR_i
 ```
 
-## WHILE ... END WHILE
+## <a name="WHILE"></a>WHILE ... END WHILE
 ```batch
 :{Function}_WHILE_{Descriptor}
 IF ... GOTO {Function}_DO_WHILE_{Descriptor}
@@ -122,7 +128,7 @@ GOTO :{Function}_WHILE_{DEscriptor}
 :{Function}_END_WHILE_{DEscriptor}
 ```
 
-## DO ... UNTIL
+## <a name="DO"></a>DO ... UNTIL
 ```batch
 :DO
 
@@ -131,8 +137,7 @@ GOTO :{Function}_WHILE_{DEscriptor}
 IF ... GOTO DO
 ```
 
-## FUNCTION
+## <a name="FUNCTION"></a>FUNCTION
 ```batch
 xxx
 ```
-[IF](#IF)
