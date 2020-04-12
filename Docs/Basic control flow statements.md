@@ -93,11 +93,11 @@ GOTO :EOF
 :Main_ENDFOR_RootFolders
 
 :: For i=1 to 10 (step 1)...
-FOR /L %i IN (1,1,10) DO CALL :Main_FOR_i %i
+FOR /L %%i IN (1,1,10) DO CALL :Main_FOR_i %%i
 GOTO Main_ENDFOR_i
 :Main_FOR_i
 
-    ECHO Counting 1 to 10: %i
+    ECHO Counting 1 to 10: %1
 
 GOTO :EOF
 :Main_ENDFOR_i
