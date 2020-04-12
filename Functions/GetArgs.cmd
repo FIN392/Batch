@@ -42,33 +42,39 @@ EXIT /B 0
 	FOR /F "DELIMS==" %%v IN ('SET _Arg.') DO  SET %%v=
 
 	:: Loop for each argument
-	SET _i=1
+	SET _GetArgs_i=1
 	FOR %%v IN (%*) DO CALL :GetArgs_FOR_EachArg %%v
 	GOTO GetArgs_ENDFOR_EachArg
 	:GetArgs_FOR_EachArg
 
-		SET _TmpArg=%1
+		SET _GetArgs_TmpArg=%1
 
 		:: If parameter is not a switch, create '_Arg.{i}={parameter}'
-		IF "%_TmpArg:~0,1%"=="/" GOTO GetArgs_ELSE_NoSwitch
+		IF "%_GetArgs_TmpArg:~0,1%"=="/" GOTO GetArgs_ELSE_NoSwitch
 
-			SET _Arg.%_i%=%_TmpArg%
-			SET /A _i=%_i%+1
+			SET _Arg.%_GetArgs_i%=%_GetArgs_TmpArg%
+			SET /A _GetArgs_i=%_GetArgs_i%+1
 
 		GOTO GetArgs_ENDIF_NoSwitch
 		:GetArgs_ELSE_NoSwitch
 
-			FOR /F "tokens=1* delims=: " %%A IN ('ECHO %_TmpArg:~1%') DO (
-				SET _Arg.%%A=%%B
-			)
+			:: Create _Arg.{parameter}={Value} or _Arg.{parameter}=ON
+			FOR /F "tokens=1* delims=: " %%A IN ('ECHO %_GetArgs_TmpArg:~1%') DO CALL :GetArgs_FOR_Switch %%A %%B ON
+			GOTO :GetArgs_ENDFOR_Switch
+			:GetArgs_FOR_Switch
+
+				SET _Arg.%1=%2
+
+			GOTO :EOF
+			:GetArgs_ENDFOR_Switch
 
 		:GetArgs_ENDIF_NoSwitch
 
 	GOTO :EOF
 	:GetArgs_ENDFOR_EachArg
 
-	SET _i=
-	SET _TmpArg=
+	SET _GetArgs_i=
+	SET _GetArgs_TmpArg=
 
 GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
