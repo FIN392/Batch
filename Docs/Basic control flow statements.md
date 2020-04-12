@@ -117,15 +117,18 @@ GOTO :{Function}_WHILE_{Descriptor}
 ```
 EXAMPLE
 ```batch
-:Main_WHILE_
-IF ... GOTO {Function}_DO_WHILE_{DEscriptor}
-GOTO :{Function}_END_WHILE_{DEscriptor}
-:{Function}_DO_WHILE_{DEscriptor}
+:: While 'google.com' not reachable
+SET _Main_NoGoogle=1
+:Main_WHILE_NoGoogle
+IF "%_Main_NoGoogle%"=="1" GOTO Main_DO_WHILE_NoGoogle
+GOTO :Main_END_WHILE_NoGoogle
+:Main_DO_WHILE_NoGoogle
 
-    :: ...
+    PING google.com
+    SET _Main_NoGoogle=%ERRORLEVEL%
 
-GOTO :{Function}_WHILE_{DEscriptor}
-:{Function}_END_WHILE_{DEscriptor}
+GOTO :Main_WHILE_NoGoogle
+:Main_END_WHILE_NoGoogle
 ```
 ---
 ## <a name="DO"></a>DO ... UNTIL
