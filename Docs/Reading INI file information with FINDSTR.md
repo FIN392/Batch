@@ -1,14 +1,16 @@
-# Comments
+# Reading INI file information with FINDSTR
+
+### Comments
 ```batch
 findstr /I /N /R /C:"^[ ,	]*\;"
 ```
 
-# Sections
+### Sections
 ```batch
 findstr /I /N /R /C:"^[ ,	]*\[SECTION\][ ,	]*$"
 ```
 
-# Values
+### Values
 ```batch
 findstr /I /N /R /C:"^[ ,	]*VALUE[ ,	]*\="
 ```
