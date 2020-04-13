@@ -1,4 +1,5 @@
 # Reading INI file information with FINDSTR
+
 ### Comments
 ```batch
 findstr /I /N /R /C:"^[ ,	]*\;"
