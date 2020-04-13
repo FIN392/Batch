@@ -31,16 +31,12 @@
 ::                - Security vulnerabilities.
 ::  
 :Main
-@ECHO OFF
-SETLOCAL
-PUSHD %~dp0 > NUL 2> NUL
+@ECHO OFF & SETLOCAL
 
 :: /?
-ECHO " %* " | FIND " /? " > NUL && (
-	ECHO.
-	FOR /F "tokens=1* delims=@" %%A IN ('findstr /B /C:"::@" "%~f0"') DO ECHO.   %%B
-	EXIT /B 0
-)
+ECHO " %* " | FIND " /? " > NUL && ( ECHO. & FOR /F "tokens=1* delims=@" %%A IN ('findstr /B /C:"::@" "%~f0"') DO (ECHO.   %%B)
+	GOTO :End_of_script )
+
 
 
 	ECHO *
@@ -50,16 +46,13 @@ ECHO " %* " | FIND " /? " > NUL && (
 	ECHO *
 	ECHO * Error handling
 	ECHO *
-	TYPE "ThisFileDoNotExist.HopeSo" 2> NUL || (ECHO [91mERROR 999: Boom!!![0m&EXIT /B 999)
+ 	TYPE "ThisFileDoNotExist.HopeSo" 2> NUL || (ECHO [91mERROR 999: Boom!!![0m&EXIT /B 999)
 
 
 
 :: End of script
 :End_of_script
-POPD
-COLOR
-ENDLOCAL
-EXIT /B %_Err.Num%
+ENDLOCAL & EXIT /B 0
 ::
 :: EOF
 ::

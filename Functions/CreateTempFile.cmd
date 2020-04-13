@@ -5,6 +5,9 @@ CALL :CreateTempFile _MyTempFile
 
 ECHO Temp file is %_MyTempFile%
 
+:: Remember to delete temp files at the end
+IF EXIST %_MyTempFile% DEL %_MyTempFile%
+
 EXIT /B 0
 
 
@@ -17,14 +20,16 @@ EXIT /B 0
 :: Return name of created file.
 ::
 :CreateTempFile {Return_variable}
-SETLOCAL
 
 	:CreateTempFile_Loop
 		FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET _%%t
-		SET _Tempfile="%TEMP%\~%_LocalDateTime:~0,14%.tmp"
-	IF EXIST %_TempFile% GOTO CreateTempFile_Loop
-	TYPE NUL > %_TempFile% || ( ECHO [91mERROR: File %_Tempfile% can't be created[0m & SET _Tempfile=*** ERROR ***)
-	
-ENDLOCAL & SET %1=%_Tempfile%
+	IF EXIST "cc%TEMP%\~%_LocalDateTime:~0,14%.tmp" GOTO CreateTempFile_Loop
+	TYPE NUL > "cc%TEMP%\~%_LocalDateTime:~0,14%.tmp" && (
+		SET %1="cc%TEMP%\~%_LocalDateTime:~0,14%.tmp"
+	) || (
+		ECHO [91mERROR: File "cc%TEMP%\~%_LocalDateTime:~0,14%.tmp" can't be created[0m
+		SET %1="*** ERROR ***"
+	)
+
 GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
