@@ -4,6 +4,7 @@ __{Function}:__ The name of the function where the code embedded (or the word 'M
 
 __{Descriptor}:__ A word (or words without spaces) describing the use of the structure. Used to avoid redundancies between the similar structures within a function.
 
+## Contents
 - [IF ... THEN ... ELSE ...](#IF)
 - [FOR ... NEXT](#FOR)
 - [WHILE ... END WHILE](#WHILE)
