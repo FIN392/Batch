@@ -1,3 +1,6 @@
+::
+:: Add /DEBUG to see examples
+::
 @ECHO OFF
 
 SET MODE_Normal=[0m
@@ -41,7 +44,7 @@ SET MODE_bgMagenta+=[105m
 SET MODE_bgCyan+=[106m
 SET MODE_bgWhite+=[107m
 
-rem EXIT /B 0
+IF /I NOT "%1"=="/DEBUG" EXIT /B 0
 
 ECHO MODE_Normal=[%MODE_Normal%MODE_Normal%MODE_Normal%]
 ECHO MODE_Bold=[%MODE_Bold%MODE_Bold%MODE_Normal%]
@@ -79,5 +82,3 @@ ECHO MODE_bgBlue+=[%MODE_bgBlue+%MODE_bgBlue+%MODE_Normal%]
 ECHO MODE_bgMagenta+=[%MODE_bgMagenta+%MODE_bgMagenta+%MODE_Normal%]
 ECHO MODE_bgCyan+=[%MODE_bgCyan+%MODE_bgCyan+%MODE_Normal%]
 ECHO MODE_bgWhite+=[%MODE_bgWhite+%MODE_bgWhite+%MODE_Normal%]
-
-
