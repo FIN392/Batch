@@ -12,7 +12,7 @@ __{Descriptor}:__ Word (or words without spaces) describing the structure use. U
 ---
 ### <a name="IF"></a>IF ... THEN ... ELSE ...
 ```batch
-IF "{value-1}"=="{value-2}" GOTO {Function}_IF_{Descriptor}
+IF ... GOTO {Function}_IF_{Descriptor}
 GOTO :{Function}_ELSE_{Descriptor}
 :{Function}_IF_{Descriptor}
 
@@ -117,18 +117,16 @@ GOTO :{Function}_WHILE_{Descriptor}
 ```
 EXAMPLE
 ```batch
-:: While 'google.com' not reachable
-SET _Main_NoGoogle=1
-:Main_WHILE_NoGoogle
-IF "%_Main_NoGoogle%"=="1" GOTO Main_DO_WHILE_NoGoogle
-GOTO :Main_END_WHILE_NoGoogle
-:Main_DO_WHILE_NoGoogle
+:: While file doesn't exist, try to create it
+:Main_WHILE_NoFile
+IF NOT EXIST C:\file.ext GOTO Main_DO_WHILE_NoFile
+GOTO :Main_END_WHILE_NoFile
+:Main_DO_WHILE_NoFile
 
-    PING google.com
-    SET _Main_NoGoogle=%ERRORLEVEL%
+    TYPE NUL > C:\file.ext
 
-GOTO :Main_WHILE_NoGoogle
-:Main_END_WHILE_NoGoogle
+GOTO :Main_WHILE_NoFile
+:Main_END_WHILE_NoFile
 ```
 ---
 ### <a name="DO"></a>DO ... UNTIL
@@ -137,18 +135,37 @@ GOTO :Main_WHILE_NoGoogle
 
     :: ...
 
-IF "{value-1}"=="{value-2}" GOTO {Function}_DO_{Descriptor}
+IF ... GOTO {Function}_DO_{Descriptor}
 ```
 EXAMPLE
 ```batch
-:{Function}_DO_{Descriptor}
+:: Do 10 seconds wait until file exist
+:Main_DO_WaitTillFileExist
 
-    :: ...
+    PING 127.0.0.1 -n 10
 
-IF "{value-1}"=="{value-2}" GOTO {Function}_DO_{Descriptor}
+IF NOT EXIST C:\file.ext GOTO Main_DO_WaitTillFileExist
 ```
 ---
 ### <a name="FUNCTION"></a>FUNCTION
 ```batch
-xxx
+:{Function_name}
+SETLOCAL
+
+	:: ...
+	
+ENDLOCAL & SET %1={Return_value}
+GOTO :EOF
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+```
+EXAMPLE
+```batch
+:{Function_name}
+SETLOCAL
+
+	:: ...
+	
+ENDLOCAL & SET %1={Return_value}
+GOTO :EOF
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ```
