@@ -69,7 +69,7 @@ GOTO :Main_ENDIF_RootDirectory
 :Main_ENDIF_RootDirectory
 ```
 ---
-## <a name="FOR"></a>FOR ... NEXT
+### <a name="FOR"></a>FOR ... NEXT
 ```batch
 FOR ... IN (...) DO CALL :{Function}_FOR_{Descriptor} [{Parameter} ...]
 GOTO {Function}_ENDFOR_{Descriptor}
@@ -103,7 +103,7 @@ GOTO :EOF
 :Main_ENDFOR_i
 ```
 ---
-## <a name="WHILE"></a>WHILE ... END WHILE
+### <a name="WHILE"></a>WHILE ... END WHILE
 ```batch
 :{Function}_WHILE_{Descriptor}
 IF ... GOTO {Function}_DO_WHILE_{Descriptor}
@@ -131,16 +131,24 @@ GOTO :Main_WHILE_NoGoogle
 :Main_END_WHILE_NoGoogle
 ```
 ---
-## <a name="DO"></a>DO ... UNTIL
+### <a name="DO"></a>DO ... UNTIL
 ```batch
-:DO
+:{Function}_DO_{Descriptor}
 
     :: ...
 
-IF ... GOTO DO
+IF "{value-1}"=="{value-2}" GOTO {Function}_DO_{Descriptor}
+```
+EXAMPLE
+```batch
+:{Function}_DO_{Descriptor}
+
+    :: ...
+
+IF "{value-1}"=="{value-2}" GOTO {Function}_DO_{Descriptor}
 ```
 ---
-## <a name="FUNCTION"></a>FUNCTION
+### <a name="FUNCTION"></a>FUNCTION
 ```batch
 xxx
 ```
