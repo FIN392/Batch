@@ -1,8 +1,8 @@
 # Basic control flow statements
 
-__{Function}:__ Name of the function where the code embedded (or the word 'Main' for the main stream). Used to avoid redundancies between the similar structures within a script.
+__{Function}:__ The name of the function where the code embedded (or the word 'Main' for the main stream). Used to avoid redundancies between the similar structures within a script.
 
-__{Descriptor}:__ Word (or words without spaces) describing the structure use. Used to avoid redundancies between the similar structures within a function.
+__{Descriptor}:__ A word (or words without spaces) describing the use of the structure. Used to avoid redundancies between the similar structures within a function.
 
 - [IF ... THEN ... ELSE ...](#IF)
 - [FOR ... NEXT](#FOR)
@@ -160,12 +160,18 @@ GOTO :EOF
 ```
 EXAMPLE
 ```batch
-:{Function_name}
+CALL :GetLocalDateTime _MyTime
+
+ECHO %_MyTime%
+
+EXIT /B 0
+
+:GetLocalDateTime
 SETLOCAL
 
-	:: ...
-	
-ENDLOCAL & SET %1={Return_value}
+	FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET _%%t
+
+ENDLOCAL & SET %1=%_LocalDateTime%
 GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ```
