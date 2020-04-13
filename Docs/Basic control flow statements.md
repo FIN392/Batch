@@ -10,7 +10,9 @@ __{Descriptor}:__ A word (or words without spaces) describing the use of the str
 - [WHILE ... END WHILE](#WHILE)
 - [DO ... UNTIL](#DO)
 - [FUNCTION](#FUNCTION)
+
 ---
+
 ### <a name="IF"></a>IF ... THEN ... ELSE ...
 ```batch
 IF ... GOTO {Function}_IF_{Descriptor}
@@ -69,7 +71,9 @@ GOTO :Main_ENDIF_RootDirectory
 
 :Main_ENDIF_RootDirectory
 ```
+
 ---
+
 ### <a name="FOR"></a>FOR ... NEXT
 ```batch
 FOR ... IN (...) DO CALL :{Function}_FOR_{Descriptor} [{Parameter} ...]
@@ -129,7 +133,9 @@ GOTO :Main_END_WHILE_NoFile
 GOTO :Main_WHILE_NoFile
 :Main_END_WHILE_NoFile
 ```
+
 ---
+
 ### <a name="DO"></a>DO ... UNTIL
 ```batch
 :{Function}_DO_{Descriptor}
@@ -147,7 +153,9 @@ EXAMPLE
 
 IF NOT EXIST C:\file.ext GOTO Main_DO_WaitTillFileExist
 ```
+
 ---
+
 ### <a name="FUNCTION"></a>FUNCTION
 ```batch
 :{Function_name}
