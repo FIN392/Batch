@@ -15,10 +15,8 @@ EXIT /B 0
 :: Rear '+mmm' is the UTC time offsets in minutes.
 ::
 :GetLocalDateTime {Return_variable}
-SETLOCAL
 
-	FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET _%%t
+	FOR /F "tokens=1* delims==" %%a IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET %1=%%b
 
-ENDLOCAL & SET %1=%_LocalDateTime%
 GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

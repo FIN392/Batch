@@ -18,15 +18,16 @@ EXIT /B 0
 SETLOCAL
 
 	SET _HEX=
-	SET _i=0
-	:GetGIUD_Loop
-		SET /A _DEC=(%RANDOM%*256/32768)+0
+	FOR /L %%i IN (1,1,8) DO CALL :GetGIUD_FOR_i
+	GOTO GetGIUD_ENDFOR_i
+	:GetGIUD_FOR_i
+		SET /A _DEC=%RANDOM%*65536/32768
 		CALL cmd /C EXIT /B %_DEC%
-		SET _HEX=%_HEX%%=exitcode:~-2%
-		SET /A _i=%_i%+1
-	IF %_i% NEQ 16 GOTO :GetGIUD_Loop
+		SET _HEX=%_HEX%%=exitcode:~-4%
+	GOTO :EOF
+	:GetGIUD_ENDFOR_i
 	SET _HEX=%_HEX:~0,8%-%_HEX:~8,4%-%_HEX:~12,4%-%_HEX:~16,4%-%_HEX:~20,12%
-	
+
 ENDLOCAL & SET %1=%_HEX%
 GOTO :EOF
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

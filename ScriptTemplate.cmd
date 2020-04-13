@@ -34,8 +34,10 @@
 @ECHO OFF & SETLOCAL
 
 :: /?
-ECHO " %* " | FIND " /? " > NUL && ( ECHO. & FOR /F "tokens=1* delims=@" %%A IN ('findstr /B /C:"::@" "%~f0"') DO (ECHO.   %%B)
-	GOTO :End_of_script )
+ECHO " %* " | find " /? " > NUL && (
+	ECHO. & FOR /F "tokens=1* delims=@" %%A IN ('findstr /B /C:"::@" "%~f0"') DO (ECHO.   %%B)
+	GOTO :End_of_script
+)
 
 
 
