@@ -31,8 +31,7 @@
 ::                 - Security vulnerabilities.
 ::  
 :Main
-@ECHO OFF
-SETLOCAL
+@ECHO OFF & SETLOCAL
 SET Err=0
 
 :: /?
@@ -66,7 +65,6 @@ ECHO " %* " | find " /? " > NUL && (
 
 
 :End_of_script
-TITLE
 ENDLOCAL & EXIT /B %Err%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -87,7 +85,7 @@ SETLOCAL
 	SET /A _Value=%2 + %3
 	REM *
 
-SET Err=999
+	SET Err=999
 
 
 ENDLOCAL & SET %1=%_Value%& EXIT /B %Err%
