@@ -16,7 +16,7 @@ EXIT /B 0
 ::
 :GetLocalDateTime {Return_variable}
 
-	FOR /F "tokens=1* delims==" %%a IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET %1=%%b
+	FOR /F "tokens=1* delims==" %%a IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET %~1=%%b
 
-GOTO :EOF
+EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

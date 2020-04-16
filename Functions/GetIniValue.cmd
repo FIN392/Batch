@@ -46,5 +46,5 @@ SETLOCAL
 	:GetIniValue_ENDIF_Exist
 
 ENDLOCAL & SET %1=%_TmpValue:~0,-1%
-GOTO :EOF
+EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
