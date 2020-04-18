@@ -1,10 +1,10 @@
 :: Example of using the function
 @ECHO OFF
 
-CALL :GetArgs %*
+CALL :GetArgs "This is a text" /X  VAL02 /F:"C:\Program Files\file.ext"
 
 ECHO Args are:
-SET _Arg.
+SET "_Arg."
 
 EXIT /B 0
 
@@ -24,8 +24,6 @@ EXIT /B 0
 ::
 :: EXAMPLE
 ::
-::     Script call:
-::
 ::     C:\> scriptname.cmd "Text message" /X /F:file.txt "fin392@gmail.com"
 ::
 ::     Variables:
@@ -38,22 +36,22 @@ EXIT /B 0
 :GetArgs
 
 	:: Clean _Arg variables
-	SET _Arg.=.
-	FOR /F "DELIMS==" %%v IN ('SET _Arg.') DO  SET %%v=
+	SET "_Arg.=."
+	FOR /F "DELIMS==" %%v IN ('SET _Arg.') DO SET "%%v="
 
 	:: Loop for each argument
-	SET _GetArgs_i=1
+	SET "_GetArgs_i=1"
 	FOR %%v IN (%*) DO CALL :GetArgs_FOR_EachArg %%v
 	GOTO GetArgs_ENDFOR_EachArg
 	:GetArgs_FOR_EachArg
 
-		SET _GetArgs_TmpArg=%1
+		SET "_GetArgs_TmpArg=%~1"
 
 		:: If parameter is not a switch, create '_Arg.{i}={parameter}'
 		IF "%_GetArgs_TmpArg:~0,1%"=="/" GOTO GetArgs_ELSE_NoSwitch
 
-			SET _Arg.%_GetArgs_i%=%_GetArgs_TmpArg%
-			SET /A _GetArgs_i=%_GetArgs_i%+1
+			SET "_Arg.%_GetArgs_i%=%_GetArgs_TmpArg%"
+			SET /A "_GetArgs_i=%_GetArgs_i%+1"
 
 		GOTO GetArgs_ENDIF_NoSwitch
 		:GetArgs_ELSE_NoSwitch
@@ -63,7 +61,7 @@ EXIT /B 0
 			GOTO :GetArgs_ENDFOR_Switch
 			:GetArgs_FOR_Switch
 
-				SET _Arg.%1=%2
+				SET "_Arg.%1=%2"
 
 			GOTO :EOF
 			:GetArgs_ENDFOR_Switch
@@ -73,8 +71,8 @@ EXIT /B 0
 	GOTO :EOF
 	:GetArgs_ENDFOR_EachArg
 
-	SET _GetArgs_i=
-	SET _GetArgs_TmpArg=
+	SET "_GetArgs_i="
+	SET "_GetArgs_TmpArg="
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
