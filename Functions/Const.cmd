@@ -1,15 +1,16 @@
-@ECHO OFF
-SETLOCAL
+:: Example of using the function
+:Main
+@ECHO OFF & SETLOCAL & SET "_Error=0"
 
-CALL :Const
+	CALL :Const
 
-ECHO.
-ECHO.%_EscUnderline%%_EscBgRed%%_EscFgBlueB% Bright blue underline over red %_EscNormal%
-ECHO.
-ECHO.%_Beep%BEEP!
+	ECHO.
+	ECHO.%_EscUnderline%%_EscBgRed%%_EscFgBlueB% Bright blue underline over red %_EscNormal%
+	ECHO.
+	ECHO.%_Beep%BEEP!
 
-ENDLOCAL
-EXIT /B 0
+ENDLOCAL & EXIT /B 0
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::

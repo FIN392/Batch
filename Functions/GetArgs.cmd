@@ -1,15 +1,14 @@
 :: Example of using the function
 :Main
-@ECHO OFF & SETLOCAL
-SET Err=0
+@ECHO OFF & SETLOCAL & SET "_Error=0"
 
-CALL :GetArgs "This is a text" /X  VAL02 /F:"C:\Program Files\file.ext"
+	CALL :GetArgs "This is a text" /X  VAL02 /F:"C:\Program Files\file.ext"
 
-ECHO Args are:
-SET "_Arg."
+	ECHO Args are:
+	SET "_Arg."
 
 :End_of_script
-ENDLOCAL & EXIT /B %Err%
+ENDLOCAL & EXIT /B %_Error%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

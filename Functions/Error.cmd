@@ -1,46 +1,50 @@
 :: Example of using the function
 :Main
-@ECHO OFF & SETLOCAL
-SET Err=0
+@ECHO OFF & SETLOCAL & SET "_Error=0"
 
-:: Calling 'Error' depending on a condition
-IF NOT EXIST "ThisFileDoNotExist.HopeSo" (CALL :Error %~0 0x01 "File doesn't exist")
-ECHO ERRORLEVEL=%ERRORLEVEL%
-ECHO.
+	:: Calling 'Error' depending on a condition
+	IF NOT EXIST "ThisFileDoNotExist.HopeSo" (CALL :Error %~0 0x01 "File doesn't exist")
+	SET "_Err=%ERRORLEVEL%"
+	ECHO Returned error=%_Err%
+	ECHO.
 
-:: Calling 'Error' when a command fail
-DIR CC:\ || (CALL :Error %~0 0x12 "DIR command failed")
-ECHO ERRORLEVEL=%ERRORLEVEL%
-ECHO.
+	:: Calling 'Error' when a command fail
+	DIR CC:\ || (CALL :Error %~0 0x12 "DIR command failed")
+	SET "_Err=%ERRORLEVEL%"
+	ECHO Returned error=%_Err%
+	ECHO.
 
-:: Calling 'Error' from a function
-CALL :TEST01
+	:: Calling 'Error' from a function
+	CALL :TEST01
 
-:: Calling 'Error' from a function with terminating the whole script (/FATAL)
-CALL :TEST02
+	:: Calling 'Error' from a function with terminating the whole script (/FATAL)
+	CALL :TEST02
 
-ECHO NEVER SHOWN!!!
+	ECHO NEVER SHOWN!!!
 	
 :End_of_script
-ENDLOCAL & EXIT /B %Err%
+ENDLOCAL & EXIT /B %_Error%
 
 :TEST01
 SETLOCAL
+SET "_Err=0"
 
 	ECHO.    Inside the function...
 	ECHO.
 
 	DIR CC:\ || (CALL :Error %~0 0x21 "DIR command failed")
-	ECHO.    ERRORLEVEL=%ERRORLEVEL%
+	SET "_Err=%ERRORLEVEL%"
+	ECHO.    Returned error=%_Err%
 	ECHO.
 
 	ECHO.    Still in the function...
 	ECHO.
 
-ENDLOCAL & EXIT /B 0
+ENDLOCAL & EXIT /B %_Err%
 
 :TEST02
 SETLOCAL
+SET "_Err=0"
 
 	ECHO.    Inside the function...
 	ECHO.
@@ -49,7 +53,7 @@ SETLOCAL
 
 	ECHO.    NEVER SHOWN!!!
 
-ENDLOCAL & EXIT /B 0
+ENDLOCAL & EXIT /B %_Err%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

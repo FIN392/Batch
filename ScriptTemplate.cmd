@@ -31,8 +31,7 @@
 ::                 - Security vulnerabilities.
 ::  
 :Main
-@ECHO OFF & SETLOCAL
-SET Err=0
+@ECHO OFF & SETLOCAL & SET "_Error=0"
 
 :: /?
 ECHO " %* " | find " /? " > NUL && (
@@ -42,30 +41,23 @@ ECHO " %* " | find " /? " > NUL && (
 
 
 
-
 	REM *
 	REM * YOU CODE IS HERE...
 	REM *
 
 	REM *
-	REM * Error handling
-	REM *
- 	REM TYPE "ThisFileDoNotExist.HopeSo" 2> NUL || (
-	REM 	 ECHO [91mERROR %ERRORLEVEL%: Boom!!![0m
-	REM 	 GOTO :End_of_script
-	REM )
-
-	REM *
 	REM * Calling a function
 	REM *
-	CALL :FunctionName %1 %2 %3 %4 
-	ECHO ERRORLEVEL=%ERRORLEVEL%
+	CALL :FunctionName ReturnValue 2 3 || ECHO Function failed
+	SET "_Error=%ERRORLEVEL%"
+	ECHO Returned error=%_Error%
+	ECHO Return value=%ReturnValue%
+	ECHO.
 
-	echo %QWE%
 
 
 :End_of_script
-ENDLOCAL & EXIT /B %Err%
+ENDLOCAL & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -77,18 +69,17 @@ ENDLOCAL & EXIT /B %Err%
 :: 80 characters.
 ::
 :FunctionName
-SETLOCAL
+SETLOCAL & SET "_Error=0"
 
 	REM *
 	REM * YOU CODE IS HERE...
 	REM *
-	SET /A _Value=%2 + %3
+	SET /A _Value=%~2 + %~3
 	REM *
 
-	SET Err=999
+	SET "_Error=999"
 
-
-ENDLOCAL & SET %1=%_Value%& EXIT /B %Err%
+ENDLOCAL & SET "%~1=%_Value%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::

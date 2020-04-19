@@ -1,7 +1,0 @@
-@ECHO OFF
-SETLOCAL
-
-
-
-ENDLOCAL & EXIT /B 0
-

@@ -1,14 +1,13 @@
 :: Example of using the function
 :Main
-@ECHO OFF & SETLOCAL
-SET Err=0
+@ECHO OFF & SETLOCAL & SET "_Error=0"
 
-CALL :GetGIUD _MyGUID
+	CALL :GetGIUD _MyGUID
 
-ECHO My GUID is [%_MyGUID%]
+	ECHO My GUID is [%_MyGUID%]
 
 :End_of_script
-ENDLOCAL & EXIT /B %Err%
+ENDLOCAL & EXIT /B %_Error%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -31,6 +30,5 @@ SETLOCAL
 	:GetGIUD_ENDFOR_i
 	SET "_HEX=%_HEX:~0,8%-%_HEX:~8,4%-%_HEX:~12,4%-%_HEX:~16,4%-%_HEX:~20,12%"
 
-ENDLOCAL & SET "%~1=%_HEX%"
-EXIT /B 0
+ENDLOCAL & SET "%~1=%_HEX%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

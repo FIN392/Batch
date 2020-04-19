@@ -1,17 +1,17 @@
 :: Example of using the function
 :Main
-@ECHO OFF & SETLOCAL
-SET Err=0
+@ECHO OFF & SETLOCAL & SET "_Error=0"
 
-CALL :CreateTempFile _MyTempFile || ECHO Temp file creation failed
+	CALL :CreateTempFile _MyTempFile || ECHO Temp file creation failed
+	SET "_Err=%ERRORLEVEL%"
 
-ECHO Temp file is: [%_MyTempFile%]
+	ECHO Temp file is: [%_MyTempFile%]
 
-:: Remember to delete temp files at the end
-IF EXIST "%_MyTempFile%" DEL "%_MyTempFile%"
+	:: Remember to delete temp files at the end
+	IF EXIST "%_MyTempFile%" DEL "%_MyTempFile%"
 
 :End_of_script
-ENDLOCAL & EXIT /B %Err%
+ENDLOCAL & EXIT /B %_Err%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
