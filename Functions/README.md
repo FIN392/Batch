@@ -1,13 +1,23 @@
 # Batch functions
 This is just a set of functions to be used in your batch scripts.
 
-Multiple logs files can be created at the same time in a script, each in a different format. Additionaly to the log file, the entries can be displayed in console (host).
-
 ## How to use them?
 
-Easy, 
+Easy, just copy and paste the function in your script. You can see a example of how to use it.
 
-´´´
+```batch
+:: Example of using the function
+:Main
+@ECHO OFF & SETLOCAL & SET "_Error=0"
+
+	CALL :GetLocalDateTime _CurrentTime
+
+	ECHO Current date and time is [%_CurrentTime%]
+
+:End_of_script
+ENDLOCAL & EXIT /B %_Error%
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'.
@@ -20,7 +30,6 @@ Easy,
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-´´´
-
+```
 
 ENJOY IT!!! and please contact me for any doubt or improvement proposal.
