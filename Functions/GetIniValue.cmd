@@ -1,11 +1,14 @@
 :: Example of using the function
-@ECHO OFF
+:Main
+@ECHO OFF & SETLOCAL
+SET Err=0
 
 CALL :GetIniValue _IniValue .\GetIniValue_example.ini "My Section" "My Value" || ECHO INI file doesn't exist
 
 ECHO Value value is [%_IniValue%]
 
-EXIT /B 0
+:End_of_script
+ENDLOCAL & EXIT /B %Err%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

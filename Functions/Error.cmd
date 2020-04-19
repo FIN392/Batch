@@ -1,7 +1,7 @@
-: Main
-@ECHO OFF
-SETLOCAL
-ECHO.
+:: Example of using the function
+:Main
+@ECHO OFF & SETLOCAL
+SET Err=0
 
 :: Calling 'Error' depending on a condition
 IF NOT EXIST "ThisFileDoNotExist.HopeSo" (CALL :Error %~0 0x01 "File doesn't exist")
@@ -21,8 +21,8 @@ CALL :TEST02
 
 ECHO NEVER SHOWN!!!
 	
-ENDLOCAL
-EXIT /B 0
+:End_of_script
+ENDLOCAL & EXIT /B %Err%
 
 :TEST01
 SETLOCAL

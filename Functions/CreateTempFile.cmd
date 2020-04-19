@@ -1,5 +1,7 @@
 :: Example of using the function
-@ECHO OFF
+:Main
+@ECHO OFF & SETLOCAL
+SET Err=0
 
 CALL :CreateTempFile _MyTempFile || ECHO Temp file creation failed
 
@@ -8,7 +10,8 @@ ECHO Temp file is: [%_MyTempFile%]
 :: Remember to delete temp files at the end
 IF EXIST "%_MyTempFile%" DEL "%_MyTempFile%"
 
-EXIT /B 0
+:End_of_script
+ENDLOCAL & EXIT /B %Err%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

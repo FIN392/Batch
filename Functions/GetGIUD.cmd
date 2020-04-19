@@ -1,11 +1,14 @@
 :: Example of using the function
-@ECHO OFF
+:Main
+@ECHO OFF & SETLOCAL
+SET Err=0
 
 CALL :GetGIUD _MyGUID
 
 ECHO My GUID is [%_MyGUID%]
 
-EXIT /B 0
+:End_of_script
+ENDLOCAL & EXIT /B %Err%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

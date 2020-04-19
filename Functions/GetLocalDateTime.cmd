@@ -1,11 +1,14 @@
 :: Example of using the function
-@ECHO OFF
+:Main
+@ECHO OFF & SETLOCAL
+SET Err=0
 
 CALL :GetLocalDateTime _CurrentTime
 
 ECHO Current date and time is [%_CurrentTime%]
 
-EXIT /B 0
+:End_of_script
+ENDLOCAL & EXIT /B %Err%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
