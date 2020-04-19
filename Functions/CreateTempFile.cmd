@@ -34,5 +34,5 @@ SETLOCAL
 		SET "_Error=1"
 	)
 
-ENDLOCAL & SET "%1=%_File%" & EXIT /B %_Error%
+ENDLOCAL & SET "%~1=%_File%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

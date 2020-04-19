@@ -48,5 +48,5 @@ SETLOCAL
 		SET "_ReturnValue=."
 	:GetIniValue_ENDIF_Exist
 
-ENDLOCAL & SET "%1=%_ReturnValue:~0,-1%" & EXIT /B %_Error%
+ENDLOCAL & SET "%~1=%_ReturnValue:~0,-1%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

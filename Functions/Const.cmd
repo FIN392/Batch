@@ -1,49 +1,69 @@
+@ECHO OFF
+SETLOCAL
+
+CALL :Const
+
+ECHO.
+ECHO.%_EscUnderline%%_EscBgRed%%_EscFgBlueB% Bright blue underline over red %_EscNormal%
+ECHO.
+ECHO.%_Beep%BEEP!
+
+ENDLOCAL
+EXIT /B 0
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: TYPE this file for examples
+:: Consts
 ::
-SET _ESC=[
+:Const
 
-SET _Normal=0m
-SET _Bold=1m
-SET _Underline=4m
-SET _Inverse=7m
+	SET _Beep=
 
-SET _fgBlack=30m
-SET _fgRed=31m
-SET _fgGreen=32m
-SET _fgYellow=33m
-SET _fgBlue=34m
-SET _fgMagenta=35m
-SET _fgCyan=36m
-SET _fgWhite=37m
+	SET _Esc=
 
-SET _fgBlack+=90m
-SET _fgRed+=91m
-SET _fgGreen+=92m
-SET _fgYellow+=93m
-SET _fgBlue+=94m
-SET _fgMagenta+=95m
-SET _fgCyan+=96m
-SET _fgWhite+=97m
+	SET _EscNormal=%_Esc%[0m
+	SET _EscBold=%_Esc%[1m
+	SET _EscUnderline=%_Esc%[4m
+	SET _EscInverse=%_Esc%[7m
 
-SET _bgBlack=40m
-SET _bgRed=41m
-SET _bgGreen=42m
-SET _bgYellow=43m
-SET _bgBlue=44m
-SET _bgMagenta=45m
-SET _bgCyan=46m
-SET _bgWhite=47m
+	SET _EscFgBlack=%_Esc%[30m
+	SET _EscFgRed=%_Esc%[31m
+	SET _EscFgGreen=%_Esc%[32m
+	SET _EscFgYellow=%_Esc%[33m
+	SET _EscFgBlue=%_Esc%[34m
+	SET _EscFgMagenta=%_Esc%[35m
+	SET _EscFgCyan=%_Esc%[36m
+	SET _EscFgWhite=%_Esc%[37m
 
-SET _bgBlack+=100m
-SET _bgRed+=101m
-SET _bgGreen+=102m
-SET _bgYellow+=103m
-SET _bgBlue+=104m
-SET _bgMagenta+=105m
-SET _bgCyan+=106m
-SET _bgWhite+=107m
+	SET _EscFgBlackB=%_Esc%[90m
+	SET _EscFgRedB=%_Esc%[91m
+	SET _EscFgGreenB=%_Esc%[92m
+	SET _EscFgYellowB=%_Esc%[93m
+	SET _EscFgBlueB=%_Esc%[94m
+	SET _EscFgMagentaB=%_Esc%[95m
+	SET _EscFgCyanB=%_Esc%[96m
+	SET _EscFgWhiteB=%_Esc%[97m
 
+	SET _EscBgBlack=%_Esc%[40m
+	SET _EscBgRed=%_Esc%[41m
+	SET _EscBgGreen=%_Esc%[42m
+	SET _EscBgYellow=%_Esc%[43m
+	SET _EscBgBlue=%_Esc%[44m
+	SET _EscBgMagenta=%_Esc%[45m
+	SET _EscBgCyan=%_Esc%[46m
+	SET _EscBgWhite=%_Esc%[47m
+
+	SET _EscBgBlackB=%_Esc%[100m
+	SET _EscBgRedB=%_Esc%[101m
+	SET _EscBgGreenB=%_Esc%[102m
+	SET _EscBgYellowB=%_Esc%[103m
+	SET _EscBgBlueB=%_Esc%[104m
+	SET _EscBgMagentaB=%_Esc%[105m
+	SET _EscBgCyanB=%_Esc%[106m
+	SET _EscBgWhiteB=%_Esc%[107m
+
+EXIT /B 0
+::
 :: Normal   : [0m Normal    [0m
 :: Bold     : [1m Bold      [0m
 :: Inverse  : [7m Inverse   [0m
@@ -85,7 +105,4 @@ SET _bgWhite+=107m
 :: Background Cyan+   : [106m Background Cyan+    [0m
 :: Background White+  : [107m Background White+   [0m
 ::
-:: Any combination is possible: [4m[94m[41m Bright blue underline over red [0m
-::
-:: In code, it should be like: ECHO %_ESC%%_Underline%%_ESC%%_fgBlue+%%_ESC%%_bgRed% Bright blue underline over red %_ESC%%_Normal%
-::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

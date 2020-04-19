@@ -1,16 +1,19 @@
-REM @echo off
+@ECHO OFF
+
+COPY beep.snd CON > NUL
+
+SET "_Global=MAIN"
+
+CALL :TEST
+
+EXIT /B 0
 
 
-FOR %%v IN (%*) DO ECHO [%%v]
 
+:TEST
+SETLOCAL
 
-:LOOP
-SET _TMP=%~1
-IF "%_TMP:~0,1%"=="" GOTO :END
+    ECHO.    [%_Global%]
 
-    ECHO [%_TMP%]
-    SHIFT
-
-GOTO :LOOP
-:END
+ENDLOCAL & EXIT /B 0
 

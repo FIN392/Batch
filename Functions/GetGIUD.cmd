@@ -28,6 +28,6 @@ SETLOCAL
 	:GetGIUD_ENDFOR_i
 	SET "_HEX=%_HEX:~0,8%-%_HEX:~8,4%-%_HEX:~12,4%-%_HEX:~16,4%-%_HEX:~20,12%"
 
-ENDLOCAL & SET "%1=%_HEX%"
+ENDLOCAL & SET "%~1=%_HEX%"
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
