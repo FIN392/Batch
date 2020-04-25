@@ -4,34 +4,16 @@
 	CALL :BANNER
 
 	ECHO.
-	ECHO Jose Luis Fernandez Tejedor, 19 de Marzo de 1970
-	ECHO.
-	ECHO.0 " %UpperJ-0%%LowerO-0%%LowerS-0%%LowerE-0%%Espace-0%%UpperL-0%%LowerU-0%%LowerI-0%%LowerS-0% "
-	ECHO.1 " %UpperJ-1%%LowerO-1%%LowerS-1%%LowerE-1%%Espace-1%%UpperL-1%%LowerU-1%%LowerI-1%%LowerS-1% "
-	ECHO.2 " %UpperJ-2%%LowerO-2%%LowerS-2%%LowerE-2%%Espace-2%%UpperL-2%%LowerU-2%%LowerI-2%%LowerS-2% "
-	ECHO.3 " %UpperJ-3%%LowerO-3%%LowerS-3%%LowerE-3%%Espace-3%%UpperL-3%%LowerU-3%%LowerI-3%%LowerS-3% "
-	ECHO.4 " %UpperJ-4%%LowerO-4%%LowerS-4%%LowerE-4%%Espace-4%%UpperL-4%%LowerU-4%%LowerI-4%%LowerS-4% "
-	ECHO.5 " %UpperJ-5%%LowerO-5%%LowerS-5%%LowerE-5%%Espace-5%%UpperL-5%%LowerU-5%%LowerI-5%%LowerS-5% "
-	ECHO.6 " %UpperJ-6%%LowerO-6%%LowerS-6%%LowerE-6%%Espace-6%%UpperL-6%%LowerU-6%%LowerI-6%%LowerS-6% "
-	ECHO.7 " %UpperJ-7%%LowerO-7%%LowerS-7%%LowerE-7%%Espace-7%%UpperL-7%%LowerU-7%%LowerI-7%%LowerS-7% "
 
-	ECHO.0 " %UpperF-0%%LowerE-0%%LowerR-0%%LowerN-0%%LowerA-0%%LowerN-0%%LowerD-0%%LowerE-0%%LowerZ-0%%Espace-0%%UpperT-0%%LowerE-0%%LowerJ-0%%LowerE-0%%LowerD-0%%Lowero-0%%LowerR-0% "
-	ECHO.1 " %UpperF-1%%LowerE-1%%LowerR-1%%LowerN-1%%LowerA-1%%LowerN-1%%LowerD-1%%LowerE-1%%LowerZ-1%%Espace-1%%UpperT-1%%LowerE-1%%LowerJ-1%%LowerE-1%%LowerD-1%%Lowero-1%%LowerR-1% "
-	ECHO.2 " %UpperF-2%%LowerE-2%%LowerR-2%%LowerN-2%%LowerA-2%%LowerN-2%%LowerD-2%%LowerE-2%%LowerZ-2%%Espace-2%%UpperT-2%%LowerE-2%%LowerJ-2%%LowerE-2%%LowerD-2%%Lowero-2%%LowerR-2% "
-	ECHO.3 " %UpperF-3%%LowerE-3%%LowerR-3%%LowerN-3%%LowerA-3%%LowerN-3%%LowerD-3%%LowerE-3%%LowerZ-3%%Espace-3%%UpperT-3%%LowerE-3%%LowerJ-3%%LowerE-3%%LowerD-3%%Lowero-3%%LowerR-3% "
-	ECHO.4 " %UpperF-4%%LowerE-4%%LowerR-4%%LowerN-4%%LowerA-4%%LowerN-4%%LowerD-4%%LowerE-4%%LowerZ-4%%Espace-4%%UpperT-4%%LowerE-4%%LowerJ-4%%LowerE-4%%LowerD-4%%Lowero-4%%LowerR-4% "
-	ECHO.5 " %UpperF-5%%LowerE-5%%LowerR-5%%LowerN-5%%LowerA-5%%LowerN-5%%LowerD-5%%LowerE-5%%LowerZ-5%%Espace-5%%UpperT-5%%LowerE-5%%LowerJ-5%%LowerE-5%%LowerD-5%%Lowero-5%%LowerR-5% "
-	ECHO.6 " %UpperF-6%%LowerE-6%%LowerR-6%%LowerN-6%%LowerA-6%%LowerN-6%%LowerD-6%%LowerE-6%%LowerZ-6%%Espace-6%%UpperT-6%%LowerE-6%%LowerJ-6%%LowerE-6%%LowerD-6%%Lowero-6%%LowerR-6% "
-	ECHO.7 " %UpperF-7%%LowerE-7%%LowerR-7%%LowerN-7%%LowerA-7%%LowerN-7%%LowerD-7%%LowerE-7%%LowerZ-7%%Espace-7%%UpperT-7%%LowerE-7%%LowerJ-7%%LowerE-7%%LowerD-7%%Lowero-7%%LowerR-7% "
+	ECHO. " %C161-0%%C072-0%%C111-0%%C108-0%%C097-0%%C033-0%
+	ECHO. " %C161-1%%C072-1%%C111-1%%C108-1%%C097-1%%C033-1%
+	ECHO. " %C161-2%%C072-2%%C111-2%%C108-2%%C097-2%%C033-2%
+	ECHO. " %C161-3%%C072-3%%C111-3%%C108-3%%C097-3%%C033-3%
+	ECHO. " %C161-4%%C072-4%%C111-4%%C108-4%%C097-4%%C033-4%
+	ECHO. " %C161-5%%C072-5%%C111-5%%C108-5%%C097-5%%C033-5%
+	ECHO. " %C161-6%%C072-6%%C111-6%%C108-6%%C097-6%%C033-6%
+	ECHO. " %C161-7%%C072-7%%C111-7%%C108-7%%C097-7%%C033-7%
 
-	ECHO.0 " %Num2-0%%Num0-0%%Num2-0%%Num0-0%%Espace-0%%Num0-0%%Num4-0%%Espace-0%%Num2-0%%Num2-0% "
-	ECHO.1 " %Num2-1%%Num0-1%%Num2-1%%Num0-1%%Espace-1%%Num0-1%%Num4-1%%Espace-1%%Num2-1%%Num2-1% "
-	ECHO.2 " %Num2-2%%Num0-2%%Num2-2%%Num0-2%%Espace-2%%Num0-2%%Num4-2%%Espace-2%%Num2-2%%Num2-2% "
-	ECHO.3 " %Num2-3%%Num0-3%%Num2-3%%Num0-3%%Espace-3%%Num0-3%%Num4-3%%Espace-3%%Num2-3%%Num2-3% "
-	ECHO.4 " %Num2-4%%Num0-4%%Num2-4%%Num0-4%%Espace-4%%Num0-4%%Num4-4%%Espace-4%%Num2-4%%Num2-4% "
-	ECHO.5 " %Num2-5%%Num0-5%%Num2-5%%Num0-5%%Espace-5%%Num0-5%%Num4-5%%Espace-5%%Num2-5%%Num2-5% "
-	ECHO.6 " %Num2-6%%Num0-6%%Num2-6%%Num0-6%%Espace-6%%Num0-6%%Num4-6%%Espace-6%%Num2-6%%Num2-6% "
-	ECHO.7 " %Num2-7%%Num0-7%%Num2-7%%Num0-7%%Espace-7%%Num0-7%%Num4-7%%Espace-7%%Num2-7%%Num2-7% "
 	ECHO.
 
 ENDLOCAL & EXIT /B 0
