@@ -48,7 +48,7 @@ ECHO " %* " | find " /? " > NUL && (
 	REM *
 	REM * Calling a function
 	REM *
-	CALL :FunctionName ReturnValue 2 3 || ECHO Function failed
+	CALL :FunctionTemplate ReturnValue 2 3 || ECHO Function failed
 	SET "_Error=%ERRORLEVEL%"
 	ECHO Returned error=%_Error%
 	ECHO Return value=%ReturnValue%
@@ -62,13 +62,13 @@ ENDLOCAL & EXIT /B %_Error%
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: FunctionName [/ON | /OFF] [/X] [/F:{filename}]
+:: FunctionTemplate [/ON | /OFF] [/X] [/F:{filename}]
 ::
 :: Here should go a long description of how the script works and the
 :: explanation of each of the parameters. The line length should be adjusted to
 :: 80 characters.
 ::
-:FunctionName
+:FunctionTemplate
 SETLOCAL & SET "_Error=0"
 
 	REM *
