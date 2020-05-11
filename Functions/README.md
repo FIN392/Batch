@@ -1,6 +1,8 @@
 # Batch functions
 This is just a set of functions to be used in your batch scripts.
 
+ENJOY IT!!! and please feel free to check [issues page](https://github.com/FIN392/Batch/issues/).
+
 ## How to use them?
 
 Easy, just copy and paste the function in your script. You can see an example of how to use it at the beginning of the file.
@@ -31,5 +33,3 @@ ENDLOCAL & EXIT /B %_Error%
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ```
-
-ENJOY IT!!! and please feel free to check [issues page](https://github.com/FIN392/Batch/issues/).
