@@ -32,4 +32,4 @@ EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ```
 
-ENJOY IT!!! and please contact me for any doubt or improvement proposal.
+ENJOY IT!!! and please feel free to check [issues page](https://github.com/FIN392/Batch/issues/).
