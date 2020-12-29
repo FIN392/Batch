@@ -11,7 +11,7 @@ IF NOT ERRORLEVEL 1 (ECHO '%TITLE%' already running!!!&EXIT /B 1)
 TITLE "%TITLE%"
 
 
-:: Load variables from .ini file. Variables name will star with a prefix
+:: Load variables from '.ini' file. Variables name will star with a prefix
 FOR /F "TOKENS=*" %%a IN ('TYPE "{.ini File}"') DO SET {Variables prefix}%%a
 
 
