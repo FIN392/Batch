@@ -2,7 +2,7 @@
 :Main
 @ECHO OFF & SETLOCAL & SET "_Error=0"
 
-	CALL :GetArgs "This is a text" /X  VAL02 /F:"C:\Program Files\file.ext"
+	CALL :GetArgs %*
 
 	ECHO Args are:
 	SET "_Arg."

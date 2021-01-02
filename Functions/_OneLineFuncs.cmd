@@ -5,9 +5,9 @@ FOR /F "TOKENS=*" %%a IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO @SE
 	
 :: Close if already running
 SET TITLE={Batch title}
-TITLE %RANDOM%
-TASKLIST /V | FINDSTR /C:"%TITLE%"
-IF NOT ERRORLEVEL 1 (ECHO '%TITLE%' already running!!!&EXIT /B 1)
+TITLE Checking if already running...
+tasklist /V | findstr /C:"%TITLE%"
+IF NOT ERRORLEVEL 1 (ECHO '%TITLE%' is already running & EXIT /B 1)
 TITLE "%TITLE%"
 
 
@@ -23,4 +23,12 @@ FORFILES /M *.* /P "{Folder}" /S /D -30 /C "CMD /C echo DEL @path"
 FOR /F "TOKENS=*" %%a IN ('wmic OS GET LastBootUpTime /VALUE ^| find "="') DO @SET "%%a"
 
 
+:: Set DEBUG to ON if /DEBUG is present in the parameters
+ECHO " %* " | find.exe /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
+
+	REM DEBUG EXAMPLE
+	IF %DEBUG% ECHO This line is displayed if DEBUG is ON
+
+
+:: 
 

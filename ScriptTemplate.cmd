@@ -1,30 +1,35 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-::! Syntax:
-::!     Script_Template.cmd [/ON | /OFF] [/X] [/F:{filename}]
-::!
-::! Description:
-::!     Here should go a long description of how the script works and the
-::!     explanation of each of the parameters. The line length should be
-::!     adjusted to 80 characters.
-::!
-::! Requirements:
-::!     '(none)' or the list of required files, configurations (e.g., registry
-::!     values) or systems (e.g., Internet access).
-::
+::?
+::? Here should go a detailed description of what the script does. The length of
+::? the line must be 80 characters.
+::?
+::? Syntax:
+::?
+::?   Script_Template.cmd [/ON | /OFF] [/X] [/F:{filename}]
+::?
+::?     [ /ON | /OFF ]   Explanation of this parameter. The length of the line
+::?                      must be 80 characters.
+::?     [/X]             Explanation of this parameter.
+::?     [/F:{filename}]  Explanation of this parameter.
+::?
+::? Requirements:
+::?
+::?   '(none)' or the list of required files, configurations (e.g., registry
+::?   values) or systems (e.g., Internet access).
+:: 
 ::  Author: fin392@gmail.com
-::
+:: 
 ::  License: https://opensource.org/licenses/MIT
-::
+:: 
 ::  Additional information: https://github.com/FIN392/Batch
-::
+:: 
 ::  Change Log
 ::  ----------
 ::  2020/04/13 - fin392@gmail.com - Initial version
 ::  2525/01/01 - fin392@gmail.com - Here should go a long description of change
 ::               done, keeping de line length below 80 and including:
 ::                 - New features added.
-::                 - Changes in existing functionality.
+::                 - Changes in existing functionality. 	
 ::                 - Soon-to-be removed features.
 ::                 - Now removed features.
 ::                 - Any bug fixes.
@@ -33,56 +38,55 @@
 :Main
 @ECHO OFF & SETLOCAL & SET "_Error=0"
 
-:: /?
-ECHO " %* " | find " /? " > NUL && (
-	ECHO. & FOR /F "tokens=1* delims=!" %%A IN ('findstr /B /C:"::!" "%~f0"') DO (ECHO.   %%B)
-	GOTO :End_of_script
-)
+:: Display help lines (starting by '::?') if /? parameter is present
+ECHO " %* " | find.exe " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('findstr.exe /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
 
-
+:: Set DEBUG to ON if /DEBUG parameter is present
+ECHO " %* " | find.exe /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
 
 	REM *
-	REM * YOU CODE IS HERE...
+	REM * YOUR CODE GOES HERE...
 	REM *
 
+	REM Debug example
+	IF %DEBUG% ( ECHO [%TIME%] )
+
+	REM Calling a function that return a value
+	CALL :FunctionTemplate _Value
+	ECHO Returned error level=%ERRORLEVEL%
+	ECHO Returned value=%_Value%
+
 	REM *
-	REM * Calling a function
+	REM * YOUR CODE GOES HERE...
 	REM *
-	CALL :FunctionTemplate ReturnValue 2 3 || ECHO Function failed
-	SET "_Error=%ERRORLEVEL%"
-	ECHO Returned error=%_Error%
-	ECHO Return value=%ReturnValue%
-	ECHO.
 
-
-
-:End_of_script
+:THE_END
 ENDLOCAL & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: FunctionTemplate [/ON | /OFF] [/X] [/F:{filename}]
-::
 :: Here should go a long description of how the script works and the
 :: explanation of each of the parameters. The line length should be adjusted to
 :: 80 characters.
 ::
-:FunctionTemplate
+:FunctionTemplate [/ON | /OFF] [/X] [/F:{filename}]
 SETLOCAL & SET "_Error=0"
 
 	REM *
-	REM * YOU CODE IS HERE...
-	REM *
-	SET /A _Value=%~2 + %~3
+	REM * YOUR CODE GOES HERE...
 	REM *
 
-	SET "_Error=999"
+	REM * Set _Return and _Error variables with proper values
+	SET _Return=xxx
+	SET _Error=999
 
-ENDLOCAL & SET "%~1=%_Value%" & EXIT /B %_Error%
+	REM *
+	REM * YOUR CODE GOES HERE...
+	REM *
+
+:End_FunctionTemplate
+ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::
-:: EOF
-::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: EOF ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

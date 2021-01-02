@@ -27,8 +27,11 @@ ENDLOCAL & EXIT /B %_Err%
 SETLOCAL
 
 	:CreateTempFile_Loop
+
 		FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET _%%t
+
 	IF EXIST "%TEMP%\~%_LocalDateTime:~0,14%.tmp" GOTO CreateTempFile_Loop
+	
 	(TYPE NUL > "%TEMP%\~%_LocalDateTime:~0,14%.tmp") 2> NUL && (
 		SET "_File=%TEMP%\~%_LocalDateTime:~0,14%.tmp"
 		SET "_Error=0"
