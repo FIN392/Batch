@@ -4,7 +4,8 @@
 
 	CALL :StrUppercase UP AbcDef
 	ECHO Uppercase=[%UP%]
-	
+
+	:: Remove surrounding quotes if exist
 	CALL :StrUppercase UP "This is "another" test"
 	ECHO Uppercase=[%UP%]
 
