@@ -26,7 +26,7 @@ ENDLOCAL & EXIT /B %_Error%
 ::
 :: EXAMPLE
 ::
-::     C:\> scriptname.cmd "Text message" /X /F:file.txt "fin392@gmail.com"
+::     C:\> GetArgs.cmd "Text message" /X /F:file.txt "fin392@gmail.com"
 ::
 ::     Variables:
 ::
@@ -59,7 +59,7 @@ ENDLOCAL & EXIT /B %_Error%
 		:GetArgs_ELSE_NoSwitch
 
 			:: Create _Arg.{parameter}={Value} or _Arg.{parameter}=ON
-			FOR /F "tokens=1* delims=: " %%A IN ('ECHO %_GetArgs_TmpArg:~1%') DO CALL :GetArgs_FOR_Switch %%A %%B ON
+			FOR /F "usebackq tokens=1* delims=: " %%A IN ('%_GetArgs_TmpArg:~1%') DO CALL :GetArgs_FOR_Switch %%A %%B ON
 			GOTO :GetArgs_ENDFOR_Switch
 			:GetArgs_FOR_Switch
 
