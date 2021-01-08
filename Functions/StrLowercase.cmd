@@ -4,7 +4,8 @@
 
 	CALL :StrLowercase LOWER AbcDef
 	ECHO Uppercase=[%LOWER%]
-	
+
+	:: Remove surrounding quotes if exist
 	CALL :StrLowercase LOWER "This is "another" test"
 	ECHO Uppercase=[%LOWER%]
 
