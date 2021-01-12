@@ -1,6 +1,5 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
 	CALL :IsNumber IsNumber 123
 	ECHO %IsNumber%
@@ -8,8 +7,7 @@
 	CALL :IsNumber IsNumber "qwe asd"
 	ECHO %IsNumber%
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
