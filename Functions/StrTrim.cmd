@@ -1,12 +1,22 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
-	CALL :StrTrim TRIM "   abc    def  "
+	CALL :StrTrim TRIM "   abc   def   "
 	ECHO Trimmed=[%TRIM%]
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+	CALL :StrTrim TRIM "abc   def   "
+	ECHO Trimmed=[%TRIM%]
+
+	CALL :StrTrim TRIM "abc def   "
+	ECHO Trimmed=[%TRIM%]
+
+	CALL :StrTrim TRIM "abc   def"
+	ECHO Trimmed=[%TRIM%]
+
+	CALL :StrTrim TRIM "abc def"
+	ECHO Trimmed=[%TRIM%]
+
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -14,13 +24,9 @@ ENDLOCAL & EXIT /B %_Error%
 :: Removes leading, trailing and double spaces from the string.
 ::
 :StrTrim {Return_variable} {String}
-SETLOCAL ENABLEDELAYEDEXPANSION & SET "_Error=0"
+SETLOCAL
+	
+	FOR /F "tokens=*" %%i IN ('ECHO %~2 ') DO SET "_Return=%%i"
 
-	SET "String=%~2"
-	SET "_Return="
-	FOR %%i IN (%String%) DO SET "_Return=!_Return!%%i "
-	SET "_Return=%_Return:~0,-1%"
-
-:End_StrLength
-ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
+ENDLOCAL & SET "%~1=%_Return:~0,-1%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
