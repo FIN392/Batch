@@ -1,11 +1,10 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
 	CALL :Const
 
 	ECHO.
-	ECHO.%_EscUnderline%%_EscBgRed%%_EscFgBlueB% Bright blue underline over red %_EscNormal%
+	ECHO.%_FontUnderline%%_ColorBgRed%%_ColorFgBlueB% Bright blue underlined over red %_FontNormal%
 	ECHO.
 	ECHO.%_Beep%BEEP!
 
@@ -22,48 +21,50 @@ ENDLOCAL & EXIT /B 0
 
 	SET _Esc=
 
-	SET _EscNormal=%_Esc%[0m
-	SET _EscBold=%_Esc%[1m
-	SET _EscUnderline=%_Esc%[4m
-	SET _EscInverse=%_Esc%[7m
+	SET _FontNormal=%_Esc%[0m
+	SET _FontBold=%_Esc%[1m
+	SET _FontUnderline=%_Esc%[4m
+	SET _FontInverse=%_Esc%[7m
 
-	SET _EscFgBlack=%_Esc%[30m
-	SET _EscFgRed=%_Esc%[31m
-	SET _EscFgGreen=%_Esc%[32m
-	SET _EscFgYellow=%_Esc%[33m
-	SET _EscFgBlue=%_Esc%[34m
-	SET _EscFgMagenta=%_Esc%[35m
-	SET _EscFgCyan=%_Esc%[36m
-	SET _EscFgWhite=%_Esc%[37m
+	SET _ColorFgBlack=%_Esc%[30m
+	SET _ColorFgRed=%_Esc%[31m
+	SET _ColorFgGreen=%_Esc%[32m
+	SET _ColorFgYellow=%_Esc%[33m
+	SET _ColorFgBlue=%_Esc%[34m
+	SET _ColorFgMagenta=%_Esc%[35m
+	SET _ColorFgCyan=%_Esc%[36m
+	SET _ColorFgWhite=%_Esc%[37m
 
-	SET _EscFgBlackB=%_Esc%[90m
-	SET _EscFgRedB=%_Esc%[91m
-	SET _EscFgGreenB=%_Esc%[92m
-	SET _EscFgYellowB=%_Esc%[93m
-	SET _EscFgBlueB=%_Esc%[94m
-	SET _EscFgMagentaB=%_Esc%[95m
-	SET _EscFgCyanB=%_Esc%[96m
-	SET _EscFgWhiteB=%_Esc%[97m
+	SET _ColorFgBlackB=%_Esc%[90m
+	SET _ColorFgRedB=%_Esc%[91m
+	SET _ColorFgGreenB=%_Esc%[92m
+	SET _ColorFgYellowB=%_Esc%[93m
+	SET _ColorFgBlueB=%_Esc%[94m
+	SET _ColorFgMagentaB=%_Esc%[95m
+	SET _ColorFgCyanB=%_Esc%[96m
+	SET _ColorFgWhiteB=%_Esc%[97m
 
-	SET _EscBgBlack=%_Esc%[40m
-	SET _EscBgRed=%_Esc%[41m
-	SET _EscBgGreen=%_Esc%[42m
-	SET _EscBgYellow=%_Esc%[43m
-	SET _EscBgBlue=%_Esc%[44m
-	SET _EscBgMagenta=%_Esc%[45m
-	SET _EscBgCyan=%_Esc%[46m
-	SET _EscBgWhite=%_Esc%[47m
+	SET _ColorBgBlack=%_Esc%[40m
+	SET _ColorBgRed=%_Esc%[41m
+	SET _ColorBgGreen=%_Esc%[42m
+	SET _ColorBgYellow=%_Esc%[43m
+	SET _ColorBgBlue=%_Esc%[44m
+	SET _ColorBgMagenta=%_Esc%[45m
+	SET _ColorBgCyan=%_Esc%[46m
+	SET _ColorBgWhite=%_Esc%[47m
 
-	SET _EscBgBlackB=%_Esc%[100m
-	SET _EscBgRedB=%_Esc%[101m
-	SET _EscBgGreenB=%_Esc%[102m
-	SET _EscBgYellowB=%_Esc%[103m
-	SET _EscBgBlueB=%_Esc%[104m
-	SET _EscBgMagentaB=%_Esc%[105m
-	SET _EscBgCyanB=%_Esc%[106m
-	SET _EscBgWhiteB=%_Esc%[107m
+	SET _ColorBgBlackB=%_Esc%[100m
+	SET _ColorBgRedB=%_Esc%[101m
+	SET _ColorBgGreenB=%_Esc%[102m
+	SET _ColorBgYellowB=%_Esc%[103m
+	SET _ColorBgBlueB=%_Esc%[104m
+	SET _ColorBgMagentaB=%_Esc%[105m
+	SET _ColorBgCyanB=%_Esc%[106m
+	SET _ColorBgWhiteB=%_Esc%[107m
 
 EXIT /B 0
+::
+:: 'TYPE' this file to see all the examples:
 ::
 :: Normal   : [0m Normal    [0m
 :: Bold     : [1m Bold      [0m
