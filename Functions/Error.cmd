@@ -1,17 +1,14 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
 	:: Calling 'Error' depending on a condition
 	IF NOT EXIST "ThisFileDoNotExist.HopeSo" (CALL :Error %~0 0x01 "File doesn't exist")
-	SET "_Err=%ERRORLEVEL%"
-	ECHO Returned error=%_Err%
+	ECHO Returned error=%ERRORLEVEL%
 	ECHO.
 
 	:: Calling 'Error' when a command fail
 	DIR CC:\ || (CALL :Error %~0 0x12 "DIR command failed")
-	SET "_Err=%ERRORLEVEL%"
-	ECHO Returned error=%_Err%
+	ECHO Returned error=%ERRORLEVEL%
 	ECHO.
 
 	:: Calling 'Error' from a function
@@ -22,12 +19,10 @@
 
 	ECHO NEVER SHOWN!!!
 	
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 
 :TEST01
-SETLOCAL
-SET "_Err=0"
+SETLOCAL & SET "_Err=0"
 
 	ECHO.    Inside the function...
 	ECHO.
@@ -43,13 +38,12 @@ SET "_Err=0"
 ENDLOCAL & EXIT /B %_Err%
 
 :TEST02
-SETLOCAL
-SET "_Err=0"
+SETLOCAL & SET "_Err=0"
 
 	ECHO.    Inside the function...
 	ECHO.
 
-	DIR CC:\ || (CALL :Error %~0 0x21 "DIR command failed" /FATAL)
+	DIR CC:\ || (CALL :Error %~0 0x22 "DIR command failed" /FATAL)
 
 	ECHO.    NEVER SHOWN!!!
 
@@ -62,7 +56,7 @@ ENDLOCAL & EXIT /B %_Err%
 ::
 :: If '/FATAL' parameter is present, script is terminated.
 ::
-:Error {Calling_function} {Error_code} {Error_description} [/FATAL]
+:Error {Calling_function} {Unique_error_code} {Error_description} [/FATAL]
 SETLOCAL
 
 	FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET "_Err.%%t"
@@ -71,9 +65,17 @@ SETLOCAL
 	SET /A "_Err.Code=%~2+0"
 	SET "_Err.Fatal=/B"
 
+	SET "_Err.Func=%~1"
+	IF "%~1"=="%~nx0" SET "_Err.Func=(n/a)"
+
+	FOR /F "Delims=:" %%n IN ('"FINDSTR /N /R "*:Error * %~2 *" "%~f0""') DO SET /A "_Err.Line=%%n+0"
+
+	1>&2 ECHO.
 	1>&2 ECHO.    [91m*** ERROR ****************************
 	1>&2 ECHO.    %_Err.TimeStamp%
-	1>&2 ECHO.    Function: %~1
+	1>&2 ECHO.    Script: %~f0
+	1>&2 ECHO.    Function: %_Err.Func%
+	1>&2 ECHO.    Line: %_Err.Line%
 	1>&2 ECHO.    Error code: %~2%
 	1>&2 ECHO.    Description: %~3
 	IF /I "%~4"=="/FATAL" (
@@ -82,8 +84,7 @@ SETLOCAL
 		SET "_Err.FATAL="
 	)
 	1>&2 ECHO.    **************************************[0m
-
-	REM IF /I "%~4"=="/FATAL" EXIT %_Err.Code%
+	1>&2 ECHO.
 
 ENDLOCAL & EXIT %_Err.FATAL% %_Err.Code%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
