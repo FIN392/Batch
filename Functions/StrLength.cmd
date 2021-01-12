@@ -1,6 +1,5 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
 	:: Return the string length
 	CALL :StrLength LEN abcdef
@@ -18,8 +17,7 @@
 	CALL :StrLength LEN "123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_"
 	ECHO Length=%LEN%
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -27,11 +25,10 @@ ENDLOCAL & EXIT /B %_Error%
 :: Returns the number of characters in the string.
 ::
 :StrLength {Return_variable} {String}
-SETLOCAL ENABLEDELAYEDEXPANSION & SET "_Error=0"
+SETLOCAL ENABLEDELAYEDEXPANSION
 
 	SET "String=%~2·"
 	FOR /L %%i IN (0,1,257) DO IF NOT "!String:~%%i,1!"=="" SET /A "_Return=%%i-1"
 
-:End_StrLength
-ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
+ENDLOCAL & SET "%~1=%_Return%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
