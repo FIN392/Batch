@@ -1,13 +1,11 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
-	CALL :GetLocalDateTime _CurrentTime
+	CALL :GetLocalDateTime CurrentTime
 
-	ECHO Current date and time is [%_CurrentTime%]
+	ECHO Current date and time is [%CurrentTime%]
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
