@@ -1,14 +1,12 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
 	CALL :GetIniValue _IniValue .\GetIniValue_example.ini "My Section" "My Value" || ECHO INI file doesn't exist
 	SET "_Err=%ERRORLEVEL%"
 
 	ECHO Value value is [%_IniValue%]
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -22,6 +20,7 @@ ENDLOCAL & EXIT /B %_Error%
 :GetIniValue {Return_variable} {INI_file} {Section} {Value}
 SETLOCAL
 
+	SET "_Error=0"
 	SET "_Section=%3"
 	SET "_Section=%_Section:"=%"
 	SET "_Value=%4"
