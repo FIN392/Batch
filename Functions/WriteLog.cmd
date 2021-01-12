@@ -1,27 +1,28 @@
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
 
-	SET "MyLogID="%TEMP%\My Log File.txt""
-	SET "MyLogID=CON"
+	SET "MyLogFile=%TEMP%\My Log File.txt"
 
 	:: Write lines to log
-	CALL :WriteLog %MyLogID% FATAL "Log entry text"
-	CALL :WriteLog %MyLogID% ERROR "Just another line to see all the possible Severities"
-	CALL :WriteLog %MyLogID% WARN  "Just another line to see all the possible Severities"
-	CALL :WriteLog %MyLogID% INFO  "Just another line to see all the possible Severities"
-	CALL :WriteLog %MyLogID% DEBUG "Just another line to see all the possible Severities"
+	CALL :WriteLog "%MyLogFile%" FATAL "Log entry text" /CON
+	CALL :WriteLog "%MyLogFile%" ERROR "Just another line to see all the possible Severities" /CON
+	CALL :WriteLog "%MyLogFile%" WARN  "Just another line to see all the possible Severities" /CON
+	CALL :WriteLog "%MyLogFile%" INFO  "Just another line to see all the possible Severities"
+	CALL :WriteLog "%MyLogFile%" DEBUG "Just another line to see all the possible Severities"
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+	ECHO.
+	TYPE "%MyLogFile%"
+	DEL "%MyLogFile%" > NUL 2>&1
+
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Write a message in a logfile or console (CON).
+:: Write a message in a logfile (and console).
 ::
-:WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string}
-SETLOCAL & SET "_Error=0"
+:WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
+SETLOCAL
 
 	FOR /F "tokens=*" %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET "%%t"
 
@@ -29,8 +30,8 @@ SETLOCAL & SET "_Error=0"
 	SET "Severity=%~2     "
 	SET "Message=%~3"
 
-	ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message% >> %1
+	ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%>> "%~1"
+	IF /I "%~4"=="/CON" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
 
-:End_WriteLog
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
