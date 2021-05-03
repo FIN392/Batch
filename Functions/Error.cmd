@@ -59,7 +59,7 @@ ENDLOCAL & EXIT /B %_Err%
 :Error {Calling_function} {Unique_error_code} {Error_description} [/FATAL]
 SETLOCAL
 
-	FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET "_Err.%%t"
+	FOR /F %%t IN ('WMIC OS GET LocalDateTime /VALUE ^| find "="') DO SET "_Err.%%t"
 	SET "_Err.TimeStamp=%_Err.LocalDateTime:~0,4%-%_Err.LocalDateTime:~4,2%-%_Err.LocalDateTime:~6,2% %_Err.LocalDateTime:~8,2%:%_Err.LocalDateTime:~10,2%:%_Err.LocalDateTime:~12,2%.%_Err.LocalDateTime:~15,3% (UCT%_Err.LocalDateTime:~21%)"
 
 	SET /A "_Err.Code=%~2+0"

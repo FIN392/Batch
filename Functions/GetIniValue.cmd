@@ -32,7 +32,7 @@ SETLOCAL
 	IF NOT EXIST "%~f2" GOTO GetIniValue_ELSE_Exist
 
 		:: Loop of lines in INI file lines (only section labels and searched value)
-		FOR /F "tokens=*" %%L IN ('findstr /I /R /C:"^[ ,]*\[.*\][ ,]*$" /C:"^[ ,]*%_Value%[ ,]*\=" "%~f2"') DO CALL :GetIniValue_FOR_Line %%L
+		FOR /F "tokens=*" %%L IN ('FINDSTR /I /R /C:"^[ ,]*\[.*\][ ,]*$" /C:"^[ ,]*%_Value%[ ,]*\=" "%~f2"') DO CALL :GetIniValue_FOR_Line %%L
 		GOTO :GetIniValue_ENDFOR_Line
 		:GetIniValue_FOR_Line
 
