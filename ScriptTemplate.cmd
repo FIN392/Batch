@@ -39,10 +39,10 @@
 @ECHO OFF & SETLOCAL & SET "_Error=0"
 
 :: Display help lines (starting by '::?') if /? parameter is present
-ECHO " %* " | find.exe " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('findstr.exe /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
+ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('findstr.exe /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
 
 :: Set DEBUG to ON if /DEBUG parameter is present
-ECHO " %* " | find.exe /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
+ECHO " %* " | FIND /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
 
 	REM *
 	REM * YOUR CODE GOES HERE...
