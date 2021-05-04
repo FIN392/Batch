@@ -27,7 +27,7 @@ ENDLOCAL & EXIT /B 0
 SETLOCAL
 
 	:CreateTempFile_Loop
-		FOR /F "tokens=2 delims=.=" %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET "_File=%TEMP%\~%%t.tmp"
+		FOR /F "tokens=2 delims=.=" %%t IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO SET "_File=%TEMP%\~%%t.tmp"
 	
 	IF EXIST "%_File%" GOTO CreateTempFile_Loop
 	

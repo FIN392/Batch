@@ -22,7 +22,7 @@ SETLOCAL
 	GOTO GetGIUD_ENDFOR_i
 	:GetGIUD_FOR_i
 		SET /A "_DEC=%RANDOM%*65536/32768"
-		CALL cmd /C EXIT /B %_DEC%
+		CALL CMD /C EXIT /B %_DEC%
 		SET "_HEX=%_HEX%%=exitcode:~-4%"
 	GOTO :EOF
 	:GetGIUD_ENDFOR_i
