@@ -1,7 +1,7 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::?
-::? Here should go a detailed description of what the script does. The length of
-::? the line must be 80 characters.
+::? Here should go a detailed description of what the script does. The length
+::? of the line must be 80 characters.
 ::?
 ::? Syntax:
 ::?
@@ -26,8 +26,8 @@
 ::  Change Log
 ::  ----------
 ::  2020/04/13 - fin392@gmail.com - Initial version
-::  2525/01/01 - fin392@gmail.com - Here should go a long description of change
-::               done, keeping de line length below 80 and including:
+::  2525/01/01 - fin392@gmail.com - Here should go a long description of the
+::                change done, keeping de line length below 80 and including:
 ::                 - New features added.
 ::                 - Changes in existing functionality. 	
 ::                 - Soon-to-be removed features.
@@ -38,10 +38,10 @@
 :Main
 @ECHO OFF & SETLOCAL & SET "_Error=0"
 
-:: Display help lines (starting by '::?') if /? parameter is present
+:: If /? parameter is present, display help lines (starting by '::?') 
 ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FINDSTR /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
 
-:: Set DEBUG to ON if /DEBUG parameter is present
+:: If /DEBUG parameter is present, set DEBUG to ON
 ECHO " %* " | FIND /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
 
 	REM *
@@ -52,7 +52,7 @@ ECHO " %* " | FIND /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
 	IF %DEBUG% ( ECHO [%TIME%] )
 
 	REM Calling a function that return a value
-	CALL :FunctionTemplate _Value
+	CALL :FunctionTemplate _Value Param1 Param2 Param3
 	ECHO Returned error level=%ERRORLEVEL%
 	ECHO Returned value=%_Value%
 
@@ -70,7 +70,7 @@ ENDLOCAL & EXIT /B %_Error%
 :: explanation of each of the parameters. The line length should be adjusted to
 :: 80 characters.
 ::
-:FunctionTemplate [/ON | /OFF] [/X] [/F:{filename}]
+:FunctionTemplate ReturnVar Param1 Param2 Param3
 SETLOCAL & SET "_Error=0"
 
 	REM *
