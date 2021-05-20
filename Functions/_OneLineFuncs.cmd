@@ -6,7 +6,7 @@ FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO @SE
 :: Close if already running
 SET TITLE={Batch title}
 TITLE Checking if already running...
-tasklist /V | FINDSTR /C:"%TITLE%"
+TASKLIST /V | FINDSTR /C:"%TITLE%"
 IF NOT ERRORLEVEL 1 (ECHO '%TITLE%' is already running & EXIT /B 1)
 TITLE "%TITLE%"
 
@@ -17,6 +17,8 @@ FOR /F "TOKENS=*" %%a IN ('TYPE "{.ini File}"') DO SET {Variables prefix}%%a
 
 :: Delete files with more than 30 days
 FORFILES /M *.* /P "{Folder}" /S /D -30 /C "CMD /C ECHO DEL @path"
+
+
 
 
 :: Set variable 'LastBootUpTime' to last boot time in format 'yyyymmddhhmmss.ffffff+mmm'
@@ -30,5 +32,9 @@ ECHO " %* " | find.exe /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
 	IF %DEBUG% ECHO This line is displayed if DEBUG is ON
 
 
-:: 
+:: Delete all files in a folder except the 3 newest ones
+FOR /F "TOKENS=* SKIP=3" %%f IN ('DIR "q w  e" /S /B /O-D') DO @echo DEL "%%f"
+
+
+::
 
