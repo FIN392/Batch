@@ -9,8 +9,8 @@
 	ECHO Uppercase=[%UP%]
 
 	CHCP 65001
-	CALL :StrUppercase LOWER "'árbol' is tree in Spanish (Español)"
-	ECHO Uppercase=[%LOWER%]
+	CALL :StrUppercase UP "'árbol' is tree in Spanish (Español)"
+	ECHO Uppercase=[%UP%]
 
 ENDLOCAL & EXIT /B 0
 
