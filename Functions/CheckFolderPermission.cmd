@@ -1,10 +1,11 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
 
-	CALL :CheckFolderPermission %* "C:\Windows"
+	CALL :CheckFolderPermission Rights "C:\Windows"
+	ECHO %Rights%
 
-	ECHO Args are:
-	SET "_Arg."
+	CALL :CheckFolderPermission Rights "%TEMP%"
+	ECHO %Rights%
 
 ENDLOCAL & EXIT /B 0
 
