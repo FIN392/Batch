@@ -1,51 +1,78 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	:: Calling 'Error' depending on a condition
-	IF NOT EXIST "ThisFileDoNotExist.HopeSo" (CALL :Error %~0 0x01 "File doesn't exist")
-	ECHO Returned error=%ERRORLEVEL%
+	CLS
+	ECHO EXAMPLE #1: Calling 'Error'
+	ECHO NOTE: The error code ('0x0A' in this case ) should be unique within the script
+	ECHO.
+	ECHO C:\^> CALL :Error ^%%~0 0x0A "This is the error message"
+	
+	CALL :Error %~0 0x0A "This is the error message"
+	
+	ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+	ECHO.
+	PAUSE
 	ECHO.
 
-	:: Calling 'Error' when a command fail
-	DIR CC:\ || (CALL :Error %~0 0x12 "DIR command failed")
-	ECHO Returned error=%ERRORLEVEL%
+	:::::::::::::::::::::::::::::::::::::::::::::::::
+
+	CLS
+	ECHO EXAMPLE #2: Calling 'Error' if command fail
+	ECHO NOTE: The standard OS error is displayed before
+	ECHO.
+	ECHO C:\^> DIR OOPS:\ ^|^| (CALL :Error ^%%~0 0xA0 "DIR command failed")
+	ECHO.
+	
+	DIR OOPS:\ || (CALL :Error %~0 0xA0 "DIR command failed")
+	
+	ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+	ECHO.
+	PAUSE
 	ECHO.
 
-	:: Calling 'Error' from a function
-	CALL :TEST01
+	:::::::::::::::::::::::::::::::::::::::::::::::::
 
-	:: Calling 'Error' from a function with terminating the whole script (/FATAL)
-	CALL :TEST02
+	CLS
+	ECHO EXAMPLE #3: Calling 'Error' from a function
+	ECHO NOTE: You can see the name of the function in the error
+	ECHO NOTE: the function return the ERRORLEVEL
+	ECHO.
+	ECHO C:\^> CALL :TestFunc
+	ECHO.
+	
+	CALL :TestFunc
+	
+	ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+	ECHO.
+	PAUSE
+	ECHO.
 
-	ECHO NEVER SHOWN!!!
+	:::::::::::::::::::::::::::::::::::::::::::::::::
+
+	CLS
+	ECHO EXAMPLE #4: Calling 'Error' with /FATAL to finish the script
+	ECHO NOTE: CMD windows is going to be closed
+	ECHO.
+	ECHO C:\^> CALL :Error ^%%~0 0xFF "This is a fatal error" /FATAL
+	ECHO.
+	
+	CALL :Error %~0 0xFF "This is a fatal error" /FATAL
+	
+	ECHO This line is never shown because the script is already cancelled.
 	
 ENDLOCAL & EXIT /B 0
 
-:TEST01
+:TestFunc
 SETLOCAL & SET "_Err=0"
 
 	ECHO.    Inside the function...
-	ECHO.
 
-	DIR CC:\ || (CALL :Error %~0 0x21 "DIR command failed")
+	CALL :Error %~0 0x1A "Error in TestFunc"
 	SET "_Err=%ERRORLEVEL%"
-	ECHO.    Returned error=%_Err%
-	ECHO.
-
+	
 	ECHO.    Still in the function...
 	ECHO.
-
-ENDLOCAL & EXIT /B %_Err%
-
-:TEST02
-SETLOCAL & SET "_Err=0"
-
-	ECHO.    Inside the function...
-	ECHO.
-
-	DIR CC:\ || (CALL :Error %~0 0x22 "DIR command failed" /FATAL)
-
-	ECHO.    NEVER SHOWN!!!
 
 ENDLOCAL & EXIT /B %_Err%
 
@@ -81,6 +108,7 @@ SETLOCAL
 	IF /I "%~4"=="/FATAL" (
 		1>&2 ECHO.
 		1>&2 ECHO.    FATAL ERROR: SCRIPT TERMINATED
+		TIMEOUT /T 5
 		SET "_Err.FATAL="
 	)
 	1>&2 ECHO.    **************************************[0m
