@@ -1,20 +1,33 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :StrTrim TRIM "   abc   def   "
-	ECHO Trimmed=[%TRIM%]
+	SET MyString="   abc def"
+	CALL :StrTrim MyStringTrimmed %MyString%
+	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO.
 
-	CALL :StrTrim TRIM "abc   def   "
-	ECHO Trimmed=[%TRIM%]
+	SET MyString="abc   def"
+	CALL :StrTrim MyStringTrimmed %MyString%
+	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO.
 
-	CALL :StrTrim TRIM "abc def   "
-	ECHO Trimmed=[%TRIM%]
+	SET MyString="abc def   "
+	CALL :StrTrim MyStringTrimmed %MyString%
+	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO.
 
-	CALL :StrTrim TRIM "abc   def"
-	ECHO Trimmed=[%TRIM%]
+	SET MyString="   abc   def   "
+	CALL :StrTrim MyStringTrimmed %MyString%
+	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO.
 
-	CALL :StrTrim TRIM "abc def"
-	ECHO Trimmed=[%TRIM%]
+	SET MyString="abc def"
+	CALL :StrTrim MyStringTrimmed %MyString%
+	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO.
+
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 

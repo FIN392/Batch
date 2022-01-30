@@ -1,10 +1,14 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :GetIniValue _IniValue .\GetIniValue_example.ini "My Section" "My Value" || ECHO INI file doesn't exist
+	CALL :GetIniValue _IniValue "%~dp0GetIniValue_example.ini" "My Section" "My Value" || ECHO INI file doesn't exist
 	SET "_Err=%ERRORLEVEL%"
 
-	ECHO Value value is [%_IniValue%]
+	ECHO Value is [%_IniValue%]
+	ECHO.
+	
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 

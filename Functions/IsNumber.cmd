@@ -1,12 +1,17 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :IsNumber IsNumber 123
-	ECHO %IsNumber%
-
-	CALL :IsNumber IsNumber "qwe asd"
-	ECHO %IsNumber%
-
+	CALL :IsNumber MyIsNumberResult 123
+	ECHO Is 123 a number? [%MyIsNumberResult%]
+	ECHO.
+	
+	CALL :IsNumber MyIsNumberResult "qwe asd"
+	ECHO Is "qwe asd" a number? [%MyIsNumberResult%]
+	ECHO.
+	
+	PAUSE
+	
 ENDLOCAL & EXIT /B 0
 
 

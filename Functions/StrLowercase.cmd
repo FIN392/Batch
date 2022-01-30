@@ -15,8 +15,8 @@ ECHO.
 	
 	:: Example for other languajes
 	CHCP 65001
-	CALL :StrLowercase LOWER "'Árbol' is tree in Spanish (ESPAÑOL)"
-	ECHO Lower case=[%LOWER%]
+	CALL :StrLowercase MyStrLCase "'Árbol' is tree in Spanish (ESPAÑOL)"
+	ECHO Lower case=[%MyStrLCase%]
 	ECHO.
 	
 	PAUSE

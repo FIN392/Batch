@@ -1,10 +1,14 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :GetArgs %*
+	CALL :GetArgs /Switch /Param:Value 123 "This is a text"
 
 	ECHO Args are:
 	SET "_Arg."
+	ECHO.
+	
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 
