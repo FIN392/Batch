@@ -1,9 +1,13 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :GetGIUD MyGUID
+	CALL :GetGUID MyGUID
 
 	ECHO My GUID is [%MyGUID%]
+	ECHO.
+	
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 
@@ -14,7 +18,7 @@ ENDLOCAL & EXIT /B 0
 ::
 :: Each 'H' is a hexadecimal digit.
 ::
-:GetGIUD {Return_variable}
+:GetGUID {Return_variable}
 SETLOCAL
 
 	SET "_HEX="

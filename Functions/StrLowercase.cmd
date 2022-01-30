@@ -1,17 +1,26 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :StrLowercase LOWER AbcDef
-	ECHO Uppercase=[%LOWER%]
+	:: Return the string in lowercase
+	SET "MyString=AbcDef"
+	CALL :StrLowercase MyStrLCase %MyString%
+	ECHO [%MyString%] in lower case is [%MyStrLCase%]
+	ECHO.
 
 	:: Remove surrounding quotes if exist
-	CALL :StrLowercase LOWER "This is "another" test"
-	ECHO Uppercase=[%LOWER%]
-
+	CALL :StrLowercase MyStrLCase "This is "another" test"
+	ECHO ["This is "another" test"] in lower case is [%MyStrLCase%]
+	ECHO.
+	
+	:: Example for other languajes
 	CHCP 65001
 	CALL :StrLowercase LOWER "'Árbol' is tree in Spanish (ESPAÑOL)"
-	ECHO Uppercase=[%LOWER%]
-
+	ECHO Lower case=[%LOWER%]
+	ECHO.
+	
+	PAUSE
+	
 ENDLOCAL & EXIT /B 0
 
 

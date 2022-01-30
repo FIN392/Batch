@@ -1,6 +1,5 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
-ECHO.
 
 	CLS
 	ECHO EXAMPLE #1: Calling 'Error'

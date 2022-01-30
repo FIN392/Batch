@@ -1,9 +1,13 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :GetLocalDateTime CurrentTime
+	CALL :GetLocalDateTime MyCurrentTime
 
-	ECHO Current date and time is [%CurrentTime%]
+	ECHO Current date and time is [%MyCurrentTime%]
+	ECHO.
+	
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 

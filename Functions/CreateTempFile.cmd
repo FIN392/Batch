@@ -1,15 +1,20 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
+	:: Create the temp file. If fail then stop
 	CALL :CreateTempFile MyTempFile || (
 		ECHO *** Temp file creation failed
 		EXIT /B 1
 	)
 
-	ECHO Temp file is: [%MyTempFile%]
+	ECHO The file created is [%MyTempFile%]
+	ECHO.
 
 	:: Remember to delete temp files at the end
-	IF EXIST "%MyTempFile%" DEL "%MyTempFile%" > NUL 2>&1
+	DEL "%MyTempFile%" > NUL 2>&1
+	
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 

@@ -2,48 +2,22 @@
 @ECHO OFF & SETLOCAL
 ECHO.
 
-	CLS
-	ECHO EXAMPLE #1: Folder with Read Only access
-	ECHO.
-	ECHO C:\^> CALL :CheckFolderPermission Rights "C:\Windows"
-	
-	CALL :CheckFolderPermission Rights "C:\Windows"
-	
-	ECHO.
-	ECHO Returned=%Rights%
-	ECHO.
-	PAUSE
+	:: Folder with Read Only access
+	CALL :CheckFolderPermission MyRights "C:\Windows"
+	ECHO Permission for "C:\Windows" is [%MyRights%]
 	ECHO.
 
-	:::::::::::::::::::::::::::::::::::::::::::::::::
+	:: Folder with Read Write access
+	CALL :CheckFolderPermission MyRights "%TEMP%"
+	ECHO Permission for "%TEMP%" is [%MyRights%]
+	ECHO.
 
-	CLS
-	ECHO EXAMPLE #2: Folder with Read Write access
+	:: Folder with No access
+	CALL :CheckFolderPermission MyRights "C:\System Volume Information"
+	ECHO Permission for "C:\System Volume Information" is [%MyRights%]
 	ECHO.
-	ECHO C:\^> CALL :CheckFolderPermission Rights "%%TEMP%%"
-	
-	CALL :CheckFolderPermission Rights "%TEMP%"
-	
-	ECHO.
-	ECHO Returned=%Rights%
-	ECHO.
-	PAUSE
-	ECHO.
-	
-	:::::::::::::::::::::::::::::::::::::::::::::::::
 
-	CLS
-	ECHO EXAMPLE #3: Folder with No access
-	ECHO.
-	ECHO C:\^> CALL :CheckFolderPermission Rights "C:\System Volume Information"
-	
-	CALL :CheckFolderPermission Rights "C:\System Volume Information"
-	
-	ECHO.
-	ECHO Returned=%Rights%
-	ECHO.
 	PAUSE
-	ECHO.
 
 ENDLOCAL & EXIT /B 0
 

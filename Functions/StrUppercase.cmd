@@ -1,17 +1,26 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :StrUppercase UP AbcDef
-	ECHO Uppercase=[%UP%]
+	:: Return the string in lowercase
+	SET "MyString=AbcDef"
+	CALL :StrUppercase MyStrUCase %MyString%
+	ECHO [%MyString%] in capital letters is [%MyStrUCase%]
+	ECHO.
 
 	:: Remove surrounding quotes if exist
-	CALL :StrUppercase UP "This is "another" test"
-	ECHO Uppercase=[%UP%]
-
+	CALL :StrUppercase MyStrUCase "This is "another" test"
+	ECHO ["This is "another" test"] in capital letters is [%MyStrUCase%]
+	ECHO.
+	
+	:: Example for other languajes
 	CHCP 65001
-	CALL :StrUppercase UP "'árbol' is tree in Spanish (Español)"
-	ECHO Uppercase=[%UP%]
-
+	CALL :StrUppercase MyStrUCase "'Árbol' is tree in Spanish (ESPAÑOL)"
+	ECHO Capital letters=[%MyStrUCase%]
+	ECHO.
+	
+	PAUSE
+	
 ENDLOCAL & EXIT /B 0
 
 
