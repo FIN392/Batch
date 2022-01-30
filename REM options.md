@@ -1,3 +1,6 @@
+# Different remark options
+
+```batch
 @GOTO :Main
 
 	This is great for a big set of lines,
@@ -10,6 +13,6 @@
 
 
 IF 1==1 (
-	REM ...and this only between ()
+	REM This is the only option between ()
 )
-
+```

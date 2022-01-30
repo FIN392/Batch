@@ -27,9 +27,9 @@ FOR /F "tokens=*" %%f IN ('DIR /B') DO (
 	SET "_Filename=%%~nxf"
 	ECHO !_Attributes! ^| !_DateTime! ^| !_Size! ^| !_Filename!
 )
-SET "_TotalSize=            %_TotalSize%"
+SET "_TotalSize=                    %_TotalSize%"
 ECHO ------------+------------------+-----------------+-------------------^>
-ECHO                           TOTAL: 123.456.789.123%_TotalSize:~-15%
+ECHO                           TOTAL: %_TotalSize:~-15%
 
 IF "%_VERBOSE%"=="1" (
 	ECHO.
