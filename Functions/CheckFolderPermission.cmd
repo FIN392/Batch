@@ -1,11 +1,49 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
+	CLS
+	ECHO EXAMPLE #1: Folder with Read Only access
+	ECHO.
+	ECHO C:\^> CALL :CheckFolderPermission Rights "C:\Windows"
+	
 	CALL :CheckFolderPermission Rights "C:\Windows"
-	ECHO %Rights%
+	
+	ECHO.
+	ECHO Returned=%Rights%
+	ECHO.
+	PAUSE
+	ECHO.
 
+	:::::::::::::::::::::::::::::::::::::::::::::::::
+
+	CLS
+	ECHO EXAMPLE #2: Folder with Read Write access
+	ECHO.
+	ECHO C:\^> CALL :CheckFolderPermission Rights "%%TEMP%%"
+	
 	CALL :CheckFolderPermission Rights "%TEMP%"
-	ECHO %Rights%
+	
+	ECHO.
+	ECHO Returned=%Rights%
+	ECHO.
+	PAUSE
+	ECHO.
+	
+	:::::::::::::::::::::::::::::::::::::::::::::::::
+
+	CLS
+	ECHO EXAMPLE #3: Folder with No access
+	ECHO.
+	ECHO C:\^> CALL :CheckFolderPermission Rights "C:\System Volume Information"
+	
+	CALL :CheckFolderPermission Rights "C:\System Volume Information"
+	
+	ECHO.
+	ECHO Returned=%Rights%
+	ECHO.
+	PAUSE
+	ECHO.
 
 ENDLOCAL & EXIT /B 0
 

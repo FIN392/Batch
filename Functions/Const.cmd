@@ -4,7 +4,7 @@
 	CALL :Const
 
 	ECHO.
-	ECHO.%_FontUnderline%%_ColorBgRed%%_ColorFgBlueB% Bright blue underlined over red %_FontNormal%
+	ECHO.%_FontUnderline%%_ColorBgRed%%_ColorFgBlueB%This is bright blue over red and underlined%_FontNormal%
 	ECHO.
 	ECHO.%_Beep%BEEP!
 
