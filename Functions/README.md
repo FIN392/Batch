@@ -9,27 +9,39 @@ Easy, just copy and paste the function in your script. You can see an example of
 
 ```batch
 :: Example of using the function
-:Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL
+ECHO.
 
-	CALL :GetLocalDateTime _CurrentTime
+	CALL :GetGUID MyGUID
 
-	ECHO Current date and time is [%_CurrentTime%]
+	ECHO My GUID is [%MyGUID%]
+	ECHO.
+	
+	PAUSE
 
-:End_of_script
-ENDLOCAL & EXIT /B %_Error%
+ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'.
+:: Return a GUID with format 'HHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH'.
 ::
-:: Rear '+mmm' is the UTC time offsets in minutes.
+:: Each 'H' is a hexadecimal digit.
 ::
-:GetLocalDateTime {Return_variable}
+:GetGUID {Return_variable}
+SETLOCAL
 
-	FOR /F "tokens=1* delims==" %%a IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET "%~1=%%b"
+	SET "_HEX="
+	FOR /L %%i IN (1,1,8) DO CALL :GetGIUD_FOR_i
+	GOTO GetGIUD_ENDFOR_i
+	:GetGIUD_FOR_i
+		SET /A "_DEC=%RANDOM%*65536/32768"
+		CALL CMD /C EXIT /B %_DEC%
+		SET "_HEX=%_HEX%%=exitcode:~-4%"
+	GOTO :EOF
+	:GetGIUD_ENDFOR_i
+	SET "_HEX=%_HEX:~0,8%-%_HEX:~8,4%-%_HEX:~12,4%-%_HEX:~16,4%-%_HEX:~20,12%"
 
-EXIT /B 0
+ENDLOCAL & SET "%~1=%_HEX%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ```

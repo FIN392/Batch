@@ -1,5 +1,6 @@
 :: Example of using the function
 @ECHO OFF & SETLOCAL
+ECHO.
 
 	SET "MyLogFile=%TEMP%\My Log File.txt"
 
@@ -13,6 +14,9 @@
 	ECHO.
 	TYPE "%MyLogFile%"
 	DEL "%MyLogFile%" > NUL 2>&1
+	ECHO.
+
+	PAUSE
 
 ENDLOCAL & EXIT /B 0
 
