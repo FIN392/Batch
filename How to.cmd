@@ -108,7 +108,7 @@ DEL "%TEMP%\~.tmp" > NUL 2>&1
 :: Look for path name longer than 255 characters
 FOR /F "Tokens=*" %%a IN ('DIR C:\ /B /S /A') DO (
 	SET PathName=%%a
-	IF NIT "!PathName:~255,1!"=="" ECHO Extra long name: "%%a"
+	IF NOT "!PathName:~255,1!"=="" ECHO Extra long name: "%%a"
 )
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

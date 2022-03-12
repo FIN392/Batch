@@ -81,10 +81,6 @@ SETLOCAL & SET "_Error=0"
 	SET _Return=xxx
 	SET _Error=999
 
-	REM *
-	REM * YOUR CODE GOES HERE...
-	REM *
-
 :End_FunctionTemplate
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
