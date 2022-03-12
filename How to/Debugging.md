@@ -12,7 +12,7 @@ ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $e[32m----------
 
 
 :: End debugging
-@PROMPT& @ECHO OFF
+@ECHO OFF & PROMPT
 
 EXIT /B
 ```
