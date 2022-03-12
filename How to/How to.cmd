@@ -2,48 +2,14 @@
 FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO @SET "%%a"
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	
-:: Close if already running
-SET "TITLE=My command window title"
-TITLE Checking if already running...
-TASKLIST /V | FINDSTR /C:"%TITLE%"
-IF NOT ERRORLEVEL 1 (ECHO '%TITLE%' is already running & EXIT /B 1)
-TITLE "%TITLE%"
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: Load variables from '.ini' file. Variables name will star with a prefix
 FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini"') DO SET MyPrefix_%%a
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: Delete files with more than 30 days
-FORFILES /M *.* /P "{Folder}" /S /D -30 /C "CMD /C ECHO DEL @path"
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 :: Set variable 'LastBootUpTime' to last boot time in format 'yyyymmddhhmmss.ffffff+mmm'
 FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LastBootUpTime /VALUE ^| FIND "="') DO @SET "%%a"
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:: Get WMIC information
-
-:: Get info for C: disk 
-FOR /F "tokens=*" %%A IN ('WMIC LogicalDisk Where "DeviceID='C:'" Get /Format:list ^| FIND "="') DO @SET _LogicalDisk.C.%%A
-SET _LogicalDisk.C.
-
-:: Get BIOS info
-FOR /F "tokens=*" %%A IN ('WMIC BIOS Get /Format:list ^| FIND "="') DO @SET _BIOS.%%A
-SET _BIOS.
-
-:: Get COMPUTERSYSTEM info
-FOR /F "tokens=*" %%A IN ('WMIC COMPUTERSYSTEM Get /Format:list ^| FIND "="') DO @SET _COMPUTERSYSTEM.%%A
-SET _COMPUTERSYSTEM.
-
-:: Get CPU info
-FOR /F "tokens=*" %%A IN ('WMIC CPU Get /Format:list ^| FIND "="') DO @SET _CPU.%%A
-SET _CPU.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 

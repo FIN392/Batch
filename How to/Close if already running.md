@@ -1,5 +1,5 @@
 # Close if already running
-```
+```batch
 SET "TITLE=My command window title"
 TITLE Checking if already running...
 TASKLIST /V | FINDSTR /C:"%TITLE%"
