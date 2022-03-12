@@ -1,4 +1,5 @@
-# Get local date and time in format 'yyyymmddhhmmss.ffffff+mmm'
+# Get local date and time
 ```batch
 FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO @SET "%%a"
+ECHO %LocalDateTime%
 ```
