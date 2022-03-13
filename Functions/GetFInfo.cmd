@@ -28,7 +28,7 @@ ENDLOCAL & EXIT /B 0
 ::
 :GetFInfo {Return_variable} {Filename}
 
-	FOR /F "tokens=1* delims==" %%v IN ('SET %~1.') DO (SET %%v=) > NUL
+	FOR /F "tokens=1* delims==" %%v IN ('^(SET %~1.^) 2^> NUL') DO (SET %%v=)
 	
 	:: Exist?
 	IF EXIST "%~f2" GOTO :GetFInfo_Exist
