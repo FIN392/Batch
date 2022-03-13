@@ -41,15 +41,12 @@
 :: If /? parameter is present, display help lines (starting by '::?') 
 ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FINDSTR /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
 
-:: If /DEBUG parameter is present, set DEBUG to ON
-ECHO " %* " | FIND /I " /DEBUG " > NUL && SET DEBUG=1==1 || SET DEBUG=1==0
+:: Start debugging if parameter /DEBUG
+ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $e[32m----------------------------------------$_$P$G$e[0m)
 
 	REM *
 	REM * YOUR CODE GOES HERE...
 	REM *
-
-	REM Debug example
-	IF %DEBUG% ( ECHO [%TIME%] )
 
 	REM Calling a function that return a value
 	CALL :FunctionTemplate _Value Param1 Param2 Param3
