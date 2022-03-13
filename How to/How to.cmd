@@ -26,26 +26,3 @@ FOR /f "tokens=*" %%f IN ('DIR %~dp0*.* /S /B') DO (
 )
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:: Create a CSV test file
-TYPE NUL > %TEMP%\~.tmp
-ECHO."qwe qwe",1234,   "qwe">> %TEMP%\~.tmp
-ECHO.asd   asd,123456, "asd">> %TEMP%\~.tmp
-ECHO."zxc zxc",0xFF,   "zxc">> %TEMP%\~.tmp
-
-:: For each line in CSV file
-FOR /F "tokens=1-30 delims=," %%a IN ('TYPE "%TEMP%\~.tmp"') DO (
-
-	SET "strField01=%%~a"
-	SET /A "intField02=%%~b"
-	SET "strField03=%%~c"
-	
-	ECHO Fields: [!strField01!] [!intField02!] [!strField03!]
-	ECHO.
-
-)
-
-:: Delete the CSV test file
-DEL "%TEMP%\~.tmp" > NUL 2>&1
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
