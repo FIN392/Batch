@@ -24,7 +24,7 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Get information of a file or folder.
+:: Get information about a file or folder.
 ::
 :GetFInfo {Return_variable} {Filename}
 
