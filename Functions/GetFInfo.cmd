@@ -1,28 +1,26 @@
-
-:: Get file basic info
-
-@echo off
-cls
-
-
-CALL :GetFInfo File01 "C:\Windows\win.ini"
-SET File01.
+:: Example of using the function
+@ECHO OFF & SETLOCAL
 ECHO.
 
-CALL :GetFInfo File02 C:\Windows
-SET File02.
-ECHO.
+	:: Get file info
+	CALL :GetFInfo MyFileInfo "C:\Windows\win.ini"
+	SET MyFileInfo.
+	ECHO.
 
-CALL :GetFInfo File03 C:\No.Exist
-SET File03.
-ECHO.
+	:: Get folder info
+	CALL :GetFInfo MyFolderInfo C:\Windows
+	SET MyFolderInfo.
+	ECHO.
 
-CALL :GetFInfo File04 CC:\No.Way
-SET File04.
-ECHO.
+	:: Try to get information from a file that does not exist
+	CALL :GetFInfo MyNoExistFile C:\No.Exist
+	SET MyNoExistFile.
+	ECHO.
 
+	PAUSE
 
-goto :eof
+ENDLOCAL & EXIT /B 0	
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
@@ -72,4 +70,3 @@ goto :eof
 	
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
