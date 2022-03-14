@@ -42,7 +42,7 @@
 ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FINDSTR /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
 
 :: Start debugging if parameter /DEBUG
-ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $e[32m----------------------------------------$_$P$G$e[0m)
+ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
 	REM *
 	REM * YOUR CODE GOES HERE...
@@ -58,7 +58,7 @@ ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $e[32m----------
 	REM *
 
 :THE_END
-ENDLOCAL & EXIT /B %_Error%
+PROMPT & ENDLOCAL & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
