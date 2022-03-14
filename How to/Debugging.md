@@ -3,7 +3,7 @@
 @ECHO OFF
 
 :: Start debugging if parameter /DEBUG
-ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $e[32m----------------------------------------$_$P$G$e[0m)
+ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
 
     :: Your code goes here
