@@ -1,3 +1,6 @@
+# PowerShell code embedded
+
+```batch
 <# :
 	@ECHO OFF
 
@@ -11,3 +14,4 @@
 #>
 
 Write-Output "Powershell code goes here (2.1)"
+```
