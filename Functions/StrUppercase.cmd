@@ -2,7 +2,7 @@
 @ECHO OFF & SETLOCAL
 ECHO.
 
-	:: Return the string in lowercase
+	:: Return the string in uppercase
 	SET "MyString=AbcDef"
 	CALL :StrUppercase MyStrUCase %MyString%
 	ECHO [%MyString%] in capital letters is [%MyStrUCase%]
