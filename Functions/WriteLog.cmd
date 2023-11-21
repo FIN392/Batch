@@ -34,7 +34,7 @@ SETLOCAL
 	SET "Severity=%~2     "
 	SET "Message=%~3"
 
-	ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%>> "%~1"
+	>> "%~1" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
 	IF /I "%~4"=="/CON" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
 
 ENDLOCAL & EXIT /B 0
