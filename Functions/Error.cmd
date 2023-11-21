@@ -6,7 +6,7 @@
 	ECHO NOTE: The error code ('0x0A' in this case ) should be unique within the script
 	ECHO.
 	ECHO C:\^> CALL :Error 0x0A "This is the error message"
-
+	
 	CALL :Error 0x0A "This is the error message"
 	
 	ECHO Returned ERRORLEVEL=%ERRORLEVEL%
@@ -58,7 +58,6 @@
 	CALL :Error 0xFF "This is a fatal error" /FATAL
 	
 	ECHO This line is never shown because the script is already cancelled.
-	PAUSE
 	
 ENDLOCAL & EXIT /B 0
 
