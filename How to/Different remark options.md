@@ -8,9 +8,9 @@
 
 :Main
 
-
 :: This is the best option in most of the cases
 
+DIR &:: This is for inline remarks
 
 IF 1==1 (
 	REM This is the only option between ()
