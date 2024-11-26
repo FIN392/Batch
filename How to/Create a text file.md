@@ -8,8 +8,7 @@
     ECHO.Lorem markdownum vicimus despexitque summae pictae sacerdos circum. De coniugis
     ECHO.Maiaque a satus parantes foedumque inmensa *nec* Olympi reddit fuimusve, ubi cum
     ECHO.victoria. Undam contraxerat tumefecit ante pariterque, superatae, ignibus,
-    ECHO.argumenta sacrisque ut, tincta. Noxia talia; nece
-    ECHO.[parari](http://www.ulla.io/audaciaad.html), hortatus.
+    ECHO.argumenta sacrisque ut, tincta. Noxia talia; nece, hortatus.
     ECHO.
     ECHO.Velum **mirabile**; hunc vias quam inmensum rostro, vellera retices. Fugit et
     ECHO.totum colla modo hoc; sub terrore mundi **lexque** adparentia pugna. Sed
