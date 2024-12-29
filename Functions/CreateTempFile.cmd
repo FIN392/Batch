@@ -32,7 +32,7 @@ ENDLOCAL & EXIT /B 0
 SETLOCAL
 
 	:CreateTempFile_Loop
-		FOR /F "tokens=2 delims=.=" %%t IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO SET "_File=%TEMP%\~%%t.tmp"
+		FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET "_File=%TEMP%\~%%t.tmp"
 	IF EXIST "%_File%" GOTO CreateTempFile_Loop
 	
 	(TYPE NUL > "%_File%") 2> NUL

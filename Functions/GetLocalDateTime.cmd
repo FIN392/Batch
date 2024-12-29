@@ -14,13 +14,11 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return local date and time with format 'yyyymmddhhmmss.ffffff+mmm'.
-::
-:: Rear '+mmm' is the UTC time offsets in minutes.
+:: Return local date and time with format 'yyyyMMdd-hhmmss'.
 ::
 :GetLocalDateTime {Return_variable}
 
-	FOR /F "tokens=1* delims==" %%a IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO SET "%~1=%%b"
+	FOR /F %%a IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET "%~1=%%b"
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -1,5 +1,5 @@
-# Get local date and time in format 'yyyymmddhhmmss.ffffff+mmm'
+# Get local date and time in format 'yyyyMMdd-hhmmss'
 ```batchfile
-FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LocalDateTime /VALUE ^| FIND "="') DO @SET "%%a"
+FOR /F %%a IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO @SET "%%a"
 ECHO %LocalDateTime%
 ```

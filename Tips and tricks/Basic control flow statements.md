@@ -100,7 +100,7 @@ EXAMPLE
 ```batchfile
 :: Do 10 seconds wait until file exist
 :DO_Main_WaitTillFileExist
-    PING 127.0.0.1 -n 10
+    TIMEOUT /T 10
 IF NOT EXIST A:\file.ext GOTO DO_Main_WaitTillFileExist
 ```
 

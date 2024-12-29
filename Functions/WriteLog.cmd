@@ -28,7 +28,7 @@ ENDLOCAL & EXIT /B 0
 :WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
 SETLOCAL
 
-	FOR /F "tokens=*" %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET "%%t"
+	FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET "%%t"
 
 	SET "Timestamp=%LocalDateTime:~0,4%-%LocalDateTime:~4,2%-%LocalDateTime:~6,2% %LocalDateTime:~8,2%:%LocalDateTime:~10,2%:%LocalDateTime:~12,2%.%LocalDateTime:~15,3%"
 	SET "Severity=%~2     "
