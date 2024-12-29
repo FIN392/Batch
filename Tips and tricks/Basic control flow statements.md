@@ -16,15 +16,15 @@ __{Descriptor}:__ A word (or words without spaces) describing the use of the str
 ---
 
 ## IF ... THEN ... ELSE ...
-```batch
-IF ... GOTO IF_{Function}_{Descriptor}
-GOTO :ELSE_{Function}_{Descriptor}
-:IF_{Function}_{Descriptor}
-    :: Your code goes here
-GOTO :ENDIF_{Function}_{Descriptor}
-:ELSE_{Function}_{Descriptor}
-    :: Your code goes here
-:ENDIF_{Function}_{Descriptor}
+```
+IF ... GOTO IF_{Function}_{Descriptor}  
+GOTO :ELSE_{Function}_{Descriptor}  
+:IF_{Function}_{Descriptor}  
+    :: Your code goes here  
+GOTO :ENDIF_{Function}_{Descriptor}  
+:ELSE_{Function}_{Descriptor}  
+    :: Your code goes here  
+:ENDIF_{Function}_{Descriptor}  
 ```
 EXAMPLE
 ```batch
@@ -40,7 +40,7 @@ GOTO :ERNDIF_Main_RootDirectory
 ```
 
 ## FOR ... NEXT
-```batch
+```
 FOR ... IN (...) DO CALL :FOR_{Function}_{Descriptor} [{Parameter} ...]
 GOTO ENDFOR_{Function}_{Descriptor}
 :FOR_{Function}_{Descriptor}
@@ -69,7 +69,7 @@ GOTO :EOF
 ```
 
 ## WHILE ... END
-```batch
+```
 :WHILE_{Function}_{Descriptor}
 IF ... GOTO DO{Function}_{Descriptor}
 GOTO :END_{Function}_{Descriptor}
@@ -91,7 +91,7 @@ GOTO :WHILE_Main_NoFile
 ```
 
 ## DO ... UNTIL
-```batch
+```
 :DO_{Function}_{Descriptor}
     :: Your code goes here
 IF ... GOTO DO_{Function}_{Descriptor}
@@ -105,7 +105,7 @@ IF NOT EXIST A:\file.ext GOTO DO_Main_WaitTillFileExist
 ```
 
 ## FUNCTION
-```batch
+```
 :{Function_name}
 SETLOCAL
     :: Your code goes here
