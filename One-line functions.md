@@ -1,5 +1,7 @@
 # One-line functions for simply daily tasks
 
+[[_TOC_]]
+
 Set 'TempFile' with a temporal file name in format '_~scriptname-nnnnnnnn.tmp_'
 
 ```SET TempFile=%TEMP%\~%~n0-%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%.tmp```
