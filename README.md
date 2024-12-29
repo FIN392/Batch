@@ -25,4 +25,4 @@ Here you can see links to the works of these people:
 
 All content in this repository is licensed under the [MIT License](LICENSE).
 
-If you don't like reading legal texts, I'll sum it up in one sentence: "Do whatever you want, you can even make money, and you don't have to mention me. Just don't blame me if something breaks".
+If you don't like reading legal texts, I'll sum it up in one sentence: "Do whatever you want, you can even make money, and you don't have to mention me. Just don't blame me if something goes wrong".

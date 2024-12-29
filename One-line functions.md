@@ -1,13 +1,10 @@
 # One-line functions for simply daily tasks
 
-__Crea a temp file (just get the name)__
+Temporal file name with format '_~scriptname-nnnnnnnn.tmp_'  
+```SET TempFile=%TEMP%\~%~n0-%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%.tmp```
 
-```SET TempFile=...```
+Delete all the temporal files for this script  
+```DEL "%TEMP%\~%~n0-*.tmp"```
 
-__Delete all the temp files__
-
-```DEL ...```
-
-__Get time and date__
-
-```SET DateTime=...```
+Get timestamp with format 'yyyyMMdd-hhmmss'  
+```FOR /F %%A IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET Timestamp=%%A```
