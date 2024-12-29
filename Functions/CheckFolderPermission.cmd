@@ -36,9 +36,9 @@ ENDLOCAL & EXIT /B 0
 	
 	IF EXIST "%~2\*.*" SET "%~1=RO"
 	
-	(ECHO "%DATE% %TIME% Checking access..." > "%~2\CheckingAccess.tmp") 2> NUL
-	IF EXIST "%~2\CheckingAccess.tmp" SET "%~1=RW"
-	(DEL "%~2\CheckingAccess.tmp" > NUL) 2> NUL
+	ECHO "%DATE% %TIME% Checking folder permission..." > "%~2\CheckFolderPermission.tmp" 2> NUL
+	IF EXIST "%~2\CheckFolderPermission.tmp" SET "%~1=RW"
+	DEL "%~2\CheckFolderPermission.tmp" > NUL 2> NUL
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
