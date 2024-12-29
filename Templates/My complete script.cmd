@@ -47,7 +47,7 @@ ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FIND
 :: Start debugging if parameter /DEBUG
 ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
-	REM * Start log: Totally recommended to add some kind of log
+	REM * Start log: Highly recommended to add some kind of log
 
 	REM *
 	REM * YOUR CODE GOES HERE...
