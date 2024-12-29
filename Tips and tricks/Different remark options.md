@@ -1,6 +1,6 @@
 # Different remark options
 
-```batch
+```batchfile
 @GOTO :Main
 
 	This is great for a big set of lines,

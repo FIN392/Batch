@@ -1,5 +1,5 @@
 # Debugging
-```batch
+```batchfile
 @ECHO OFF
 
 :: Start debugging if parameter /DEBUG

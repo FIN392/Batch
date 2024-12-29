@@ -1,5 +1,5 @@
 # Progress bar
-```batch
+```batchfile
 SET /A "intTotalElements=23"
 FOR /L %%i IN (0, 1, %intTotalElements%) DO (
     SET /A "intPercentage=(%%i*100)/%intTotalElements%"

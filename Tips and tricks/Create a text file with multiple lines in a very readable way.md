@@ -1,5 +1,5 @@
 # Create a text file with multiple lines in a very readable way
-```batch
+```batchfile
 (
     ECHO.# Obvertit tamen admovet
     ECHO.

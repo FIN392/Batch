@@ -1,5 +1,5 @@
 # Basic script
-```batch
+```batchfile
 @ECHO OFF
 SETLOCAL
 PUSHD "%~dp0"

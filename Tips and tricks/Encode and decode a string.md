@@ -1,5 +1,5 @@
 # Encode and decode a string
-```batch
+```batchfile
 SET PWPlain=Abc123
 
 :: Encode

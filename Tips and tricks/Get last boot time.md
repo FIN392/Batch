@@ -1,5 +1,5 @@
 # Get last boot time in format 'yyyymmddhhmmss.ffffff+mmm'
-```batch
+```batchfile
 FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LastBootUpTime /VALUE ^| FIND "="') DO @SET "%%a"
 ECHO %LastBootUpTime%
 ```

@@ -7,7 +7,7 @@ ENJOY IT!!! and please feel free to check [issues page](https://github.com/FIN39
 
 Easy, just copy and paste the function in your script. You can see an example of how to use it at the beginning of the file.
 
-```batch
+```batchfile
 :: Example of using the function
 @ECHO OFF & SETLOCAL
 ECHO.

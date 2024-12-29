@@ -1,5 +1,5 @@
 # PowerShell code embedded
-```batch
+```batchfile
 <# :
 	@ECHO OFF
 

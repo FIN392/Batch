@@ -27,7 +27,7 @@ GOTO :ENDIF_{Function}_{Descriptor}
 :ENDIF_{Function}_{Descriptor}
 ```
 EXAMPLE
-```batch
+```batchfile
 :: If current directory is 'C:\'...
 IF "%CD%"=="C:\" GOTO IF_Main_RootDirectory
 GOTO :ELSE_Main_RootDirectory
@@ -49,7 +49,7 @@ GOTO :EOF
 :ENDFOR_{Function}_{Descriptor}
 ```
 EXAMPLE
-```batch
+```batchfile
 :: For each directory in 'C:\'...
 FOR /F "tokens=*" %%f IN ('DIR C:\*.* /B /AD') DO CALL :FOR_Main_RootFolders "%%f"
 GOTO ENDFOR_Main_RootFolders
@@ -58,7 +58,7 @@ GOTO ENDFOR_Main_RootFolders
 GOTO :EOF
 :ENDFOR_Main_RootFolders
 ```
-```batch
+```batchfile
 :: For i=1 to 10 (step 1)...
 FOR /L %%i IN (1,1,10) DO CALL :FOR_Main_i %%i
 GOTO FOR_Main_i
@@ -79,7 +79,7 @@ GOTO :WHILE_{Function}_{Descriptor}
 :END_{Function}_{Descriptor}
 ```
 EXAMPLE
-```batch
+```batchfile
 :: While file doesn't exist, try to create it
 :WHILE_Main_NoFile
 IF NOT EXIST A:\file.ext GOTO DO_Main_NoFile
@@ -97,7 +97,7 @@ GOTO :WHILE_Main_NoFile
 IF ... GOTO DO_{Function}_{Descriptor}
 ```
 EXAMPLE
-```batch
+```batchfile
 :: Do 10 seconds wait until file exist
 :DO_Main_WaitTillFileExist
     PING 127.0.0.1 -n 10
@@ -113,7 +113,7 @@ ENDLOCAL & SET %1={Returned_value}
 GOTO :EOF
 ```
 EXAMPLE
-```batch
+```batchfile
 CALL :GetLocalDateTime _MyTime
 ECHO %_MyTime%
 EXIT /B 0

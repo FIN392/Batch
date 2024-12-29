@@ -1,4 +1,4 @@
 # Read variables from INI file
-```batch
+```batchfile
 FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini"') DO SET MyPrefix_%%a
 ```
