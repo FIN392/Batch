@@ -1,6 +1,10 @@
-# Windows Batch Scripting
+# Windows Command Prompt Scripting (aka Batch, BAT or CMD)
 
-Just another Windows Batch scripting repository.
+This is not just another Windows Command Prompt Scripting repository. This one is mine.
+
+Here you will find:
+- Useful functions for tareas .
+- Useful one or two lines functions, 
 
 Please, send me your comments, critics, doubts, requests or sues.
 
