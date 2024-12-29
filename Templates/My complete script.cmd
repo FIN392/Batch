@@ -14,20 +14,23 @@
 ::?
 ::? Requirements:
 ::?
-::?   '(none)' or the list of required files, configurations (e.g., registry
-::?   values) or systems (e.g., Internet access).
+::?   (none)
+::?       or the list of required files, configurations, etc.
+::?   Internet access to 'https://github.com/FIN392'
+::?   File 'Script_Template.ini' on same folder
+::?   Python 3.x installed
 :: 
 ::  Author: fin392@gmail.com
 :: 
 ::  License: https://opensource.org/licenses/MIT
 :: 
-::  Additional information: https://github.com/FIN392/Batch
+::  Source code repository: https://github.com/FIN392/Batch
 :: 
 ::  Change Log
 ::  ----------
 ::  2020/04/13 - fin392@gmail.com - Initial version
 ::  2525/01/01 - fin392@gmail.com - Here should go a long description of the
-::                change done, keeping de line length below 80 and including:
+::               change done, keeping de line length below 80 and including:
 ::                 - New features added.
 ::                 - Changes in existing functionality. 	
 ::                 - Soon-to-be removed features.
@@ -44,6 +47,8 @@ ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FIND
 :: Start debugging if parameter /DEBUG
 ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
+	REM * Start log: Totally recommended to add some kind of log
+
 	REM *
 	REM * YOUR CODE GOES HERE...
 	REM *
@@ -56,6 +61,9 @@ ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------
 	REM *
 	REM * YOUR CODE GOES HERE...
 	REM *
+
+	REM * Delete temp files if any
+	REM * End log
 
 :THE_END
 PROMPT & ENDLOCAL & EXIT /B %_Error%
