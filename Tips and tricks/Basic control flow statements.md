@@ -5,7 +5,7 @@ Don't think that because it is a simple scripting language there is no possibili
 ## Table of Contents <!-- omit in toc -->
 - [IF ... THEN ... ELSE ...](#if--then--else-)
 - [FOR ... NEXT](#for--next)
-- [WHILE ... END WHILE](#while--end-while)
+- [WHILE ... END](#while--end)
 - [DO ... UNTIL](#do--until)
 - [FUNCTION](#function)
 
@@ -17,110 +17,91 @@ __{Descriptor}:__ A word (or words without spaces) describing the use of the str
 
 ## IF ... THEN ... ELSE ...
 ```batch
-IF ... GOTO {Function}_IF_{Descriptor}
-GOTO :{Function}_ELSE_{Descriptor}
-:{Function}_IF_{Descriptor}
+IF ... GOTO IF_{Function}_{Descriptor}
+GOTO :ELSE_{Function}_{Descriptor}
+:IF_{Function}_{Descriptor}
     :: Your code goes here
-GOTO :{Function}_ENDIF_{Descriptor}
-:{Function}_ELSE_{Descriptor}
+GOTO :ENDIF_{Function}_{Descriptor}
+:ELSE_{Function}_{Descriptor}
     :: Your code goes here
-:{Function}_ENDIF_{Descriptor}
-```
-Using negative condition is shorter
-```batch
-IF NOT "{value-1}"=="{value-2}" GOTO {Function}_ELSE_{Descriptor}
-    :: Your code goes here
-GOTO :{Function}_ENDIF_{Descriptor}
-:{Function}_ELSE_{Descriptor}
-    :: Your code goes here
-:{Function}_ENDIF_{Descriptor}
+:ENDIF_{Function}_{Descriptor}
 ```
 EXAMPLE
 ```batch
 :: If current directory is 'C:\'...
-IF "%CD%"=="C:\" GOTO Main_IF_RootDirectory
-GOTO :Main_ELSE_RootDirectory
-:Main_IF_RootDirectory
+IF "%CD%"=="C:\" GOTO IF_Main_RootDirectory
+GOTO :ELSE_Main_RootDirectory
+:IF_Main_RootDirectory
     ECHO You are in the root folder
-GOTO :Main_ENDIF_RootDirectory
-:Main_ELSE_RootDirectory
+GOTO :ERNDIF_Main_RootDirectory
+:ELSE_Main_RootDirectory
     ECHO You are NOT in the root folder
-:Main_ENDIF_RootDirectory
-```
-Same with negative condition
-```batch
-:: If current directory is 'C:\'...
-IF NOT "%CD%"=="C:\" GOTO Main_ELSE_RootDirectory
-    ECHO You are in the root folder
-GOTO :Main_ENDIF_RootDirectory
-:Main_ELSE_RootDirectory
-    ECHO You are NOT in the root folder
-:Main_ENDIF_RootDirectory
+:ENDIF_Main_RootDirectory
 ```
 
 ## FOR ... NEXT
 ```batch
-FOR ... IN (...) DO CALL :{Function}_FOR_{Descriptor} [{Parameter} ...]
-GOTO {Function}_ENDFOR_{Descriptor}
-:{Function}_FOR_{Descriptor}
+FOR ... IN (...) DO CALL :FOR_{Function}_{Descriptor} [{Parameter} ...]
+GOTO ENDFOR_{Function}_{Descriptor}
+:FOR_{Function}_{Descriptor}
     :: Your code goes here
 GOTO :EOF
-:{Function}_ENDFOR_{Descriptor}
+:ENDFOR_{Function}_{Descriptor}
 ```
 EXAMPLE
 ```batch
 :: For each directory in 'C:\'...
-FOR /F "tokens=*" %%f IN ('DIR C:\*.* /B /AD') DO CALL :Main_FOR_RootFolders "%%f"
-GOTO Main_ENDFOR_RootFolders
-:Main_FOR_RootFolders
+FOR /F "tokens=*" %%f IN ('DIR C:\*.* /B /AD') DO CALL :FOR_Main_RootFolders "%%f"
+GOTO ENDFOR_Main_RootFolders
+:FOR_Main_RootFolders
     ECHO Directory: %1
 GOTO :EOF
-:Main_ENDFOR_RootFolders
+:ENDFOR_Main_RootFolders
 ```
 ```batch
 :: For i=1 to 10 (step 1)...
-FOR /L %%i IN (1,1,10) DO CALL :Main_FOR_i %%i
-GOTO Main_ENDFOR_i
-:Main_FOR_i
+FOR /L %%i IN (1,1,10) DO CALL :FOR_Main_i %%i
+GOTO FOR_Main_i
+:FOR_Main_i
     ECHO Counting 1 to 10: %1
 GOTO :EOF
-:Main_ENDFOR_i
+:ENDFOR_Main_i
 ```
 
-## WHILE ... END WHILE
+## WHILE ... END
 ```batch
-:{Function}_WHILE_{Descriptor}
-IF ... GOTO {Function}_DO_WHILE_{Descriptor}
-GOTO :{Function}_END_WHILE_{Descriptor}
-:{Function}_DO_WHILE_{Descriptor}
+:WHILE_{Function}_{Descriptor}
+IF ... GOTO DO{Function}_{Descriptor}
+GOTO :END_{Function}_{Descriptor}
+:DO_{Function}_{Descriptor}
     :: Your code goes here
-GOTO :{Function}_WHILE_{Descriptor}
-:{Function}_END_WHILE_{Descriptor}
+GOTO :WHILE_{Function}_{Descriptor}
+:END_{Function}_{Descriptor}
 ```
 EXAMPLE
 ```batch
 :: While file doesn't exist, try to create it
-:Main_WHILE_NoFile
-IF NOT EXIST C:\file.ext GOTO Main_DO_WHILE_NoFile
-GOTO :Main_END_WHILE_NoFile
-:Main_DO_WHILE_NoFile
-    TYPE NUL > C:\file.ext
-GOTO :Main_WHILE_NoFile
-:Main_END_WHILE_NoFile
+:WHILE_Main_NoFile
+IF NOT EXIST A:\file.ext GOTO DO_Main_NoFile
+GOTO :END_Main_NoFile
+:DO_Main_NoFile
+    TYPE NUL > A:\file.ext
+GOTO :WHILE_Main_NoFile
+:END_Main_NoFile
 ```
 
 ## DO ... UNTIL
 ```batch
-:{Function}_DO_{Descriptor}
+:DO_{Function}_{Descriptor}
     :: Your code goes here
-IF ... GOTO {Function}_DO_{Descriptor}
+IF ... GOTO DO_{Function}_{Descriptor}
 ```
 EXAMPLE
 ```batch
 :: Do 10 seconds wait until file exist
-:Main_DO_WaitTillFileExist
+:DO_Main_WaitTillFileExist
     PING 127.0.0.1 -n 10
-IF NOT EXIST C:\file.ext GOTO Main_DO_WaitTillFileExist
+IF NOT EXIST A:\file.ext GOTO DO_Main_WaitTillFileExist
 ```
 
 ## FUNCTION
@@ -139,7 +120,7 @@ EXIT /B 0
 
 :GetLocalDateTime
 SETLOCAL
-	FOR /F %%t IN ('wmic OS GET LocalDateTime /VALUE ^| find "="') DO SET _%%t
+	FOR /F %%A IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET _%%t
 ENDLOCAL & SET %1=%_LocalDateTime%
 GOTO :EOF
 ```
