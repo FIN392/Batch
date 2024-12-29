@@ -1,13 +1,13 @@
 # One-line functions for simply daily tasks
-- [One-line functions for simply daily tasks](#one-line-functions-for-simply-daily-tasks)
-  - [Set 'TempFile' with a temporal file name in format '_~scriptname-nnnnnnnn.tmp_'](#set-tempfile-with-a-temporal-file-name-in-format-scriptname-nnnnnnnntmp)
-  - [Delete all the temporal files for this script](#delete-all-the-temporal-files-for-this-script)
-  - [Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'](#set-timestamp-with-current-date-and-time-in-format-yyyymmdd-hhmmss)
-  - [Set Removes leading, trailing and double spaces from a string](#set-removes-leading-trailing-and-double-spaces-from-a-string)
-  - [Check if a value is a number](#check-if-a-value-is-a-number)
-  - [Add a line to a log file](#add-a-line-to-a-log-file)
-  - [Check if a string match or not a regular expression](#check-if-a-string-match-or-not-a-regular-expression)
-  - [Check whether or not a string is in a valid email address format](#check-whether-or-not-a-string-is-in-a-valid-email-address-format)
+
+- [Set 'TempFile' with a temporal file name in format '_~scriptname-nnnnnnnn.tmp_'](#set-tempfile-with-a-temporal-file-name-in-format-scriptname-nnnnnnnntmp)
+- [Delete all the temporal files for this script](#delete-all-the-temporal-files-for-this-script)
+- [Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'](#set-timestamp-with-current-date-and-time-in-format-yyyymmdd-hhmmss)
+- [Set Removes leading, trailing and double spaces from a string](#set-removes-leading-trailing-and-double-spaces-from-a-string)
+- [Check if a value is a number](#check-if-a-value-is-a-number)
+- [Add a line to a log file](#add-a-line-to-a-log-file)
+- [Check if a string match or not a regular expression](#check-if-a-string-match-or-not-a-regular-expression)
+- [Check whether or not a string is in a valid email address format](#check-whether-or-not-a-string-is-in-a-valid-email-address-format)
 
 ## Set 'TempFile' with a temporal file name in format '_~scriptname-nnnnnnnn.tmp_'
 
