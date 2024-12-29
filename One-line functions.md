@@ -51,8 +51,8 @@ ECHO {String of characters} > NUL 2> NUL | FINDSTR /I /R /C:"{Regular Expression
 ```
 
 ## Check whether or not a string is in a valid email address format
-_(FINDSTR's handling of regular expressions is limited)_
+_(Correct regular expressions should be "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", but FINDSTR is limited)_
 ```Batch
-ECHO fin392@gmail.com > NUL 2> NUL | FINDSTR /I /R /C:"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" && ECHO Valid email address || ECHO NOT a email address
+ECHO fin392@gmail.com > NUL 2> NUL | FINDSTR /I /R /C:"[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z]" && ECHO Valid email address || ECHO NOT a email address
 ```
 
