@@ -47,7 +47,13 @@ ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FIND
 :: Start debugging if parameter /DEBUG
 ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
-	REM * Start log: Highly recommended to add some kind of log
+:: Configure the log file and clear it keeping the last 100 lines
+SET %LogFile%=%TEMP%\%~dpn0.log && CALL :CleanLog "%LogFile%" 100
+
+	:: Start log
+	CALL :WriteLog "%LogFile%" INFO "Start of the process"
+	
+
 
 	REM *
 	REM * YOUR CODE GOES HERE...
@@ -62,8 +68,14 @@ ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------
 	REM * YOUR CODE GOES HERE...
 	REM *
 
+	REM *
 	REM * Delete temp files if any
-	REM * End log
+	REM *
+
+
+
+	:: Stop log
+	CALL :WriteLog "%LogFile%" INFO "End of the process"
 
 :THE_END
 PROMPT & ENDLOCAL & EXIT /B %_Error%
@@ -88,6 +100,43 @@ SETLOCAL & SET "_Error=0"
 
 :End_FunctionTemplate
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+:: Write a message in a logfile (and console).
+::
+:WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
+SETLOCAL
+
+	FOR /F "tokens=*" %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyy-MM-dd hh:mm:ss.fff'"') DO SET "Timestamp=%%t"
+	SET "Severity=%~2     "
+	SET "Message=%~3"
+
+	>> "%~1" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
+	IF /I "%~4"=="/CON" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
+
+ENDLOCAL & EXIT /B 0
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+:: Clean a logfile keeping only 'n' lines.
+::
+:CleanLog {LogFile} [Lines]
+SETLOCAL
+
+	IF "%~2"=="" (DEL "%~1" > NUL 2>&1) & GOTO :ENDIF
+
+		FOR /F "delims=: tokens=1" %%L IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%L
+		SET /A Lines-=%~2
+		FOR /F "skip=%Lines% tokens=*" %%L IN ('TYPE "%~1"') DO ( ECHO %%L>> "%~1.bak" )
+		COPY "%~1.bak" "%~1" > NUL 2>&1
+		DEL "%~1.bak" > NUL 2>&1
+
+	:ENDIF
+	
+ENDLOCAL & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: EOF ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

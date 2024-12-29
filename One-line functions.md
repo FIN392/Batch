@@ -37,7 +37,7 @@ FOR /F "tokens=*" %%i IN ('ECHO %YourStringVariable% ') DO ECHO [%%i]
 
 ## Check if a value is a number
 ```batchfile
-SET /A ("Result=%VarToCheck%+0") > NUL 2> NUL && (IF "%Result%"=="%VarToCheck%" ECHO Is a number) || (ECHO Is NOT a number)
+SET /A ("Result=%VarToCheck%+0") > NUL 2>&1 && (IF "%Result%"=="%VarToCheck%" ECHO Is a number) || (ECHO Is NOT a number)
 ```
 
 ## Add a line to a log file
@@ -47,12 +47,12 @@ SET /A ("Result=%VarToCheck%+0") > NUL 2> NUL && (IF "%Result%"=="%VarToCheck%" 
 
 ## Check if a string match or not a regular expression
 ```batchfile
-ECHO {String of characters} > NUL 2> NUL | FINDSTR /I /R /C:"{Regular Expression}" && ECHO Match || ECHO NOT Match
+ECHO {String of characters} > NUL 2>&1 | FINDSTR /I /R /C:"{Regular Expression}" && ECHO Match || ECHO NOT Match
 ```
 
 ## Check whether or not a string is in a valid email address format
 _(Correct regular expressions should be "```^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$```", but FINDSTR is limited)_
 ```batchfile
-ECHO fin392@gmail.com > NUL 2> NUL | FINDSTR /I /R /C:"[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z]" && ECHO Valid email address || ECHO NOT a email address
+ECHO fin392@gmail.com > NUL 2>&1 | FINDSTR /I /R /C:"[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z]" && ECHO Valid email address || ECHO NOT a email address
 ```
 
