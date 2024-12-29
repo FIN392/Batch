@@ -1,5 +1,3 @@
-# Basic script
-```batchfile
 @ECHO OFF
 SETLOCAL
 PUSHD "%~dp0"
@@ -8,4 +6,3 @@ PUSHD "%~dp0"
 
 POPD
 ENDLOCAL
-```
