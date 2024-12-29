@@ -17,14 +17,14 @@ __{Descriptor}:__ A word (or words without spaces) describing the use of the str
 
 ## IF ... THEN ... ELSE ...
 ```
-IF ... GOTO IF_{Function}_{Descriptor}  
-GOTO :ELSE_{Function}_{Descriptor}  
-:IF_{Function}_{Descriptor}  
-    :: Your code goes here  
-GOTO :ENDIF_{Function}_{Descriptor}  
-:ELSE_{Function}_{Descriptor}  
-    :: Your code goes here  
-:ENDIF_{Function}_{Descriptor}  
+IF ... GOTO IF_{Function}_{Descriptor}
+GOTO :ELSE_{Function}_{Descriptor}
+:IF_{Function}_{Descriptor}
+    :: Your code goes here
+GOTO :ENDIF_{Function}_{Descriptor}
+:ELSE_{Function}_{Descriptor}
+    :: Your code goes here
+:ENDIF_{Function}_{Descriptor}
 ```
 EXAMPLE
 ```batch
