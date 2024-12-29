@@ -39,7 +39,7 @@
 ::                 - Security vulnerabilities.
 ::  
 :Main
-@ECHO OFF & SETLOCAL & SET "_Error=0"
+@ECHO OFF & SETLOCAL ENABLEDELAYEDEXPANSION & SET "_Error=0"
 
 :: If /? parameter is present, display help lines (starting by '::?') 
 ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FINDSTR /B /C:"::?" "%~f0"') DO (ECHO.  %%B) ) & GOTO :THE_END )
@@ -48,7 +48,7 @@ ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FIND
 ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
 :: Configure the log file and clear it keeping the last 100 lines
-SET %LogFile%=%TEMP%\%~dpn0.log && CALL :CleanLog "%LogFile%" 100
+(SET LogFile=%TEMP%\%~n0.log) && CALL :CleanLog "!LogFile!" 10
 
 	:: Start log
 	CALL :WriteLog "%LogFile%" INFO "Start of the process"
@@ -130,9 +130,10 @@ SETLOCAL
 
 		FOR /F "delims=: tokens=1" %%L IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%L
 		SET /A Lines-=%~2
-		FOR /F "skip=%Lines% tokens=*" %%L IN ('TYPE "%~1"') DO ( ECHO %%L>> "%~1.bak" )
-		COPY "%~1.bak" "%~1" > NUL 2>&1
-		DEL "%~1.bak" > NUL 2>&1
+		IF %Lines% LSS 2 GOTO :ENDIF
+			FOR /F "skip=%Lines% tokens=*" %%L IN ('TYPE "%~1"') DO ( ECHO %%L>> "%~1.bak" )
+			COPY "%~1.bak" "%~1" > NUL 2>&1
+			DEL "%~1.bak" > NUL 2>&1
 
 	:ENDIF
 	
