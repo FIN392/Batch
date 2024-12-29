@@ -28,9 +28,7 @@ ENDLOCAL & EXIT /B 0
 :WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
 SETLOCAL
 
-	FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET "%%t"
-
-	SET "Timestamp=%LocalDateTime:~0,4%-%LocalDateTime:~4,2%-%LocalDateTime:~6,2% %LocalDateTime:~8,2%:%LocalDateTime:~10,2%:%LocalDateTime:~12,2%.%LocalDateTime:~15,3%"
+	FOR /F "tokens=*" %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyy-MM-dd hh:mm:ss.fff'"') DO SET "Timestamp=%%t"
 	SET "Severity=%~2     "
 	SET "Message=%~3"
 
