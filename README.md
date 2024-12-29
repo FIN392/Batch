@@ -16,7 +16,7 @@ Most of the code in this repository is inspired by people who know a lot more th
 
 Here you can see links to the works of these people:
 - https://ss64.com/nt
-- https://stackoverflow.com/questions/4094699/how-does-the-windows-command-interpreter-cmd-exe-parse-scripts
+- https://stackoverflow.com/questions/4094699
 - https://www.robvanderwoude.com/batchstart.php
 - https://github.com/PassingTheKnowledge/Batchography
 - https://www.dostips.com/
