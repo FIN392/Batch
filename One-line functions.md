@@ -15,11 +15,13 @@
 
 ## Delete all the temporal files for this script
 
-```DEL "%TEMP%\~%~n0-*.tmp"```
+```DEL "%TEMP%\~%~n0-*.tmp"```  
+(Assuming the file names were created as the previous one)
 
 ## Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'
 
-```FOR /F %%A IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET Timestamp=%%A```
+```FOR /F %%A IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET Timestamp=%%A```  
+(I wouldn't like to use Powershell but I don't know how to do it any other way)
 
 ## Set Removes leading, trailing and double spaces from a string
 
@@ -27,7 +29,7 @@
 
 ## Check if a value is a number
 
-```SET /A ("Result=%VarToCheck%+0") > NUL 2> NUL && (IF "%Result%"=="%VarToCheck%" ECHO Number) || (ECHO NOT Number)```
+```SET /A ("Result=%VarToCheck%+0") > NUL 2> NUL && (IF "%Result%"=="%VarToCheck%" ECHO Is a number) || (ECHO Is NOT a number)```
 
 ## Add a line to a log file
 
@@ -39,5 +41,6 @@
 
 ## Check whether or not a string is in a valid email address format
 
-```ECHO fin392@gmail.com > NUL 2> NUL | FINDSTR /I /R /C:"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" && ECHO Valid email address || ECHO NOT a email address```
+```ECHO fin392@gmail.com > NUL 2> NUL | FINDSTR /I /R /C:"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" && ECHO Valid email address || ECHO NOT a email address```  
+(Specific use of the previous one)
 
