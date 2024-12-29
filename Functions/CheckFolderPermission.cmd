@@ -26,9 +26,13 @@ ENDLOCAL & EXIT /B 0
 ::
 :: Check folder permission.
 ::
-:: NA = No access
-:: RO = Read only
-:: RW = Read & write
+:: Returns the permissions of the account running the script on the folder.
+::   NA = No access
+::   RO = Read only
+::   RW = Read & write
+::
+:: {Return_variable} : Name of the variable where the result will be returned.
+:: {Folder}          : Folder on which permissions are checked.
 ::
 :CheckFolderPermission {Return_variable} {Folder}
 

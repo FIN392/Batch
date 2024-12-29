@@ -4,32 +4,40 @@ ECHO.
 
 	SET "MyLogFile=%TEMP%\My Log File.log"
 
-	:: Write lines to log
+	ECHO --- Before
+	TYPE "%MyLogFile%"
+	ECHO ---
+
+	:: Clean existing log file keeping only 2 lines
+	CALL :CleanLog "%MyLogFile%" 2
+
+	ECHO --- After
+	TYPE "%MyLogFile%"
+	ECHO ---
+
+	:: Write 4 additional lines to log
 	>> "%MyLogFile%" ECHO %DATE% %TIME% FATAL "Just another line to see all the possible Severities"
 	>> "%MyLogFile%" ECHO %DATE% %TIME% ERROR "Just another line to see all the possible Severities"
 	>> "%MyLogFile%" ECHO %DATE% %TIME% WARN  "Just another line to see all the possible Severities"
 	>> "%MyLogFile%" ECHO %DATE% %TIME% INFO  "Just another line to see all the possible Severities"
 	>> "%MyLogFile%" ECHO %DATE% %TIME% DEBUG "Just another line to see all the possible Severities"
 
-	ECHO --- Before
-	TYPE "C:\Users\josel\AppData\Local\Temp\My Log File.log"
-	ECHO ---
-
-	:: Clean log file
-	CALL :CleanLog "%MyLogFile%" 2
-
-	ECHO --- After
-	TYPE "C:\Users\josel\AppData\Local\Temp\My Log File.log"
-	ECHO ---
-
 ENDLOCAL & EXIT /B 0
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Clean a logfile keeping only 'n' lines.
+:: Clean a log file keeping only the last 'n' lines.
 ::
-:CleanLog {LogFile} [Lines]
+:: It is recommended to call this function at the beginning of the main process
+:: since if it is done at the end, lines generated during execution can be
+:: deleted.
+::
+::
+:: {LogFile}          : Name of the log file to clean.
+:: {Lines} [Optional] : Number of lines to keep. 
+::
+:CleanLog {LogFile} [ {Lines} ]
 SETLOCAL
 
 	IF "%~2"=="" (DEL "%~1" > NUL 2>&1) & GOTO :ENDIF
