@@ -14,20 +14,23 @@
 ::?
 ::? Requirements:
 ::?
-::?   '(none)' or the list of required files, configurations (e.g., registry
-::?   values) or systems (e.g., Internet access).
+::?   (none)
+::?       or the list of required files, configurations, etc.
+::?   Internet access to 'https://github.com/FIN392'
+::?   File 'Script_Template.ini' on same folder
+::?   Python 3.x installed
 :: 
 ::  Author: fin392@gmail.com
 :: 
 ::  License: https://opensource.org/licenses/MIT
 :: 
-::  Additional information: https://github.com/FIN392/Batch
+::  Source code repository: https://github.com/FIN392/Batch
 :: 
 ::  Change Log
 ::  ----------
 ::  2020/04/13 - fin392@gmail.com - Initial version
 ::  2525/01/01 - fin392@gmail.com - Here should go a long description of the
-::                change done, keeping de line length below 80 and including:
+::               change done, keeping de line length below 80 and including:
 ::                 - New features added.
 ::                 - Changes in existing functionality. 	
 ::                 - Soon-to-be removed features.
