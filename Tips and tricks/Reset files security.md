@@ -1,4 +1,4 @@
-Setting ownership of files and folders to the administrators group:
+ # Setting ownership of files and folders to the administrators group:
 ```
 X:\> takeown /R /A /F X:\
 ```

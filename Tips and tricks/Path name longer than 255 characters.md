@@ -1,4 +1,4 @@
-# Path name longer than 255 characters
+ # Path name longer than 255 characters
 ```batchfile
 FOR /F "Tokens=*" %%a IN ('DIR C:\ /B /S /A') DO (
     SET PathName=%%a

@@ -1,4 +1,4 @@
-# Encode and decode a string
+ # Encode and decode a string
 ```batchfile
 SET PWPlain=Abc123
 

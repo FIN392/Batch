@@ -1,4 +1,4 @@
-# Get WMIC information
+ # Get WMIC information
 ```batchfile
 :: Get C: disk info
 FOR /F "tokens=*" %%A IN ('WMIC LogicalDisk Where "DeviceID='C:'" Get /Format:list ^| FIND "="') DO @SET _LogicalDisk.C.%%A

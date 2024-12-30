@@ -1,4 +1,4 @@
-# Close if already running
+ # Close if already running
 ```batchfile
 :: This will be the window title
 SET "ScriptTitle=%~n0 (v0.1)"

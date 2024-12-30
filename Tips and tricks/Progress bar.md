@@ -1,4 +1,4 @@
-# Progress bar
+ # Progress bar
 ```batchfile
 SET /A "intTotalElements=23"
 FOR /L %%i IN (0, 1, %intTotalElements%) DO (
