@@ -14,11 +14,15 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return local date and time with format 'yyyyMMdd-hhmmss'.
+:: Return local date and time with format 'yyyyMMdd-hhmmss.fff'.
+::
+:: NOTE: PowerShell version 2.0 or higher must be installed.
+::
+:: {Return_variable} : Name of the variable where the result will be returned.
 ::
 :GetLocalDateTime {Return_variable}
 
-	FOR /F %%a IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET "%~1=%%b"
+	FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss.fff'"') DO SET "%~1=%%t"
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

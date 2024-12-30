@@ -2,7 +2,11 @@
 @ECHO OFF & SETLOCAL
 ECHO.
 
-	CALL :GetIniValue _IniValue "%~dp0GetIniValue_example.ini" "My Section" "My Value" || ECHO INI file doesn't exist
+	SET "MyINIFile=%~dp0GetIniValue_example.ini"
+	SET "MySection=My Section"
+	SET "MyKey=My Value"
+
+	CALL :GetIniValue _IniValue "%MyINIFile%" "%MySection%" "%MyKey%" || ECHO INI file doesn't exist
 	SET "_Err=%ERRORLEVEL%"
 
 	ECHO Value is [%_IniValue%]
@@ -15,30 +19,32 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Get a value of particular section in a INI file.
+:: Gets values ​​from an INI file.
 ::
-:: Return a value from one section in a INI file.
-:: Return ERRORLEVEL = 1 if INI file doesn't exist.
+:: Reads an INI file and, given a section name and key, gets the value.
+:: Returns ERRORLEVEL = 1 if the INI file does not exist.
 ::
+:: {Return_variable} : Name of the variable where the result will be returned.
+:: {INI_file}        : Name of the INI file.
+:: {Section}         : 
+:: {Key}           : 
 ::
-:GetIniValue {Return_variable} {INI_file} {Section} {Value}
+:GetIniValue {Return_variable} {INI_file} {Section} {Key}
 SETLOCAL
 
 	SET "_Error=0"
 	SET "_Section=%3"
 	SET "_Section=%_Section:"=%"
-	SET "_Value=%4"
-	SET "_Value=%_Value:"=%"
+	SET "_Key=%4"
+	SET "_Key=%_Key:"=%"
 
 	SET "_ReturnValue="
 
-	:: Does the file exist?
-	IF NOT EXIST "%~f2" GOTO GetIniValue_ELSE_Exist
+	IF NOT EXIST "%~f2" GOTO ELSE_GetIniValue_Exist
 
-		:: Loop of lines in INI file lines (only section labels and searched value)
-		FOR /F "tokens=*" %%L IN ('FINDSTR /I /R /C:"^[ ,]*\[.*\][ ,]*$" /C:"^[ ,]*%_Value%[ ,]*\=" "%~f2"') DO CALL :GetIniValue_FOR_Line %%L
-		GOTO :GetIniValue_ENDFOR_Line
-		:GetIniValue_FOR_Line
+		FOR /F "tokens=*" %%l IN ('FINDSTR /I /R /C:"^[ ,]*\[.*\][ ,]*$" /C:"^[ ,]*%_Key%[ ,]*\=" "%~f2"') DO CALL :FOR_GetIniValue_Line %%l
+		GOTO :ENDFOR_GetIniValue_Line
+		:FOR_GetIniValue_Line
 
 			SET "_Line=%*"
 			IF "%_Line:~0,1%"=="[" SET "_WantedSection=0"
@@ -46,13 +52,15 @@ SETLOCAL
 			IF "%_WantedSection%"=="1" IF NOT "%_Line:~0,1%"=="[" FOR /F "tokens=1,2 delims==" %%A IN ('ECHO "%_Line%"') DO SET "_ReturnValue=%%B"
 			
 		GOTO :EOF
-		:GetIniValue_ENDFOR_Line
+		:ENDFOR_GetIniValue_Line
 
-	GOTO GetIniValue_ENDIF_Exist
-	:GetIniValue_ELSE_Exist
+	GOTO ENDIF_GetIniValue_Exist
+	:ELSE_GetIniValue_Exist
+
 		SET "_Error=1"
-		SET "_ReturnValue=."
-	:GetIniValue_ENDIF_Exist
+		SET "_ReturnValue="
+
+	:ENDIF_GetIniValue_Exist
 
 ENDLOCAL & SET "%~1=%_ReturnValue:~0,-1%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
