@@ -95,8 +95,8 @@ SETLOCAL & SET "_Error=0"
 	REM *
 
 	REM * Set _Return and _Error variables with proper values
-	SET _Return=xxx
-	SET _Error=999
+	SET "_Return=xxx"
+	SET "_Error=999"
 
 :End_FunctionTemplate
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
@@ -129,7 +129,7 @@ SETLOCAL
 	IF "%~2"=="" (DEL "%~1" > NUL 2>&1) & GOTO :ENDIF
 
 		FOR /F "delims=: tokens=1" %%L IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%L
-		SET /A Lines-=%~2
+		SET /A "Lines-=%~2"
 		IF %Lines% LSS 2 GOTO :ENDIF
 			FOR /F "skip=%Lines% tokens=*" %%L IN ('TYPE "%~1"') DO ( ECHO %%L>> "%~1.bak" )
 			COPY "%~1.bak" "%~1" > NUL 2>&1
