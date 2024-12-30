@@ -19,7 +19,11 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Consts
+:: ColorCodes
+::
+:: Defines a set of variables with the different colors and typographic styles.
+::
+:: See all possible combinations below.
 ::
 :Const
 

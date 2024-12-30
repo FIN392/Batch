@@ -21,18 +21,20 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Create a empty file on folder %TEMP% with name '~yyyymmddhhmmss.tmp'.
+:: Create an empty file in the %TEMP% folder with name '~yyyymmddhhmmss.tmp'.
 ::
-:: Remember to delete the temporary files at the end of your script.
+:: Return the name of the created file or ERRORLEVEL = 1 if the file cannot be
+:: created.
 ::
-:: Return name of created file on the {Return_variable}.
-:: Return ERRORLEVEL = 1 if file can't be created.
+:: NOTE: Remember to delete temporary files at the end of the script.
+::
+:: {Return_variable} : Name of the variable where the result will be returned.
 ::
 :CreateTempFile {Return_variable}
 SETLOCAL
 
 	:CreateTempFile_Loop
-		FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET "_File=%TEMP%\~%%t.tmp"
+		FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMddhhmmss'"') DO SET "_File=%TEMP%\~%%t.tmp"
 	IF EXIST "%_File%" GOTO CreateTempFile_Loop
 	
 	(TYPE NUL > "%_File%") 2> NUL

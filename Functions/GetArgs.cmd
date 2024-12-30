@@ -1,8 +1,12 @@
 :: Example of using the function
+::
+:: NOTE: Call this script with different parameters to see how it works.
+:: For example: C:\> GetArgs.cmd "Text to display" /CONSOLE /File:"C:\The log file.tmp" /Lines:1024 0xFABADA
+::
 @ECHO OFF & SETLOCAL
 ECHO.
 
-	CALL :GetArgs /Switch /Param:Value 123 "This is a text"
+	CALL :GetArgs %*
 
 	ECHO Args are:
 	SET "_Arg."
@@ -15,65 +19,52 @@ ENDLOCAL & EXIT /B 0
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Load parameters into variables '_Arg.{parameter}'.
+:: Load arguments into variables '_Arg.xxx'.
 ::
-:: These are the variables created and their values ​​depending on the type of
-:: parameter:
+:: Depending on the parameter type, these are the variables created and their
+:: values:
 ::
-::     Parameters type    Variable
-::     -----------------  ------------------
-::     /{switch}          _Arg.{switch}=ON
-::     /{switch}:{value}  _Arg.{switch}={value}
-::     {value}            _Arg.{n}={value}
+::   Parameters type       Example              Variable name and value
+::   --------------------  -------------------  ------------------------
+::   Simple argument       "Text to display"    _Arg.1="Text to display" (*)
+::   Switch                /CONSOLE             _Arg.CONSOLE=ON
+::   Parameter with value  /File:"C:\file.tmp"  _Arg.File="C:\file.tmp"
 ::
-:: EXAMPLE
-::
-::     C:\> GetArgs.cmd "Text message" /X /F:file.txt "fin392@gmail.com"
-::
-::     Variables:
-::
-::     _Arg.1="Text message"
-::     _Arg.2="fin392@gmail.com"
-::     _Arg.F=file.txt
-::     _Arg.X=ON
+::   (*) In case of multiple arguments, the variable will be named as '_Arg.1',
+::       '_Arg.2', '_Arg.3', etc.
 ::
 :GetArgs
 
-	:: Clean _Arg variables
 	SET "_Arg.=."
 	FOR /F "DELIMS==" %%v IN ('SET _Arg.') DO SET "%%v="
 
-	:: Loop for each argument
 	SET "_GetArgs_i=1"
-	FOR %%v IN (%*) DO CALL :GetArgs_FOR_EachArg %%v
-	GOTO GetArgs_ENDFOR_EachArg
-	:GetArgs_FOR_EachArg
+	FOR %%v IN (%*) DO CALL :FOR_GetArgs_EachArg %%v
+	GOTO ENDFOR_GetArgs_EachArg
+	:FOR_GetArgs_EachArg
 
 		SET "_GetArgs_TmpArg=%~1"
-
-		:: If parameter is not a switch, create '_Arg.{i}={parameter}'
-		IF "%_GetArgs_TmpArg:~0,1%"=="/" GOTO GetArgs_ELSE_NoSwitch
+		IF "%_GetArgs_TmpArg:~0,1%"=="/" GOTO ELSE_GetArgs_NoSwitch
 
 			SET "_Arg.%_GetArgs_i%=%_GetArgs_TmpArg%"
 			SET /A "_GetArgs_i=%_GetArgs_i%+1"
 
-		GOTO GetArgs_ENDIF_NoSwitch
-		:GetArgs_ELSE_NoSwitch
+		GOTO ENDIF_GetArgs_NoSwitch
+		:ELSE_GetArgs_NoSwitch
 
-			:: Create _Arg.{parameter}={Value} or _Arg.{parameter}=ON
-			FOR /F "usebackq tokens=1* delims=: " %%A IN ('%_GetArgs_TmpArg:~1%') DO CALL :GetArgs_FOR_Switch %%A %%B ON
-			GOTO :GetArgs_ENDFOR_Switch
-			:GetArgs_FOR_Switch
+			FOR /F "usebackq tokens=1* delims=: " %%a IN ('%_GetArgs_TmpArg:~1%') DO CALL :FOR_GetArgs_Switch %%a %%b ON
+			GOTO :ENDFOR_GetArgs_Switch
+			:FOR_GetArgs_Switch
 
 				SET "_Arg.%1=%2"
 
 			GOTO :EOF
-			:GetArgs_ENDFOR_Switch
+			:ENDFOR_GetArgs_Switch
 
-		:GetArgs_ENDIF_NoSwitch
+		:ENDIF_GetArgs_NoSwitch
 
 	GOTO :EOF
-	:GetArgs_ENDFOR_EachArg
+	:ENDFOR_GetArgs_EachArg
 
 	SET "_GetArgs_i="
 	SET "_GetArgs_TmpArg="
