@@ -4,14 +4,16 @@ ECHO.
 
 	SET "MyLogFile=%TEMP%\My Log File.txt"
 
+	ECHO Entries on console:
 	:: Write lines to log
-	CALL :WriteLog "%MyLogFile%" FATAL "Log entry text" /CON
-	CALL :WriteLog "%MyLogFile%" ERROR "Just another line to see all the possible Severities" /CON
-	CALL :WriteLog "%MyLogFile%" WARN  "Just another line to see all the possible Severities" /CON
-	CALL :WriteLog "%MyLogFile%" INFO  "Just another line to see all the possible Severities"
-	CALL :WriteLog "%MyLogFile%" DEBUG "Just another line to see all the possible Severities"
+	CALL :WriteLog "%MyLogFile%" FATAL "Fatal entry also displayed on console" /CON
+	CALL :WriteLog "%MyLogFile%" ERROR "Just a error line also displayed on console" /CON
+	CALL :WriteLog "%MyLogFile%" WARN  "WARNING!! The process is working" /CON
+	CALL :WriteLog "%MyLogFile%" INFO  "This is just for your information"
+	CALL :WriteLog "%MyLogFile%" DEBUG "Debugging is the process of identifying, analyzing, and resolving bugs"
 
 	ECHO.
+	ECHO Entries on file:
 	TYPE "%MyLogFile%"
 	DEL "%MyLogFile%" > NUL 2>&1
 	ECHO.
@@ -25,7 +27,13 @@ ENDLOCAL & EXIT /B 0
 ::
 :: Write a message in a logfile (and console).
 ::
-:WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
+:: {LogFile}       : File where the entry will be added. 
+:: DEBUG | INFO | WARN | ERROR | FATAL : Log entry severity. Any word of 5 or
+::                   less characters, but these are the most common ones.
+:: {string}        : Text for the log entry.
+:: /CON [Optional] : Number of lines to keep. 
+::
+:WriteLog {LogFile} { DEBUG | INFO | WARN | ERROR | FATAL } {string} [/CON]
 SETLOCAL
 
 	FOR /F "tokens=*" %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyy-MM-dd hh:mm:ss.fff'"') DO SET "Timestamp=%%t"

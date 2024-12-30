@@ -4,27 +4,27 @@ ECHO.
 
 	SET MyString="   abc def"
 	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
 	ECHO.
 
 	SET MyString="abc   def"
 	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
 	ECHO.
 
 	SET MyString="abc def   "
 	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
 	ECHO.
 
 	SET MyString="   abc   def   "
 	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
 	ECHO.
 
 	SET MyString="abc def"
 	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO [%MyString%] trimmer is [%MyStringTrimmed%]
+	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
 	ECHO.
 
 	PAUSE
@@ -35,6 +35,9 @@ ENDLOCAL & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Removes leading, trailing and double spaces from the string.
+::
+:: {Return_variable} : Name of the variable where the result will be returned.
+:: {String}          : String to be trimmed.
 ::
 :StrTrim {Return_variable} {String}
 SETLOCAL

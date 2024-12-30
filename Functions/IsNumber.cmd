@@ -19,6 +19,9 @@ ENDLOCAL & EXIT /B 0
 ::
 :: Return TRUE if 'value' is a number.
 ::
+:: {Return_variable} : Name of the variable where the result will be returned.
+:: {Value}           : Value to be checked.
+::
 :IsNumber {Return_variable} {Value}
 
 	SET "%~1=FALSE"

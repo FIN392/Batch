@@ -15,8 +15,11 @@ ECHO.
 	
 	:: Example for other languajes
 	CHCP 65001
-	CALL :StrUppercase MyStrUCase "'Árbol' is tree in Spanish (ESPAÑOL)"
-	ECHO Capital letters=[%MyStrUCase%]
+	CALL :StrUppercase MyStrLCase "El niño trepó al árbol para ver a la cigüeña (ESPAÑOL)"
+	ECHO Lower case=[%MyStrLCase%]
+	ECHO.
+	CALL :StrUppercase MyStrLCase "L'œuvre de l'architecte est décorée avec une élégance raffinée (FRANÇAIS)"
+	ECHO Lower case=[%MyStrLCase%]
 	ECHO.
 	
 	PAUSE
@@ -27,6 +30,9 @@ ENDLOCAL & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Converts the string to uppercase.
+::
+:: {Return_variable} : Name of the variable where the result will be returned.
+:: {String}          : String to be converted.
 ::
 :StrUppercase {Return_variable} {String}
 SETLOCAL
@@ -61,6 +67,7 @@ SETLOCAL
 	SET "_Return=%_Return:z=Z%"
 
 	:: Add your language-specific characters here
+	:: Spanish
 	SET "_Return=%_Return:á=Á%"
 	SET "_Return=%_Return:é=É%"
 	SET "_Return=%_Return:í=Í%"
@@ -68,6 +75,23 @@ SETLOCAL
 	SET "_Return=%_Return:ú=Ú%"
 	SET "_Return=%_Return:ü=Ü%"
 	SET "_Return=%_Return:ñ=Ñ%"
+	:: French
+	SET "_Return=%_Return:à=À%"
+	SET "_Return=%_Return:â=Â%"
+	SET "_Return=%_Return:æ=Æ%"
+	SET "_Return=%_Return:ç=Ç%"
+	SET "_Return=%_Return:é=É%"
+	SET "_Return=%_Return:è=È%"
+	SET "_Return=%_Return:ê=Ê%"
+	SET "_Return=%_Return:ë=Ë%"
+	SET "_Return=%_Return:î=Î%"
+	SET "_Return=%_Return:ï=Ï%"
+	SET "_Return=%_Return:ô=Ô%"
+	SET "_Return=%_Return:œ=Œ%"
+	SET "_Return=%_Return:ù=Ù%"
+	SET "_Return=%_Return:û=Û%"
+	SET "_Return=%_Return:ü=Ü%"
+	SET "_Return=%_Return:ÿ=Ÿ%"
 		
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

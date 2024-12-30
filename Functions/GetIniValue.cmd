@@ -26,8 +26,8 @@ ENDLOCAL & EXIT /B 0
 ::
 :: {Return_variable} : Name of the variable where the result will be returned.
 :: {INI_file}        : Name of the INI file.
-:: {Section}         : 
-:: {Key}           : 
+:: {Section}         : INI Section where the key should be present.
+:: {Key}             : INI Key from which its value will be obtained. 
 ::
 :GetIniValue {Return_variable} {INI_file} {Section} {Key}
 SETLOCAL
