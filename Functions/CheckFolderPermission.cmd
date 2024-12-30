@@ -35,14 +35,15 @@ ENDLOCAL & EXIT /B 0
 :: {Folder}          : Folder on which permissions are checked.
 ::
 :CheckFolderPermission {Return_variable} {Folder}
+SETLOCAL
 
-	SET "%~1=NA"
+	SET "_Permissions=NA"
 	
-	IF EXIST "%~2\*.*" SET "%~1=RO"
+	IF EXIST "%~2\*.*" SET "_Permissions=RO"
 	
 	ECHO "%DATE% %TIME% Checking folder permission..." > "%~2\CheckFolderPermission.tmp" 2> NUL
-	IF EXIST "%~2\CheckFolderPermission.tmp" SET "%~1=RW"
+	IF EXIST "%~2\CheckFolderPermission.tmp" SET "%_Permissions=RW"
 	DEL "%~2\CheckFolderPermission.tmp" > NUL 2> NUL
 
-EXIT /B 0
+ENDLOCAL & SET "%~1=%_Permissions%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

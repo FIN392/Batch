@@ -28,7 +28,7 @@ ENDLOCAL & EXIT /B 0
 ::
 :: {Return_variable} : Root of the variable names where the results will be
 ::                     returned
-:: {Item_name}        : Name of folder or file to analyze.
+:: {Item_name}       : Name of folder or file to analyze.
 ::
 :GetFInfo {Return_variable} {Item_name}
 
