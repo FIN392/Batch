@@ -37,7 +37,7 @@
 ::                 - Now removed features.
 ::                 - Any bug fixes.
 ::                 - Security vulnerabilities.
-::  
+::
 :Main
 @ECHO OFF & SETLOCAL ENABLEDELAYEDEXPANSION & SET "_Error=0"
 
