@@ -1,4 +1,4 @@
-:: Example of using the function
+:: Example of function usage
 @ECHO OFF & SETLOCAL
 
 	CLS
@@ -41,6 +41,7 @@
 	ECHO This line is never shown because the script is already cancelled.
 	
 ENDLOCAL & EXIT /B 0
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::

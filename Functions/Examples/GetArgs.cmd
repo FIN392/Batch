@@ -1,4 +1,4 @@
-:: Example of using the function
+:: Example of function usage
 ::
 :: NOTE: Call this script with different parameters to see how it works.
 :: For example: C:\> GetArgs.cmd "Text to display" /CONSOLE /File:"C:\The log file.tmp" /Lines:1024 0xFABADA

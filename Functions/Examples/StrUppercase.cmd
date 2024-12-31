@@ -1,4 +1,4 @@
-:: Example of using the function
+:: Example of function usage
 @ECHO OFF & SETLOCAL
 ECHO.
 
