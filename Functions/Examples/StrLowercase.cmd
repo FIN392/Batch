@@ -1,3 +1,32 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+ECHO.
+
+	:: Return the string in lowercase
+	SET "MyString=AbcDef"
+	CALL :StrLowercase MyStrLCase %MyString%
+	ECHO [%MyString%] in lower case is [%MyStrLCase%]
+	ECHO.
+
+	:: Remove surrounding quotes if exist
+	CALL :StrLowercase MyStrLCase "This is "another" test"
+	ECHO ["This is "another" test"] in lower case is [%MyStrLCase%]
+	ECHO.
+	
+	:: Example for other languajes
+	CHCP 65001
+	CALL :StrLowercase MyStrLCase "El niño trepó al árbol para ver a la cigüeña (ESPAÑOL)"
+	ECHO Lower case=[%MyStrLCase%]
+	ECHO.
+	CALL :StrLowercase MyStrLCase "L'œuvre de l'architecte est décorée avec une élégance raffinée (FRANÇAIS)"
+	ECHO Lower case=[%MyStrLCase%]
+	ECHO.
+	
+	PAUSE
+	
+ENDLOCAL & EXIT /B 0
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Convert the string to lowercase.

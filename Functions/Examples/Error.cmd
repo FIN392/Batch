@@ -1,3 +1,47 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+
+	CLS
+	ECHO EXAMPLE #1: Calling 'Error'
+	ECHO NOTE: The error code ('0x1A' in this case ) should be unique within the script
+	ECHO.
+	ECHO C:\^> CALL :Error 0x1A "This is the error message"
+	
+	CALL :Error 0x1A "This is the error message"
+	
+	ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+	ECHO.
+	PAUSE
+	ECHO.
+
+	:::::::::::::::::::::::::::::::::::::::::::::::::
+
+	CLS
+	ECHO EXAMPLE #2: Calling 'Error' if command fail
+	ECHO.
+	ECHO C:\^> DIR OOPS:\ ^|^| (CALL :Error 0x2B "DIR command failed")
+	
+	DIR OOPS:\ 2> NUL || (CALL :Error 0x2B "DIR command failed")
+	
+	ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+	ECHO.
+	PAUSE
+	ECHO.
+
+	:::::::::::::::::::::::::::::::::::::::::::::::::
+
+	CLS
+	ECHO EXAMPLE #3: Calling 'Error' with /FATAL to finish the script
+	ECHO NOTE: CMD windows is going to be closed
+	ECHO.
+	ECHO C:\^> CALL :Error 0xFF "This is a fatal error" /FATAL
+	
+	CALL :Error 0xFF "This is a fatal error" /FATAL
+	
+	ECHO This line is never shown because the script is already cancelled.
+	
+ENDLOCAL & EXIT /B 0
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Display an error message and returns an error code.

@@ -1,3 +1,22 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+ECHO.
+
+	:: Call 'Const' at the beginning of your script
+	:: Nothing happens yet, only the variables are defined
+	CALL :Const
+
+	:: Then you can use the colors in ECHO...
+	ECHO.	%_FontUnderline%%_ColorBgRed%%_ColorFgBlueB%This is bright blue over red and underlined%_FontNormal%
+	ECHO.
+	ECHO.	%_Beep%BEEP!
+	ECHO.
+
+	PAUSE
+
+ENDLOCAL & EXIT /B 0
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: ColorCodes

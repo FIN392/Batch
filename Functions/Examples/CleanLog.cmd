@@ -1,3 +1,30 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+ECHO.
+
+	SET "MyLogFile=%TEMP%\My Log File.log"
+
+	ECHO --- Before
+	TYPE "%MyLogFile%"
+	ECHO ---
+
+	:: Clean existing log file keeping only 2 lines
+	CALL :CleanLog "%MyLogFile%" 2
+
+	ECHO --- After
+	TYPE "%MyLogFile%"
+	ECHO ---
+
+	:: Write 4 additional lines to log
+	>> "%MyLogFile%" ECHO %DATE% %TIME% FATAL "Just another line to see all the possible Severities"
+	>> "%MyLogFile%" ECHO %DATE% %TIME% ERROR "Just another line to see all the possible Severities"
+	>> "%MyLogFile%" ECHO %DATE% %TIME% WARN  "Just another line to see all the possible Severities"
+	>> "%MyLogFile%" ECHO %DATE% %TIME% INFO  "Just another line to see all the possible Severities"
+	>> "%MyLogFile%" ECHO %DATE% %TIME% DEBUG "Just another line to see all the possible Severities"
+
+ENDLOCAL & EXIT /B 0
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Clean a log file keeping only the last 'n' lines.

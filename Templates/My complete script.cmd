@@ -132,14 +132,14 @@ ENDLOCAL & EXIT /B 0
 :CleanLog {LogFile} [Lines]
 SETLOCAL
 
-	IF "%~2"=="" (DEL "%~1" > NUL 2>&1) & GOTO :ENDIF
+	IF "%~2"=="" (DEL "%~1" > NUL 2> NUL) & GOTO :ENDIF
 
 		FOR /F "delims=: tokens=1" %%L IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%L
 		SET /A "Lines-=%~2"
 		IF %Lines% LSS 2 GOTO :ENDIF
 			FOR /F "skip=%Lines% tokens=*" %%L IN ('TYPE "%~1"') DO ( ECHO %%L>> "%~1.bak" )
-			COPY "%~1.bak" "%~1" > NUL 2>&1
-			DEL "%~1.bak" > NUL 2>&1
+			COPY "%~1.bak" "%~1" > NUL 2> NUL
+			DEL "%~1.bak" > NUL 2> NUL
 
 	:ENDIF
 	

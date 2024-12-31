@@ -1,3 +1,27 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+ECHO.
+
+	:: Get file info
+	CALL :GetFInfo MyFileInfo "C:\Windows\win.ini"
+	SET MyFileInfo.
+	ECHO.
+
+	:: Get folder info
+	CALL :GetFInfo MyFolderInfo C:\Windows
+	SET MyFolderInfo.
+	ECHO.
+
+	:: Try to get information from a file that does not exist
+	CALL :GetFInfo MyNoExistFile C:\No.Exist
+	SET MyNoExistFile.
+	ECHO.
+
+	PAUSE
+
+ENDLOCAL & EXIT /B 0	
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Get information about a file or folder.

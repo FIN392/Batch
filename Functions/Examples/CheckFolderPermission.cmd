@@ -1,3 +1,27 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+ECHO.
+
+	:: Folder with Read Only access
+	CALL :CheckFolderPermission MyRights "C:\Windows"
+	ECHO Permission for "C:\Windows" is [%MyRights%]
+	ECHO.
+
+	:: Folder with Read Write access
+	CALL :CheckFolderPermission MyRights "%TEMP%"
+	ECHO Permission for "%TEMP%" is [%MyRights%]
+	ECHO.
+
+	:: Folder with No access
+	CALL :CheckFolderPermission MyRights "C:\System Volume Information"
+	ECHO Permission for "C:\System Volume Information" is [%MyRights%]
+	ECHO.
+
+	PAUSE
+
+ENDLOCAL & EXIT /B 0
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Check folder permission.

@@ -1,3 +1,28 @@
+:: Example of using the function
+@ECHO OFF & SETLOCAL
+ECHO.
+
+	SET "MyLogFile=%TEMP%\My Log File.txt"
+
+	ECHO Entries on console:
+	:: Write lines to log
+	CALL :WriteLog "%MyLogFile%" FATAL "Fatal entry also displayed on console" /CON
+	CALL :WriteLog "%MyLogFile%" ERROR "Just a error line also displayed on console" /CON
+	CALL :WriteLog "%MyLogFile%" WARN  "WARNING!! The process is working" /CON
+	CALL :WriteLog "%MyLogFile%" INFO  "This is just for your information"
+	CALL :WriteLog "%MyLogFile%" DEBUG "Debugging is the process of identifying, analyzing, and resolving bugs"
+
+	ECHO.
+	ECHO Entries on file:
+	TYPE "%MyLogFile%"
+	DEL "%MyLogFile%" > NUL 2> NUL
+	ECHO.
+
+	PAUSE
+
+ENDLOCAL & EXIT /B 0
+
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Write a message in a logfile (and console).

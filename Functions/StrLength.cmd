@@ -1,30 +1,3 @@
-:: Example of using the function
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	:: Return the string length
-	SET "MyString=abcdef"
-	CALL :StrLength MyStrLength %MyString%
-	ECHO Length of "%MyString%" is [%MyStrLength%]
-	ECHO.
-	
-	:: If empty, return 0
-	SET "MyString="
-	CALL :StrLength MyStrLength %MyString%
-	ECHO Length of "%MyString%" is [%MyStrLength%]
-	ECHO.
-
-	:: If longer than 256, return 256
-	SET "MyString=123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_"
-	CALL :StrLength MyStrLength %MyString%
-	ECHO Length of "%MyString%" is [%MyStrLength%]
-	ECHO.
-
-	PAUSE
-
-ENDLOCAL & EXIT /B 0
-
-
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Return the length of a string.
