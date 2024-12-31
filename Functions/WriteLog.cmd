@@ -33,6 +33,8 @@ ENDLOCAL & EXIT /B 0
 :: {string}        : Text for the log entry.
 :: /CON [Optional] : Number of lines to keep. 
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :WriteLog {LogFile} { DEBUG | INFO | WARN | ERROR | FATAL } {string} [/CON]
 SETLOCAL
 

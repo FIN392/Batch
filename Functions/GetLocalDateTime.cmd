@@ -20,6 +20,8 @@ ENDLOCAL & EXIT /B 0
 ::
 :: {Return_variable} : Name of the variable where the result will be returned.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :GetLocalDateTime {Return_variable}
 
 	FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss.fff'"') DO SET "%~1=%%t"

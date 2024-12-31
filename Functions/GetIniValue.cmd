@@ -29,6 +29,8 @@ ENDLOCAL & EXIT /B 0
 :: {Section}         : INI Section where the key should be present.
 :: {Key}             : INI Key from which its value will be obtained. 
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :GetIniValue {Return_variable} {INI_file} {Section} {Key}
 SETLOCAL
 

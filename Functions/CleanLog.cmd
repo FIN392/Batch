@@ -36,6 +36,8 @@ ENDLOCAL & EXIT /B 0
 :: {LogFile}          : Name of the log file to clean.
 :: {Lines} [Optional] : Number of lines to keep. 
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :CleanLog {LogFile} [{Lines}]
 SETLOCAL
 

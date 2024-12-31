@@ -33,6 +33,8 @@ ENDLOCAL & EXIT /B 0
 ::   (*) In case of multiple arguments, the variable will be named as '_Arg.1',
 ::       '_Arg.2', '_Arg.3', etc.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :GetArgs
 
 	SET "_Arg.=."

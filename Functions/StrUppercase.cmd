@@ -34,6 +34,8 @@ ENDLOCAL & EXIT /B 0
 :: {Return_variable} : Name of the variable where the result will be returned.
 :: {String}          : String to be converted.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :StrUppercase {Return_variable} {String}
 SETLOCAL
 

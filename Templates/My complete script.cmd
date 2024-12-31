@@ -24,7 +24,7 @@
 :: 
 ::  License: https://opensource.org/licenses/MIT
 :: 
-::  Source code repository: https://github.com/FIN392/Batch
+::  Repository: https://github.com/FIN392/Batch
 :: 
 ::  Change Log
 ::  ----------
@@ -87,6 +87,8 @@ PROMPT & ENDLOCAL & EXIT /B %_Error%
 :: explanation of each of the parameters. The line length should be adjusted to
 :: 80 characters.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :FunctionTemplate ReturnVar Param1 Param2 Param3
 SETLOCAL & SET "_Error=0"
 
@@ -106,6 +108,8 @@ ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
 ::
 :: Write a message in a logfile (and console).
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
 SETLOCAL
 
@@ -122,6 +126,8 @@ ENDLOCAL & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Clean a logfile keeping only 'n' lines.
+::
+:: Repository: https://github.com/FIN392/Batch
 ::
 :CleanLog {LogFile} [Lines]
 SETLOCAL

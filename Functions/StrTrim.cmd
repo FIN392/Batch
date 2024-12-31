@@ -39,6 +39,8 @@ ENDLOCAL & EXIT /B 0
 :: {Return_variable} : Name of the variable where the result will be returned.
 :: {String}          : String to be trimmed.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :StrTrim {Return_variable} {String}
 SETLOCAL
 	

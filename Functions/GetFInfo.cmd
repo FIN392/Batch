@@ -30,6 +30,8 @@ ENDLOCAL & EXIT /B 0
 ::                     returned
 :: {Item_name}       : Name of folder or file to analyze.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :GetFInfo {Return_variable} {Item_name}
 
 	FOR /F "tokens=1* delims==" %%v IN ('^(SET %~1.^) 2^> NUL') DO SET "%%v="

@@ -34,6 +34,8 @@ ENDLOCAL & EXIT /B 0
 :: {Return_variable} : Name of the variable where the result will be returned.
 :: {Folder}          : Folder on which permissions are checked.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :CheckFolderPermission {Return_variable} {Folder}
 SETLOCAL
 

@@ -53,6 +53,8 @@ ENDLOCAL & EXIT /B 0
 :: /FATAL [Optional]   : The script ends, otherwise control returns to the line
 ::                       after the call.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :Error {Unique_error_code} {Error_description} [/FATAL]
 SETLOCAL
 

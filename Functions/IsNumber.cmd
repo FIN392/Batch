@@ -22,6 +22,8 @@ ENDLOCAL & EXIT /B 0
 :: {Return_variable} : Name of the variable where the result will be returned.
 :: {Value}           : Value to be checked.
 ::
+:: Repository: https://github.com/FIN392/Batch
+::
 :IsNumber {Return_variable} {Value}
 
 	SET "%~1=FALSE"
