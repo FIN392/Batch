@@ -3,6 +3,7 @@
 ## Table of Contents <!-- omit in toc -->
 - [Set 'TempFile' with a temporal file name in format '_~scriptname-nnnnnnnn.tmp_'](#set-tempfile-with-a-temporal-file-name-in-format-scriptname-nnnnnnnntmp)
 - [Delete all the temporal files for this script](#delete-all-the-temporal-files-for-this-script)
+- [Get number of files in a folder](#get-number-of-files-in-a-folder)
 - [Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'](#set-timestamp-with-current-date-and-time-in-format-yyyymmdd-hhmmss)
 - [Set Removes leading, trailing and double spaces from a string](#set-removes-leading-trailing-and-double-spaces-from-a-string)
 - [Check if a value is a number](#check-if-a-value-is-a-number)
@@ -22,6 +23,11 @@ SET TempFile=%TEMP%\~%~n0-%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDOM:~-1%%RANDO
 _(Assuming the file names were created as the previous one)_
 ```batchfile
 DEL "%TEMP%\~%~n0-*.tmp"
+```
+
+## Get number of files in a folder 
+```batchfile
+FOR /F "tokens=1" %%f IN ('DIR "%FolderName%" /S /A-D /-C ^| FIND /V " 0 "') DO SET /A "Files=%%f+0"
 ```
 
 ## Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'

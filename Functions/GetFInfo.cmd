@@ -1,3 +1,9 @@
+@echo off
+call :GetFInfo qwe %0
+set qwe
+
+exit /b 0
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Get information about a file or folder.
@@ -26,10 +32,10 @@
 	SET "%~1.ShortName=%~s2"
 	SET "%~1.Attributes=%~a2"
 
-	ECHO %~a2 | findstr.exe /C:"d" > NUL
+	ECHO %~a2 | FIND "d" > NUL
 	IF ERRORLEVEL 1 GOTO :ELSE_GetFInfo_isFile
 		SET "%~1.Type=FOLDER"
-		FOR /F "tokens=1" %%f IN ('DIR /S /A-D /-C ^| FINDSTR /V " 0 "') DO SET "%~1.Files=%%f"
+		FOR /F "tokens=1" %%f IN ('DIR "%~f2" /S /A-D /-C ^| FIND /V " 0 "') DO SET "%~1.Files=%%f"
 	GOTO :ENDIF_GetFInfo_isFile
 	:ELSE_GetFInfo_isFile
 		SET "%~1.Type=FILE"

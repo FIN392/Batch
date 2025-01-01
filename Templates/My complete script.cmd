@@ -5,17 +5,16 @@
 ::?
 ::? Syntax:
 ::?
-::?   Script_Template.cmd [/ON | /OFF] [/X] [/F:{filename}]
+::?   Script_Template.cmd { /ON | /OFF } [/X] /F:<filename>
 ::?
-::?     [ /ON | /OFF ]   Explanation of this parameter. The length of the line
-::?                      must be 80 characters.
-::?     [/X]             Explanation of this parameter.
-::?     [/F:{filename}]  Explanation of this parameter.
+::?     { /ON | /OFF }  Explanation of this eligible but mandatory switch. The
+::?                     length of the line must be 80 characters.
+::?     [/X]            [Optional]  Explanation of this switch.
+::?     /F:<filename>   Explanation of this mandatory parameter.
 ::?
 ::? Requirements:
 ::?
 ::?   (none)
-::?       or the list of required files, configurations, etc.
 ::?   Internet access to 'https://github.com/FIN392'
 ::?   File 'Script_Template.ini' on same folder
 ::?   Python 3.x installed
@@ -89,7 +88,7 @@ PROMPT & ENDLOCAL & EXIT /B %_Error%
 ::
 :: Repository: https://github.com/FIN392/Batch
 ::
-:FunctionTemplate ReturnVar Param1 Param2 Param3
+:FunctionTemplate ReturnVar PARAMLITERAL <Param> [<ParamOptional>] { /X:<ParamChoice1> | /Z:<ParamChoice2> }
 SETLOCAL & SET "_Error=0"
 
 	REM *
@@ -102,48 +101,6 @@ SETLOCAL & SET "_Error=0"
 
 :End_FunctionTemplate
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B %_Error%
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-:: Write a message in a logfile (and console).
-::
-:: Repository: https://github.com/FIN392/Batch
-::
-:WriteLog {LogFile} {DEBUG | INFO | WARN | ERROR | FATAL} {string} [/CON]
-SETLOCAL
-
-	FOR /F "tokens=*" %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyy-MM-dd hh:mm:ss.fff'"') DO SET "Timestamp=%%t"
-	SET "Severity=%~2     "
-	SET "Message=%~3"
-
-	>> "%~1" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
-	IF /I "%~4"=="/CON" ECHO %Timestamp% ^| %Severity:~0,5% ^| %Message%
-
-ENDLOCAL & EXIT /B 0
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
-:: Clean a logfile keeping only 'n' lines.
-::
-:: Repository: https://github.com/FIN392/Batch
-::
-:CleanLog {LogFile} [Lines]
-SETLOCAL
-
-	IF "%~2"=="" (DEL "%~1" > NUL 2> NUL) & GOTO :ENDIF
-
-		FOR /F "delims=: tokens=1" %%L IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%L
-		SET /A "Lines-=%~2"
-		IF %Lines% LSS 2 GOTO :ENDIF
-			FOR /F "skip=%Lines% tokens=*" %%L IN ('TYPE "%~1"') DO ( ECHO %%L>> "%~1.bak" )
-			COPY "%~1.bak" "%~1" > NUL 2> NUL
-			DEL "%~1.bak" > NUL 2> NUL
-
-	:ENDIF
-	
-ENDLOCAL & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: EOF ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
