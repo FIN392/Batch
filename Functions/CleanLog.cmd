@@ -16,7 +16,7 @@ SETLOCAL
 
 	IF "%~2"=="" (DEL "%~1" > NUL 2> NUL) & GOTO :ENDIF
 
-		FOR /F "delims=: tokens=1" %%l IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%l
+		FOR /F "delims=[] tokens=1" %%l IN ('FIND " " /N "%~1"') DO SET Lines=%%l
 		SET /A "Lines-=%~2"
 		IF %Lines% LSS 2 GOTO :ENDIF
 			FOR /F "skip=%Lines% tokens=*" %%l IN ('TYPE "%~1"') DO ( ECHO %%l>> "%~1.bak" )

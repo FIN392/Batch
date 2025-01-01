@@ -120,7 +120,7 @@ EXIT /B 0
 
 :GetLocalDateTime
 SETLOCAL
-	FOR /F %%A IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET _%%t
-ENDLOCAL & SET %1=%_LocalDateTime%
+    FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "_DateTime=%%a %%b"
+ENDLOCAL & SET %1=%_DateTime%
 GOTO :EOF
 ```

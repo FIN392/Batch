@@ -15,7 +15,8 @@
 SETLOCAL
 
 	:CreateTempFile_Loop
-		FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMddhhmmss'"') DO SET "_File=%TEMP%\~%%t.tmp"
+		FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "DateTime=%%a %%b"
+		SET "_File=%TEMP%\~%DateTime:~0,4%%DateTime:~5,2%%DateTime:~8,2%%DateTime:~11,2%%DateTime:~14,2%%DateTime:~17,2%.tmp"
 	IF EXIST "%_File%" GOTO CreateTempFile_Loop
 	
 	(TYPE NUL > "%_File%") 2> NUL

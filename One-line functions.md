@@ -4,7 +4,7 @@
 - [Set 'TempFile' with a temporal file name in format '_~scriptname-nnnnnnnn.tmp_'](#set-tempfile-with-a-temporal-file-name-in-format-scriptname-nnnnnnnntmp)
 - [Delete all the temporal files for this script](#delete-all-the-temporal-files-for-this-script)
 - [Get number of files in a folder](#get-number-of-files-in-a-folder)
-- [Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'](#set-timestamp-with-current-date-and-time-in-format-yyyymmdd-hhmmss)
+- [Set 'Timestamp' with current date and time in format '_yyyy/mm/dd hh:mm:ss_'](#set-timestamp-with-current-date-and-time-in-format-yyyymmdd-hhmmss)
 - [Set Removes leading, trailing and double spaces from a string](#set-removes-leading-trailing-and-double-spaces-from-a-string)
 - [Check if a value is a number](#check-if-a-value-is-a-number)
 - [Add a line to a log file](#add-a-line-to-a-log-file)
@@ -30,10 +30,9 @@ DEL "%TEMP%\~%~n0-*.tmp"
 FOR /F "tokens=1" %%f IN ('DIR "%FolderName%" /S /A-D /-C ^| FIND /V " 0 "') DO SET /A "Files=%%f+0"
 ```
 
-## Set 'Timestamp' with current date and time in format '_yyyyMMdd-hhmmss_'
-_(I wouldn't like to use Powershell but I don't know how to do it any other way)_
+## Set 'Timestamp' with current date and time in format '_yyyy/mm/dd hh:mm:ss_'
 ```batchfile
-FOR /F %%A IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss'"') DO SET Timestamp=%%A
+FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "DateTime=%%a %%b"
 ```
 
 ## Set Removes leading, trailing and double spaces from a string

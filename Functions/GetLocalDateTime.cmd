@@ -1,8 +1,6 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return local date and time with format 'yyyyMMdd-hhmmss.fff'.
-::
-:: NOTE: PowerShell version 2.0 or higher must be installed.
+:: Return local date and time with format 'yyyy/mm/dd hh:mm:ss'.
 ::
 :: {Return_variable} : Name of the variable where the result will be returned.
 ::
@@ -10,7 +8,7 @@
 ::
 :GetLocalDateTime {Return_variable}
 
-	FOR /F %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyyMMdd-hhmmss.fff'"') DO SET "%~1=%%t"
+	FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "%~1=%%a %%b"
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

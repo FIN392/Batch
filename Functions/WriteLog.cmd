@@ -13,7 +13,7 @@
 :WriteLog {LogFile} { DEBUG | INFO | WARN | ERROR | FATAL } {string} [/CON]
 SETLOCAL
 
-	FOR /F "tokens=*" %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyy-MM-dd hh:mm:ss.fff'"') DO SET "Timestamp=%%t"
+	FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "Timestamp=%%a %%b"
 	SET "Severity=%~2     "
 	SET "Message=%~3"
 

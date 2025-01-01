@@ -14,7 +14,7 @@
 :Error {Unique_error_code} {Error_description} [/FATAL]
 SETLOCAL
 
-	FOR /F "tokens=*" %%t IN ('powershell -NoProfile -NonInteractive -NoLogo -Command "Get-Date -Format 'yyyy-MM-dd hh:mm:ss'"') DO SET "_Err.TimeStamp=%%t"
+	FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET SET "_Err.TimeStamp=%%a %%b"
 
 	SET /A "_Err.Code=%~1+0"
 	SET "_Err.Fatal=/B"
