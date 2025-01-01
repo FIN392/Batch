@@ -1,13 +1,19 @@
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Convert the string to lowercase.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
-:: {String}          : String to be converted.
+:: Syntax: StrLowercase <Return_variable> <String>
+::     <Return_variable> : Variable where the result will be returned.
+::     <String>          : String to be converted.
 ::
-:: Repository: https://github.com/FIN392/Batch
+::     (See an example below)
 ::
-:StrLowercase {Return_variable} {String}
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:StrLowercase <Return_variable> <String>
 SETLOCAL
 
 	SET "_Return=%~2"
@@ -68,3 +74,31 @@ SETLOCAL
 
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyText=This is a test"
+CALL %Func_%StrLowercase MyTextLCase "%MyText%"
+ECHO [%MyText%] = [%MyTextLCase%]
+
+CHCP 65001 > NUL 2> NUL
+
+SET "MyText=Español: El niño trepó al árbol para ver a la cigüeña"
+CALL %Func_%StrLowercase MyTextLCase "%MyText%"
+ECHO [%MyText%] = [%MyTextLCase%]
+
+SET "MyText=Français: L'œuvre de l'architecte est décorée avec une élégance raffinée"
+CALL %Func_%StrLowercase MyTextLCase "%MyText%"
+ECHO [%MyText%] = [%MyTextLCase%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [This is a test] = [this is a test]
+:: [Español: El niño trepó al árbol para ver a la cigüeña] = [español: el niño trepó al árbol para ver a la cigüeña]
+:: [Français: L'œuvre de l'architecte est décorée avec une élégance raffinée] = [français: l'œuvre de l'architecte est décorée avec une élégance raffinée]
+::

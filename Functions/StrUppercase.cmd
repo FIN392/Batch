@@ -1,42 +1,19 @@
-:: Example of using the function
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	:: Return the string in uppercase
-	SET "MyString=AbcDef"
-	CALL :StrUppercase MyStrUCase %MyString%
-	ECHO [%MyString%] in capital letters is [%MyStrUCase%]
-	ECHO.
-
-	:: Remove surrounding quotes if exist
-	CALL :StrUppercase MyStrUCase "This is "another" test"
-	ECHO ["This is "another" test"] in capital letters is [%MyStrUCase%]
-	ECHO.
-	
-	:: Example for other languajes
-	CHCP 65001
-	CALL :StrUppercase MyStrLCase "El niño trepó al árbol para ver a la cigüeña (ESPAÑOL)"
-	ECHO Lower case=[%MyStrLCase%]
-	ECHO.
-	CALL :StrUppercase MyStrLCase "L'œuvre de l'architecte est décorée avec une élégance raffinée (FRANÇAIS)"
-	ECHO Lower case=[%MyStrLCase%]
-	ECHO.
-	
-	PAUSE
-	
-ENDLOCAL & EXIT /B 0
-
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Converts the string to uppercase.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
-:: {String}          : String to be converted.
+:: Syntax: StrUppercase <Return_variable> <String>
+::     <Return_variable> : Variable where the result will be returned.
+::     <String>          : String to be converted.
 ::
-:: Repository: https://github.com/FIN392/Batch
+::     (See an example below)
 ::
-:StrUppercase {Return_variable} {String}
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:StrUppercase <Return_variable> <String>
 SETLOCAL
 
 	SET "_Return=%~2"
@@ -97,3 +74,31 @@ SETLOCAL
 		
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyText=This is a test"
+CALL %Func_%StrUppercase MyTextUCase "%MyText%"
+ECHO [%MyText%] & ECHO [%MyTextUCase%]
+
+CHCP 65001 > NUL 2> NUL
+
+SET "MyText=Español: El niño trepó al árbol para ver a la cigüeña"
+CALL %Func_%StrUppercase MyTextUCase "%MyText%"
+ECHO [%MyText%] = [%MyTextUCase%]
+
+SET "MyText=Français: L'œuvre de l'architecte est décorée avec une élégance raffinée"
+CALL %Func_%StrUppercase MyTextUCase "%MyText%"
+ECHO [%MyText%] = [%MyTextUCase%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [This is a test] = [THIS IS A TEST]
+:: [Español: El niño trepó al árbol para ver a la cigüeña] = [ESPAÑOL: EL NIÑO TREPÓ AL ÁRBOL PARA VER A LA CIGÜEÑA]
+:: [Français: L'œuvre de l'architecte est décorée avec une élégance raffinée] = [FRANÇAIS: L'ŒUVRE DE L'ARCHITECTE EST DÉCORÉE AVEC UNE ÉLÉGANCE RAFFINÉE]
+::

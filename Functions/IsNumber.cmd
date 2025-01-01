@@ -1,30 +1,19 @@
-:: Example of using the function
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	CALL :IsNumber MyIsNumberResult 123
-	ECHO Is 123 a number? [%MyIsNumberResult%]
-	ECHO.
-	
-	CALL :IsNumber MyIsNumberResult "qwe asd"
-	ECHO Is "qwe asd" a number? [%MyIsNumberResult%]
-	ECHO.
-	
-	PAUSE
-	
-ENDLOCAL & EXIT /B 0
-
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return TRUE if 'value' is a number.
+:: Returns TRUE if 'value' is a number. Otherwise returns FALSE.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
-:: {Value}           : Value to be checked.
+:: Syntax: IsNumber <Return_variable> <Value>
+::     <Return_variable> : Variable where the result will be returned.
+::     <Value>           : Value to be checked.
 ::
-:: Repository: https://github.com/FIN392/Batch
+::     (See an example below)
 ::
-:IsNumber {Return_variable} {Value}
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:IsNumber <Return_variable> <Value>
 
 	SET "%~1=FALSE"
 	SET /A "Number=%~2+0" > NUL 2> NUL
@@ -32,3 +21,24 @@ ENDLOCAL & EXIT /B 0
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyValue=123"
+CALL %Func_%IsNumber MyResult %MyValue%
+ECHO [%MyValue%] = [%MyResult%]
+
+SET MyValue="This is a test"
+CALL %Func_%IsNumber MyResult %MyValue%
+ECHO [%MyValue%] = [%MyResult%]
+	
+EXIT /B 0
+
+:: Results:
+::
+:: [123] = [TRUE]
+:: ["This is a test"] = [FALSE]
+::

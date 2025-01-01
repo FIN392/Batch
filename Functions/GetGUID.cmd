@@ -1,28 +1,19 @@
-:: Example of using the function
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	CALL :GetGUID MyGUID
-
-	ECHO My GUID is [%MyGUID%]
-	ECHO.
-	
-	PAUSE
-
-ENDLOCAL & EXIT /B 0
-
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Return a GUID with format 'HHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH'.
+:: Return a GUID with format 'HHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH'. Being 'H'
+:: a hexadecimal digit.
 ::
-:: Each 'H' is a hexadecimal digit.
+:: Syntax: GetGUID <Return_variable>
+::     <Return_variable> : Variable where the result will be returned.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
+::     (See an example below)
 ::
-:: Repository: https://github.com/FIN392/Batch
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
-:GetGUID {Return_variable}
+:GetGUID <Return_variable>
 SETLOCAL
 
 	SET "_HEX="
@@ -38,3 +29,18 @@ SETLOCAL
 
 ENDLOCAL & SET "%~1=%_HEX%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+CALL :GetGUID MyGUID
+ECHO [%MyGUID%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [4E562C98-EB18-11B2-ADF4-85DAE188E83E]
+::

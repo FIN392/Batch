@@ -1,3 +1,4 @@
+GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Create an empty file in the %TEMP% folder with name '~yyyymmddhhmmss.tmp'.
@@ -7,11 +8,16 @@
 ::
 :: NOTE: Remember to delete temporary files at the end of the script.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
+:: Sintax: CreateTempFile <Return_variable>
+::     <Return_variable> : Variable where the result will be returned.
 ::
-:: Repository: https://github.com/FIN392/Batch
+::     (See an example below)
 ::
-:CreateTempFile {Return_variable}
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:CreateTempFile <Return_variable>
 SETLOCAL
 
 	:CreateTempFile_Loop
@@ -25,3 +31,20 @@ SETLOCAL
 
 ENDLOCAL & SET "%~1=%_File%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+CALL %Func_%CreateTempFile MyTempFile
+ECHO [%MyTempFile%]
+
+DEL "%MyTempFile%" > NUL 2> NUL
+
+EXIT /B 0
+
+:: Results:
+::
+:: [C:\Users\josel\AppData\Local\Temp\~20250101211855.tmp]
+::

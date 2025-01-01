@@ -1,15 +1,30 @@
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Return the length of a string.
 ::
-:: NOTE: For longer than 256 characters, the value 256 is always returned.
+:: Syntax: StrLength <Return_variable> <String>
+::     <Return_variable> : Variable where the result will be returned.
+::     <String>          : String to be measured.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
-:: {String}          : String to be verified.
+:: Requirements: (none)
 ::
-:: Repository: https://github.com/FIN392/Batch
+:: Example:
 ::
-:StrLength {Return_variable} {String}
+::     :: Set here your functions folder
+::     @ECHO OFF & SET "Func_=X:\Batch\Functions"
+::
+::     SET "MyText=This is a test"
+::     CALL %Func_%\StrLength MyTextLength "%MyText%"
+::     ECHO [%MyText%] & ECHO [%MyTextLength%]
+::
+::     EXIT /B 0
+::
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:StrLength <Return_variable> <String>
 SETLOCAL ENABLEDELAYEDEXPANSION
 
 	SET "String=%~2-"
@@ -17,3 +32,19 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 ENDLOCAL & SET "%~1=%_Return%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyText=This is a test"
+CALL %Func_%StrLength MyTextLen "%MyText%"
+ECHO [%MyText%] = [%MyTextLen%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [This is a test] = [14]
+::

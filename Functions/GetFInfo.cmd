@@ -1,20 +1,20 @@
-@echo off
-call :GetFInfo qwe %0
-set qwe
-
-exit /b 0
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Get information about a file or folder.
 ::
-:: {Return_variable} : Root of the variable names where the results will be
-::                     returned
-:: {Item_name}       : Name of folder or file to analyze.
+:: Syntax: GetFInfo <Return_variable> <Item_name>
+::     <Return_variable> : Root name of variables where the result will be
+::                         returned.
+::     <Item_name>       : Name of folder or file to analyze.
 ::
-:: Repository: https://github.com/FIN392/Batch
+::     (See an example below)
 ::
-:GetFInfo {Return_variable} {Item_name}
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:GetFInfo <Return_variable> <Item_name>
 
 	FOR /F "tokens=1* delims==" %%v IN ('^(SET %~1.^) 2^> NUL') DO SET "%%v="
 	
@@ -44,3 +44,41 @@ exit /b 0
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyFolder=C:\Windows\System32\drivers\etc"
+CALL %Func_%GetFInfo MyFolderInfo "%MyFolder%"
+SET MyFolderInfo.
+
+SET "MyFile=%0"
+CALL %Func_%GetFInfo MyFileInfo "%MyFile%"
+SET MyFileInfo.
+
+EXIT /B 0
+
+:: Results:
+::
+:: MyFolderInfo.Attributes=d----------
+:: MyFolderInfo.Drive=C:
+:: MyFolderInfo.Exist=TRUE
+:: MyFolderInfo.Files=6
+:: MyFolderInfo.FQFilename=C:\Windows\System32\drivers\etc
+:: MyFolderInfo.Name=etc
+:: MyFolderInfo.Path=\Windows\System32\drivers\
+:: MyFolderInfo.ShortName=C:\Windows\System32\drivers\etc
+:: MyFolderInfo.Type=FOLDER
+:: MyFileInfo.Attributes=--a-----l--
+:: MyFileInfo.Drive=d:
+:: MyFileInfo.Exist=TRUE
+:: MyFileInfo.Extension=.cmd
+:: MyFileInfo.FQFilename=d:\OneDrive\DEV\GitHub\Batch\Functions\GetFInfo.cmd
+:: MyFileInfo.Name=GetFInfo
+:: MyFileInfo.Path=\OneDrive\DEV\GitHub\Batch\Functions\
+:: MyFileInfo.ShortName=d:\OneDrive\DEV\GitHub\Batch\Functions\GetFInfo.cmd
+:: MyFileInfo.Size=1698
+:: MyFileInfo.Type=FILE
+::

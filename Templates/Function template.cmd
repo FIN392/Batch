@@ -3,13 +3,39 @@
 :: Clean a log file keeping only the last 'n' lines.
 ::
 :: NOTE: It is recommended to call this function at the beginning of the main
-:: process since if it is done at the end, lines generated during execution can
+:: process since, if done at the end, lines created during the process could
 :: be deleted.
 ::
-:: {LogFile}          : Name of the log file to clean.
-:: {Lines} [Optional] : Number of lines to keep. 
+:: Sintax: CleanLog {LogFile} [{Lines}]
+::     {LogFile}          : Name of the log file to clean.
+::     {Lines} [Optional] : Number of lines to keep. If this parameter is not
+::                          specified, the log is completely deleted.
 ::
-:: Repository: https://github.com/FIN392/Batch
+:: Requirements: (none)
+::
+:: Example:
+::
+::     :: Set here your functions folder ending in '\'
+::     @ECHO OFF & SET "Func_=CALL X:\Batch\Functions\"
+::
+::     :: Create log
+::     TYPE NUL > "%TEMP%\~LogFile.log"
+::     FOR /L %%i in (1,1,10) DO (
+::         ECHO %DATE% %TIME% Log entry #%%i >> "%TEMP%\~LogFile.log"
+::     )
+::     ECHO --- Before
+::     TYPE "%TEMP%\~LogFile.log"
+::     :: Clean log keeping last 2 lines
+::     %Func_%CleanLog "%TEMP%\~LogFile.log" 2
+::     ECHO --- After
+::     TYPE "%TEMP%\~LogFile.log"
+::     :: Remove logfile
+::     DEL "%TEMP%\~LogFile.log" > NUL 2> NUL
+::     EXIT /B 0
+::
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
 :CleanLog {LogFile} [{Lines}]
 SETLOCAL

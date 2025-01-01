@@ -1,22 +1,4 @@
-:: Example of using the function
-::
-:: NOTE: Call this script with different parameters to see how it works.
-:: For example: C:\> GetArgs.cmd "Text to display" /CONSOLE /File:"C:\The log file.tmp" /Lines:1024 0xFABADA
-::
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	CALL :GetArgs %*
-
-	ECHO Args are:
-	SET "_Arg."
-	ECHO.
-	
-	PAUSE
-
-ENDLOCAL & EXIT /B 0
-
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Load arguments into variables '_Arg.xxx'.
@@ -33,7 +15,13 @@ ENDLOCAL & EXIT /B 0
 ::   (*) In case of multiple arguments, the variable will be named as '_Arg.1',
 ::       '_Arg.2', '_Arg.3', etc.
 ::
-:: Repository: https://github.com/FIN392/Batch
+:: Syntax: GetArgs
+::
+::     (See an example below)
+::
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
 :GetArgs
 
@@ -73,3 +61,26 @@ ENDLOCAL & EXIT /B 0
 
 EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+IF "%~1"=="" (
+	CALL :Example "Text to display" /CONSOLE /File:"C:\file.tmp" 1024
+	EXIT /B 0	
+)
+
+CALL %Func_%GetArgs %*
+SET _Arg.
+
+EXIT /B 0
+
+:: Results:
+::
+:: _Arg.1=Text to display
+:: _Arg.2=1024
+:: _Arg.CONSOLE=ON
+:: _Arg.File="C:\file.tmp"
+::

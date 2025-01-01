@@ -6,7 +6,23 @@
 ::
 :: See all possible combinations below.
 ::
-:: Repository: https://github.com/FIN392/Batch
+:: Sintax: ...
+::     {Return_variable} : Variable where the result will be returned.
+::
+:: Requirements: (none)
+::
+:: Example:
+::
+::     :: Set here your functions folder ending in '\'
+::     @ECHO OFF & SET "Func_=CALL X:\Batch\Functions\"
+::
+::     ...
+::
+::     EXIT /B 0
+::
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
 :Const
 

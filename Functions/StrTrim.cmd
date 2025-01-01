@@ -1,50 +1,38 @@
-:: Example of using the function
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	SET MyString="   abc def"
-	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
-	ECHO.
-
-	SET MyString="abc   def"
-	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
-	ECHO.
-
-	SET MyString="abc def   "
-	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
-	ECHO.
-
-	SET MyString="   abc   def   "
-	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
-	ECHO.
-
-	SET MyString="abc def"
-	CALL :StrTrim MyStringTrimmed %MyString%
-	ECHO The string [%MyString%] trimmed is [%MyStringTrimmed%]
-	ECHO.
-
-	PAUSE
-
-ENDLOCAL & EXIT /B 0
-
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Removes leading, trailing and double spaces from the string.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
-:: {String}          : String to be trimmed.
+:: Syntax: StrTrim <Return_variable> <String>
+::     <Return_variable> : Variable where the result will be returned.
+::     <String>          : String to be trimmed.
 ::
-:: Repository: https://github.com/FIN392/Batch
+::     (See an example below)
 ::
-:StrTrim {Return_variable} {String}
+:: Author: fin392@gmail.com
+:: License: MIT License
+:: Repository: https://github.com/FIN392/Batch/tree/main/Functions
+::
+:StrTrim <Return_variable> <String>
 SETLOCAL
 	
 	FOR /F "tokens=*" %%i IN ('ECHO %~2 ') DO SET "_Return=%%i"
 
 ENDLOCAL & SET "%~1=%_Return:~0,-1%" & EXIT /B 0
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyText=   This   is   a  test      "
+CALL %Func_%StrTrim MyTextTrimmed "%MyText%"
+ECHO [%MyText%] = [%MyTextTrimmed%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [   This   is   a  test      ] = [This is a test]
+::
