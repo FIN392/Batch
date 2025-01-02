@@ -1,3 +1,4 @@
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Display an error message and returns an error code.
@@ -9,7 +10,7 @@
 :: /FATAL [Optional]   : The script ends, otherwise control returns to the line
 ::                       after the call.
 ::
-:: Sintax: ...
+:: Syntax: ...
 ::     {Return_variable} : Variable where the result will be returned.
 ::
 :: Requirements: (none)
@@ -58,3 +59,89 @@ SETLOCAL
 
 ENDLOCAL & EXIT %_Err.FATAL% %_Err.Code%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+
+ECHO EXAMPLE #1: Calling 'Error'
+ECHO NOTE: The error code ('0x1A' in this case ) should be unique within the script
+ECHO.
+ECHO C:\^> CALL :Error 0x1A "This is the error message"
+	
+CALL :Error 0x1A "This is the error message"
+	
+ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+ECHO.
+
+ECHO EXAMPLE #2: Calling 'Error' if command fail
+ECHO.
+ECHO C:\^> DIR OOPS:\ ^|^| (CALL :Error 0x2B "DIR command failed")
+	
+DIR OOPS:\ 2> NUL || (CALL :Error 0x2B "DIR command failed")
+	
+ECHO Returned ERRORLEVEL=%ERRORLEVEL%
+ECHO.
+
+ECHO EXAMPLE #3: Calling 'Error' with /FATAL to finish the script
+ECHO NOTE: CMD windows is going to be closed
+ECHO.
+ECHO C:\^> CALL :Error 0xFF "This is a fatal error" /FATAL
+	
+CALL :Error 0xFF "This is a fatal error" /FATAL
+	
+ECHO This line is never shown because the script is already cancelled.
+	
+EXIT /B 0
+
+:: Results:
+::
+:: EXAMPLE #1: Calling 'Error'
+:: NOTE: The error code ('0x1A' in this case ) should be unique within the script
+::
+:: C:\> CALL :Error 0x1A "This is the error message"
+::
+::     *** ERROR ****************************
+::
+::     Script: d:\OneDrive\DEV\GitHub\Batch\Functions\Error.cmd
+::     Line: 74
+::     Error code: 0x1A
+::     Description: This is the error message
+::     **************************************
+::
+:: Returned ERRORLEVEL=26
+::
+:: EXAMPLE #2: Calling 'Error' if command fail
+::
+:: C:\> DIR OOPS:\ || (CALL :Error 0x2B "DIR command failed")
+::
+::     *** ERROR ****************************
+::
+::     Script: d:\OneDrive\DEV\GitHub\Batch\Functions\Error.cmd
+::     Line: 83
+::     Error code: 0x2B
+::     Description: DIR command failed
+::     **************************************
+::
+:: Returned ERRORLEVEL=43
+::
+:: EXAMPLE #3: Calling 'Error' with /FATAL to finish the script
+:: NOTE: CMD windows is going to be closed
+::
+:: C:\> CALL :Error 0xFF "This is a fatal error" /FATAL
+::
+::     *** ERROR ****************************
+::
+::     Script: d:\OneDrive\DEV\GitHub\Batch\Functions\Error.cmd
+::     Line: 93
+::     Error code: 0xFF
+::     Description: This is a fatal error
+::
+::     FATAL ERROR: SCRIPT TERMINATED
+::
+::     **************************************
+::
+:: Esperando  0 segundos, presione una tecla para continuar ...
+::

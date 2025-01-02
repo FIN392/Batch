@@ -1,3 +1,4 @@
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: ColorCodes
@@ -6,25 +7,15 @@
 ::
 :: See all possible combinations below.
 ::
-:: Sintax: ...
-::     {Return_variable} : Variable where the result will be returned.
+:: Syntax: ColorCodes
 ::
-:: Requirements: (none)
-::
-:: Example:
-::
-::     :: Set here your functions folder ending in '\'
-::     @ECHO OFF & SET "Func_=CALL X:\Batch\Functions\"
-::
-::     ...
-::
-::     EXIT /B 0
+::     (See an example below)
 ::
 :: Author: fin392@gmail.com
 :: License: MIT License
 :: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
-:Const
+:ColorCodes
 
 	SET _Beep=
 
@@ -117,3 +108,21 @@ EXIT /B 0
 :: Background White+  : [107m Background White+   [0m
 ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+CALL %Func_%ColorCodes
+
+ECHO %_ColorBgRed%%_ColorFgWhiteB%%_FontBold%ERROR%_FontNormal%: This is just a test!!!
+
+EXIT /B 0
+
+:: Results:
+::
+:: ERROR: This is just a test!!!
+::
+:: (Word 'ERROR' bold and bright white over red)
+::

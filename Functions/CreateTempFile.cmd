@@ -1,4 +1,4 @@
-GOTO :Example
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Create an empty file in the %TEMP% folder with name '~yyyymmddhhmmss.tmp'.
@@ -8,7 +8,7 @@ GOTO :Example
 ::
 :: NOTE: Remember to delete temporary files at the end of the script.
 ::
-:: Sintax: CreateTempFile <Return_variable>
+:: Syntax: CreateTempFile <Return_variable>
 ::     <Return_variable> : Variable where the result will be returned.
 ::
 ::     (See an example below)
@@ -46,5 +46,5 @@ EXIT /B 0
 
 :: Results:
 ::
-:: [C:\Users\josel\AppData\Local\Temp\~20250101211855.tmp]
+:: [C:\Users\fin392\AppData\Local\Temp\~20250101211855.tmp]
 ::

@@ -1,22 +1,4 @@
-:: Example of using the function
-@ECHO OFF & SETLOCAL
-ECHO.
-
-	SET "MyINIFile=%~dp0GetIniValue_example.ini"
-	SET "MySection=My Section"
-	SET "MyKey=My Value"
-
-	CALL :GetIniValue _IniValue "%MyINIFile%" "%MySection%" "%MyKey%" || ECHO INI file doesn't exist
-	SET "_Err=%ERRORLEVEL%"
-
-	ECHO Value is [%_IniValue%]
-	ECHO.
-	
-	PAUSE
-
-ENDLOCAL & EXIT /B 0
-
-
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 :: Gets values ​​from an INI file.
@@ -24,30 +6,19 @@ ENDLOCAL & EXIT /B 0
 :: Reads an INI file and, given a section name and key, gets the value.
 :: Returns ERRORLEVEL = 1 if the INI file does not exist.
 ::
-:: {Return_variable} : Name of the variable where the result will be returned.
-:: {INI_file}        : Name of the INI file.
-:: {Section}         : INI Section where the key should be present.
-:: {Key}             : INI Key from which its value will be obtained. 
+:: Syntax: GetIniValue <Return_variable> <INI_file> <Section> <Key>
+::     <Return_variable> : Variable where the result will be returned.
+::     <INI_file>        : INI file from which the value will be read.
+::     <Section>         : Section where the key is located.
+::     <Key>             : Key whose value is returned.
 ::
-:: Sintax: ...
-::     {Return_variable} : Variable where the result will be returned.
-::
-:: Requirements: (none)
-::
-:: Example:
-::
-::     :: Set here your functions folder ending in '\'
-::     @ECHO OFF & SET "Func_=CALL X:\Batch\Functions\"
-::
-::     ...
-::
-::     EXIT /B 0
+::     (See an example below)
 ::
 :: Author: fin392@gmail.com
 :: License: MIT License
 :: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
-:GetIniValue {Return_variable} {INI_file} {Section} {Key}
+:GetIniValue <Return_variable> <INI_file> <Section> <Key>
 SETLOCAL
 
 	SET "_Error=0"
@@ -82,3 +53,23 @@ SETLOCAL
 
 ENDLOCAL & SET "%~1=%_ReturnValue:~0,-1%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+SET "MyINIFile=C:\Windows\system.ini"
+SET "MySection=drivers"
+SET "MyKey=timer"
+
+CALL :GetIniValue _IniValue "%MyINIFile%" "%MySection%" "%MyKey%" || ECHO INI file doesn't exist
+SET "_Err=%ERRORLEVEL%"
+ECHO [%_IniValue%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [timer.drv]
+::

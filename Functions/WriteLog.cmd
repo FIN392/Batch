@@ -5,10 +5,10 @@ REM GOTO :Example
 ::
 :: Syntax: WriteLog <LogFile> { DEBUG | INFO | WARN | ERROR | FATAL } <string> [/CON]
 ::     <LogFile>       : File where the entry will be added. 
-::     DEBUG | INFO | WARN | ERROR | FATAL : Log entry severity. Any word of 5 or
-::                       less characters, but these are the most common ones.
+::     DEBUG | INFO | WARN | ERROR | FATAL : Log entry severity. Any word of 5
+::                       or less characters, but these are the most common ones.
 ::     <string>        : Text for the log entry.
-::     /CON            : [Optional] Number of lines to keep. 
+::     /CON            : [Optional] Additionally displays output to console. 
 ::
 ::     (See an example below)
 ::

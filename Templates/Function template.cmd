@@ -1,55 +1,50 @@
+REM GOTO :Example
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
-:: Clean a log file keeping only the last 'n' lines.
+:: Brief description.
 ::
-:: NOTE: It is recommended to call this function at the beginning of the main
-:: process since, if done at the end, lines created during the process could
-:: be deleted.
+:: Detailed description of how the function works.
 ::
-:: Sintax: CleanLog {LogFile} [{Lines}]
-::     {LogFile}          : Name of the log file to clean.
-::     {Lines} [Optional] : Number of lines to keep. If this parameter is not
-::                          specified, the log is completely deleted.
+:: Syntax: FunctionName <Return_variable> <Parameter1> <Parameter2> <Parameter3> <ParameterN>
+::     <Return_variable> : Variable where the result will be returned.
+::     <Parameter1>      : Description of the use of the parameter #1.
+::     <Parameter2>      : Description of the use of the parameter #2.
+::     <Parameter3>      : Description of the use of the parameter #3.
+::     <ParameterN>      : Description of the use of the parameter #N.
 ::
-:: Requirements: (none)
-::
-:: Example:
-::
-::     :: Set here your functions folder ending in '\'
-::     @ECHO OFF & SET "Func_=CALL X:\Batch\Functions\"
-::
-::     :: Create log
-::     TYPE NUL > "%TEMP%\~LogFile.log"
-::     FOR /L %%i in (1,1,10) DO (
-::         ECHO %DATE% %TIME% Log entry #%%i >> "%TEMP%\~LogFile.log"
-::     )
-::     ECHO --- Before
-::     TYPE "%TEMP%\~LogFile.log"
-::     :: Clean log keeping last 2 lines
-::     %Func_%CleanLog "%TEMP%\~LogFile.log" 2
-::     ECHO --- After
-::     TYPE "%TEMP%\~LogFile.log"
-::     :: Remove logfile
-::     DEL "%TEMP%\~LogFile.log" > NUL 2> NUL
-::     EXIT /B 0
+::     (See an example below)
 ::
 :: Author: fin392@gmail.com
 :: License: MIT License
 :: Repository: https://github.com/FIN392/Batch/tree/main/Functions
 ::
-:CleanLog {LogFile} [{Lines}]
+:FunctionName <Return_variable> <Parameter1> <Parameter2> <Parameter3> <ParameterN>
 SETLOCAL
 
-	IF "%~2"=="" (DEL "%~1" > NUL 2> NUL) & GOTO :ENDIF
+	SET "_Error=0"
+	SET "_ReturnValue="
 
-		FOR /F "delims=: tokens=1" %%l IN ('FINDSTR /C:" " /N "%~1"') DO SET Lines=%%l
-		SET /A "Lines-=%~2"
-		IF %Lines% LSS 2 GOTO :ENDIF
-			FOR /F "skip=%Lines% tokens=*" %%l IN ('TYPE "%~1"') DO ( ECHO %%l>> "%~1.bak" )
-			COPY "%~1.bak" "%~1" > NUL 2> NUL
-			DEL "%~1.bak" > NUL 2> NUL
+	:: Your code goes here
+	SET "_ReturnValue=My correct result"
+	IF 'Something_goes_wrong'=='TRUE' SET "_Error=1"
+	:: Your code goes here
 
-	:ENDIF
-	
-ENDLOCAL & EXIT /B 0
+ENDLOCAL & SET "%~1=%_ReturnValue:~0,-1%" & EXIT /B %_Error%
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:Example
+
+:: Set here your functions folder ending in '\'
+@ECHO OFF & SET "Func_=:"
+
+CALL %Func_%FunctionName Return_variable Parameter1 Parameter2 Parameter3 ParameterN
+ECHO [%ERRORLEVEL%]
+ECHO [%Return_variable%]
+
+EXIT /B 0
+
+:: Results:
+::
+:: [0]
+:: [My correct resul]
+::
