@@ -6,9 +6,14 @@
 
 ---  
 
-## Copy the code to the end of your script
+## Copy the code in your script
 
-x
+Copy the lines contained between the ':::::::' marks (including them) at the end of your code.
+
+To call the function:
+```Batch
+CALL :<FunctionName> [<Param> ... ]
+```
 
 __PROS:__
 - All the code is in one file. Ideal for small scripts with only one or two functions.
@@ -21,7 +26,16 @@ __CONS:__
 
 ## Add the .CMD file to your project folder
 
-x
+Copy the function's CMD file to a folder in your project (for example, ".\Functions"), or a folder on your disk if you're sharing it with multiple projects (for example, "X:\Scripts\Functions").
+
+To call the function:
+```Batch
+:: Set a variable with your functions folder ending in '\'
+SET "Func_=.\Functions\"
+
+:: Call the function like this
+CALL %Func_%<FunctionName> [<Param> ... ]
+```
 
 __PROS:__
 - Easy to update in case new versions of the functions are released.
@@ -29,5 +43,5 @@ __PROS:__
 - Easier to read code.
 
 __CONS:__
-- Calling functions is a bit more challenging.
+- The way of calling functions can be a bit confusing.
 

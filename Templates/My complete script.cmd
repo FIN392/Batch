@@ -9,14 +9,14 @@
 ::?
 ::?     { /ON | /OFF }  Explanation of this eligible but mandatory switch. The
 ::?                     length of the line must be 80 characters.
-::?     [/X]            [Optional]  Explanation of this switch.
+::?     [/X]            [Optional]  Explanation of this optional switch.
 ::?     /F:<filename>   Explanation of this mandatory parameter.
 ::?
 ::? Requirements:
 ::?
 ::?   (none)
 ::?   Internet access to 'https://github.com/FIN392'
-::?   File 'Script_Template.ini' on same folder
+::?   File 'Configuration.ini' on same folder
 ::?   Python 3.x installed
 :: 
 ::  Author: fin392@gmail.com
