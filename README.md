@@ -3,10 +3,10 @@
 This is not just another Windows Command Prompt Scripting repository. This one is mine.
 
 Here you will find:
-- Useful one-line functions for simple and frequently used tasks.
-- Useful functions for complex tasks.
-- Templates for your scripts.
-- Tips and tricks.
+- [Useful one-line functions for simple and frequently used tasks](<One-line functions.md>).
+- [Useful functions for complex tasks](<Functions/__ How to use my functions.md>).
+- [Templates for your scripts](Templates).
+- [Tips and tricks](<Tips and tricks>)
 
 Please, send me your comments, critics, doubts, requests or sues.
 
