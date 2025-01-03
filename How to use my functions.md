@@ -29,5 +29,5 @@ __PROS:__
 - Easier to read code.
 
 __CONS:__
-- Calling functions is a bit more challenging.
+- The way of calling functions can be a bit confusing.
 
