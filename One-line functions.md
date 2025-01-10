@@ -10,6 +10,7 @@
 - [Add a line to a log file](#add-a-line-to-a-log-file)
 - [Check if a string match or not a regular expression](#check-if-a-string-match-or-not-a-regular-expression)
 - [Check whether or not a string is in a valid email address format](#check-whether-or-not-a-string-is-in-a-valid-email-address-format)
+- [Get public IP](#get-public-ip)
 
 ---  
 
@@ -60,4 +61,10 @@ _(Correct regular expressions should be "```^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[
 ```batchfile
 ECHO fin392@gmail.com > NUL 2>&1 | FINDSTR /I /R /C:"[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z]" && ECHO Valid email address || ECHO NOT a email address
 ```
+
+## Get public IP
+```batchfile
+curl checkip.amazonaws.com
+```
+
 
