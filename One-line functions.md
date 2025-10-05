@@ -33,7 +33,7 @@ FOR /F "tokens=1" %%f IN ('DIR "%FolderName%" /S /A-D /-C ^| FIND /V " 0 "') DO 
 
 ## Set 'Timestamp' with current date and time in format '_yyyy/mm/dd hh:mm:ss_'
 ```batchfile
-FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "DateTime=%%a %%b"
+FOR /F "tokens=1-2" %%a IN ('ROBOCOPY "|" . /NJH /L ^| FIND "0x"') DO SET "Timestamp=%%a %%b"
 ```
 
 ## Set Removes leading, trailing and double spaces from a string
