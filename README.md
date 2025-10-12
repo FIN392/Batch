@@ -1,4 +1,4 @@
-# Windows Command Prompt Scripting (aka Batch sctips, BAT or CMD)
+# Windows Command Prompt Scripting (aka Batch Scripts, BAT or CMD)
 
 This is not just another Windows Command Prompt Scripting repository. This one is mine.
 
