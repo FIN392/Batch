@@ -52,3 +52,25 @@ ECHO fin-392@gmail.com | FINDSTR /R "[a-zA-Z0-9]@[a-zA-Z0-9]*\.[a-zA-Z]" && ECHO
 ```batchfile
 FOR /F %i IN ('curl -s checkip.amazonaws.com') DO SET "PublicIP=%i"
 ```
+
+ # Convert from ASCII to UNICODE and viceversa
+```batchfile
+CMD /U /C TYPE ascii.txt > unicode.txt
+
+TYPE unicode.txt > ascii.txt
+```
+
+ # Delete all files in a folder except the 3 newest ones
+```batchfile
+FOR /F "TOKENS=* SKIP=3" %%f IN ('DIR "This filename doens't exist" /S /B /O-D') DO @echo DEL "%%f"
+```
+
+ # Delete files with more than 30 days
+```batchfile
+FORFILES /M *.* /P "{Folder}" /S /D -30 /C "CMD /C ECHO DEL @path"
+```
+
+ # Read variables from INI file
+```batchfile
+FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini" ^| FINDSTR /R "^[^;#[]"') DO SET MyPrefix_%a
+```
