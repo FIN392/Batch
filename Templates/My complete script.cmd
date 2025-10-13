@@ -47,7 +47,7 @@ ECHO " %* " | FIND " /? " > NUL && ( ( FOR /F "tokens=1* delims=?" %%A IN ('FIND
 ECHO " %* " | find.exe /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 
 :: Configure the log file and clear it keeping the last 100 lines
-SET "LogFile=%TEMP%\%~n0.log" && CALL :CleanLog "!LogFile!" 10
+SET "LogFile=%TEMP%\%~n0.log" && CALL :CleanLog "!LogFile!" 100
 
 	:: Start log
 	CALL :WriteLog "%LogFile%" INFO "Start of the process"
