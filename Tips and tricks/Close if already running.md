@@ -6,7 +6,7 @@
 IF EXIST "%TEMP%\%~n0.lock" EXIT /B 1
 
 :: Lock file is created
-> "%TEMP%\%~n0.heartbeat" ECHO %DATE% %TIME% %~n0 start...
+> "%TEMP%\%~n0.lock" ECHO %DATE% %TIME% %~n0 start...
 
 	::
 	:: Your code goes here
