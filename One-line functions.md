@@ -116,11 +116,6 @@ SET _CPU.
 ## Minimize the command window
 ```batchfile
 @IF NOT DEFINED _MinimizeMe SET _MinimizeMe=1 && START "" /MIN "%~dpnx0" %* && EXIT /B 0
-
-    :: Your code goes here
-    PAUSE
-
-EXIT /B 0
 ```
 
 ## Start debugging if parameter /DEBUG
