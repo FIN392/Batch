@@ -1,12 +1,12 @@
 # How to use my functions
 
-## Table of Contents <!-- omit in toc -->
-- [Copy the code to the end of your script](#copy-the-code-to-the-end-of-your-script)
-- [Add the .CMD file to your project folder](#add-the-cmd-file-to-your-project-folder)
+There are two ways to use functions:
+- [Copying the code to the end of your script](#copying-the-code-to-the-end-of-your-script)
+- [Adding the .CMD file to your project folder](#adding-the-cmd-file-to-your-project-folder)
 
 ---  
 
-## Copy the code in your script
+## Copying the code to the end of your script
 
 Copy the lines contained between the ':::::::' marks (including them) at the end of your code.
 
@@ -24,7 +24,7 @@ __CONS:__
 - Difficult to update functions in case of new versions.
 - Cannot share code between different scripts.
 
-## Add the .CMD file to your project folder
+## Adding the .CMD file to your project folder
 
 Copy the function's CMD file to a folder in your project (for example, ".\Functions"), or a folder on your disk if you're sharing it with multiple projects (for example, "X:\Scripts\Functions").
 
