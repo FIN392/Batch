@@ -74,3 +74,8 @@ FORFILES /M *.* /P "{Folder}" /S /D -30 /C "CMD /C ECHO DEL @path"
 ```batchfile
 FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini" ^| FINDSTR /R "^[^;#[]"') DO SET MyPrefix_%a
 ```
+
+# Get path names longer than 255 characters
+```batchfile
+FOR /F "Tokens=*" %%a IN ('DIR C:\ /B /S /A') DO @( SET PathName=%%a & IF NOT "!PathName:~255,1!"=="" ECHO Extra long name: "%%a" )
+```
