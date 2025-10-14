@@ -24,6 +24,8 @@ __CONS:__
 - Difficult to update functions in case of new versions.
 - Cannot share code between different scripts.
 
+---
+
 ## Adding the .CMD file to your project folder
 
 Copy the function's CMD file to a folder in your project (for example, ".\Functions").
