@@ -79,3 +79,8 @@ FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini" ^| FINDSTR /R "^[^;#[]"') DO SET
 ```batchfile
 FOR /F "Tokens=*" %%a IN ('DIR C:\ /B /S /A') DO @( SET PathName=%%a & IF NOT "!PathName:~255,1!"=="" ECHO Extra long name: "%%a" )
 ```
+
+Get last boot time in format 'yyyymmddhhmmss.ffffff+mmm'
+```batchfile
+FOR /F "TOKENS=*" %%a IN ('WMIC OS GET LastBootUpTime /VALUE ^| FIND "="') DO @SET "%%a"
+```
