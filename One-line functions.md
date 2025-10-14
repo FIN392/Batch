@@ -72,7 +72,7 @@ FORFILES /M *.* /P "{Folder}" /S /D -30 /C "CMD /C ECHO DEL @path"
 
 ## Read variables from INI file
 ```batchfile
-FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini" ^| FINDSTR /R "^[^;#[]"') DO SET MyPrefix_%a
+FOR /F "TOKENS=*" %%a IN ('TYPE "MyIniFile.ini" ^| FINDSTR /R "^[^;#[]"') DO SET MyPrefix_%%a
 ```
 
 ## Get path names longer than 255 characters
