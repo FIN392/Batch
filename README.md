@@ -6,7 +6,7 @@ Here you will find:
 
 - [Simple one-line functions for daily use](<One-line functions.md>).
 - [Useful functions for complex tasks](<Functions/How to use my functions.md>).
-- [Templates for your scripts](Templates).
+- [Templates for your scripts](<Templates>).
 - [Tips and tricks](<Tips and tricks>).
 
 Feel free to share your comments, critiques, questions, requests, or lawsuits.
