@@ -1,6 +1,6 @@
 # How to use my functions
 
-There are two ways to use functions:
+There are two ways to use the functions:
 - [Copying the code to the end of your script](#copying-the-code-to-the-end-of-your-script)
 - [Adding the .CMD file to your project folder](#adding-the-cmd-file-to-your-project-folder)
 
@@ -26,7 +26,7 @@ __CONS:__
 
 ## Adding the .CMD file to your project folder
 
-Copy the function's CMD file to a folder in your project (for example, ".\Functions"), or a folder on your disk if you're sharing it with multiple projects (for example, "X:\Scripts\Functions").
+Copy the function's CMD file to a folder in your project (for example, ".\Functions").
 
 To call the function:
 ```Batch
