@@ -1,11 +1,11 @@
-# Windows Command Prompt Scripting (aka Batch Scripts, BAT or CMD)
+# Windows Command Prompt scripting (aka Batch scripts, BAT or CMD)
 
-This is not just another Windows Command Prompt Scripting repository, this one is **mine**.
+This is not just another Windows Command Prompt scripting repository, this one is **mine**.
 
 Here you will find:
 
 - [Simple one-line functions for daily use](<One-line functions.md>).
-- [Useful functions for complex tasks](<Functions/__ How to use my functions.md>).
+- [Useful functions for complex tasks](<Functions/How to use my functions.md>).
 - [Templates for your scripts](Templates).
 - [Tips and tricks](<Tips and tricks>).
 
