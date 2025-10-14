@@ -15,8 +15,8 @@ FOR /L %%i IN (0, 1, %intTotalElements%) DO (
     REM *
     REM * YOUR WORK GOES HERE
     REM *
-	
-    TIMEOUT /T 1 > NUL 2>&1
+	TIMEOUT /T 1 > NUL 2>&1
+
 )
 ECHO.
 ```
