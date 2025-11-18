@@ -9,7 +9,7 @@ Here you will find:
 - [Templates for your scripts](<Templates>)
 - [Tips and tricks](<Tips and tricks>)
 
-Feel free to share your comments, critiques, questions, requests, or lawsuits.
+Feel free to share your comments, critiques, questions, requests, or subpoenas.
 
 ## 🧠 Credits and Acknowledgments
 
@@ -29,3 +29,5 @@ All content in this repository is licensed under the [MIT License](LICENSE).
 If you don’t like legal jargon, here’s the summary:
 
 *Do whatever you want, even make money without mentioning me, just don't blame me if it breaks something.*
+
+---
