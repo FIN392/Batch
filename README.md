@@ -1,3 +1,5 @@
+![Logo](assets/WindowsTerminal-Logo.png)
+
 # Windows Command Prompt scripting (aka Batch scripts, BAT or CMD)
 
 This is not just another Windows Command Prompt scripting repository, this one is **mine**.
