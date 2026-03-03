@@ -95,5 +95,8 @@ START "" mshta "javascript:code(close((v=new ActiveXObject('SAPI.SpVoice')).GetV
 ECHO " %* " | find /I " /DEBUG " > NUL && (ECHO ON & PROMPT $E[36m----------------------------------------$S$D$S$T$_$P$G$E[0m)
 ```
 
-
+## Exit if user is not administrator
+```batchfile
+(NET SESSION > NUL 2>&1) || ECHO ERROR: You must run this script as an administrator. && EXIT /B 1
+```
 
